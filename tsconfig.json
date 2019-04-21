@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "outDir": "./built/",
+    "sourceMap": true,
+    "strict": true,
+    "noImplicitReturns": true,
+    "module": "es2015",
+    "moduleResolution": "node",
+    "target": "es5",
+    "baseUrl": "./",
+    "paths": {
+      "@": ["src"]
+    }
+  },
+  "typeRoots": ["node_modules/@types", "type/*.d.ts"]
+}
