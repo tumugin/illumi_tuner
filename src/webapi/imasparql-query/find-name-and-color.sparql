@@ -1,0 +1,3 @@
+PREFIX schema: <http://schema.org/>
+PREFIX imas: <https://sparql.crssnky.xyz/imasrdf/URIs/imas-schema.ttl#>
+SELECT (sample(?o) as ?name)(sample(?cl)as ?color) ?s WHERE {?s schema:name | schema:alternateName ?o;imas:Color ?cl;} group by ?s order by ?s
