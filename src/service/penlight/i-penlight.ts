@@ -4,4 +4,3 @@ interface IPenlight {
   isColorAdjustable: boolean
   availableColors: IPenlightColor[]
 }
-
