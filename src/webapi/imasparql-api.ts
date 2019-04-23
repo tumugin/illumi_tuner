@@ -1,4 +1,6 @@
 import findNameAndColorQuery from './imasparql-query/find-name-and-color.sparql'
+// eslint-disable-next-line no-unused-vars
+import INameAndColor from '../models/i-name-and-color'
 
 interface IImasparqlApiResponce {
   results: {
@@ -13,7 +15,7 @@ interface IImasparqlApiResponce {
   }
 }
 
-class ImasparqlApi {
+export default class ImasparqlApi {
   static readonly ApiEndpoint = 'https://sparql.crssnky.xyz/spql/imas/query'
 
   static async fetchNameAndColor() {
