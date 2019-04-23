@@ -1,4 +1,8 @@
 import MathUtils from './math-utils'
+// eslint-disable-next-line no-unused-vars
+import IRgb from '../../models/i-rgb'
+// eslint-disable-next-line no-unused-vars
+import ILab from 'src/models/i-lab'
 
 export default class Ciede2000 {
   static rgbToLab(rgb: IRgb) {
