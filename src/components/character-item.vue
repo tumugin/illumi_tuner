@@ -1,5 +1,8 @@
 <template>
-  <div :style="{ backgroundColor: characterColor, [$style.characterBox]: true }">
+  <div
+    :style="{ backgroundColor: characterColor, [$style.characterBox]: true, [$style.characterBox.checked]: checked }"
+    @click="onParentBoxClicked"
+  >
     {{ characterName }}
   </div>
 </template>
@@ -15,6 +18,15 @@ const CharacterItem = Vue.extend({
     characterColor: {
       type: String,
       required: true
+    },
+    checked: {
+      type: Boolean,
+      default: false
+    }
+  },
+  methods: {
+    onParentBoxClicked() {
+      this.$emit('onCheckStateChanged', !this.$props.checked)
     }
   }
 })
@@ -25,5 +37,8 @@ export default CharacterItem
 .characterBox {
   width: 100px;
   height: 50px;
+  .checked {
+    transform: rotate(-5deg);
+  }
 }
 </style>

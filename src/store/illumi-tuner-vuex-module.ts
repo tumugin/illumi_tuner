@@ -13,6 +13,12 @@ export class IllumiTunerVuexModuleClass extends VuexModule {
     this.imasCharacters = param
   }
 
+  @Mutation
+  public updateImasCharacter(param: INameAndColor, key: string) {
+    const index = this.imasCharacters.findIndex(item => item.key === param.key)
+    this.imasCharacters[index] = param
+  }
+
   @Action({})
   public async fetchImasCharacters() {
     const result = await ImasparqlApi.fetchNameAndColor()
