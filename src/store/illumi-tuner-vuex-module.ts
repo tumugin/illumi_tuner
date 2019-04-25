@@ -3,7 +3,6 @@ import mainStore from './main-store'
 // eslint-disable-next-line no-unused-vars
 import INameAndColor from '../models/i-name-and-color'
 import ImasparqlApi from '../webapi/imasparql-api'
-import nameof from '../utils/nameof-helper'
 
 @Module({ dynamic: true, name: 'IllumiTunerStore', store: mainStore })
 export class IllumiTunerVuexModuleClass extends VuexModule {
@@ -14,9 +13,10 @@ export class IllumiTunerVuexModuleClass extends VuexModule {
     this.imasCharacters = param
   }
 
-  @Action<INameAndColor[]>({ commit: nameof<IllumiTunerVuexModuleClass>('imasCharacters') })
+  @Action({})
   public async fetchImasCharacters() {
-    return await ImasparqlApi.fetchNameAndColor()
+    const result = await ImasparqlApi.fetchNameAndColor()
+    this.setImasCharacters(result)
   }
 }
 
