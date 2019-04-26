@@ -4,7 +4,7 @@ import IRgb from 'src/models/i-rgb'
 export default class ColorUtils {
   static convertColorCodeToRGB(colorCode: string) {
     if (colorCode.charAt(0) === '#') {
-      colorCode.slice(1)
+      colorCode = colorCode.slice(1)
     }
     const hexValue = colorCode.split('')
     const rgb: IRgb = { red: 0, green: 0, blue: 0 }
