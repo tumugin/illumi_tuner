@@ -1,6 +1,7 @@
 <template>
   <div
-    :style="{ backgroundColor: characterColor, [$style.characterBox]: true, [$style.characterBox.checked]: checked }"
+    :style="{ backgroundColor: characterColor }"
+    :class="{ characterBox: alwaysTrue, checked: $props.checked }"
     @click="onParentBoxClicked"
   >
     {{ characterName }}
@@ -10,6 +11,11 @@
 <script lang="ts">
 import Vue from 'vue'
 const CharacterItem = Vue.extend({
+  data() {
+    return {
+      alwaysTrue: true
+    }
+  },
   props: {
     characterName: {
       type: String,
@@ -33,11 +39,18 @@ const CharacterItem = Vue.extend({
 export default CharacterItem
 </script>
 
-<style scoped module lang="scss">
+<style scoped lang="scss">
 .characterBox {
   width: 100px;
-  height: 50px;
-  .checked {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  word-break: break-all;
+  cursor: pointer;
+  border-radius: 5px;
+  user-select: none;
+  &.checked {
     transform: rotate(-5deg);
   }
 }

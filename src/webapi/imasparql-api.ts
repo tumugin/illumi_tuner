@@ -1,4 +1,5 @@
-import findNameAndColorQuery from './imasparql-query/find-name-and-color.sparql'
+// eslint-disable-next-line import/no-webpack-loader-syntax
+import findNameAndColorQuery from 'raw-loader!./imasparql-query/find-name-and-color.sparql'
 // eslint-disable-next-line no-unused-vars
 import INameAndColor from '../models/i-name-and-color'
 import * as uuidv4 from 'uuid/v4'
@@ -26,7 +27,7 @@ export default class ImasparqlApi {
     const response = (await (await fetch(uri)).json()) as IImasparqlApiResponce
     return response.results.bindings.map(item => {
       const mappedItem: INameAndColor = {
-        colorHEX: item.color.value,
+        colorHEX: `#${item.color.value}`,
         name: item.name.value,
         key: uuidv4(),
         checked: false

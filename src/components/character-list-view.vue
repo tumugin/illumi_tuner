@@ -1,10 +1,12 @@
 <template>
-  <div>
+  <div class="characterListView">
     <character-item
       v-for="item in characters"
+      class="characterItem"
       :character-name="item.name"
       :key="item.key"
       :checked="item.checked"
+      :character-color="item.colorHEX"
       @onCheckStateChanged="characterItemUpdateCheckedState(item, $event)"
     />
   </div>
@@ -19,7 +21,7 @@ import INameAndColor from '../models/i-name-and-color'
 
 const CharacterListView = Vue.extend({
   components: {
-    'character-item': CharacterItem
+    CharacterItem
   },
   computed: {
     characters() {
@@ -40,4 +42,13 @@ const CharacterListView = Vue.extend({
 export default CharacterListView
 </script>
 
-<style scoped module></style>
+<style scoped lang="scss">
+.characterListView {
+  display: flex;
+  flex-wrap: wrap;
+
+  .characterItem {
+    margin: 5px;
+  }
+}
+</style>

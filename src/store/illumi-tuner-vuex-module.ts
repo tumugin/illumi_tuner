@@ -16,7 +16,7 @@ export class IllumiTunerVuexModuleClass extends VuexModule {
   @Mutation
   public updateImasCharacter(param: INameAndColor, key: string) {
     const index = this.imasCharacters.findIndex(item => item.key === param.key)
-    this.imasCharacters[index] = param
+    this.imasCharacters.splice(index, 1, param)
   }
 
   @Action({})
