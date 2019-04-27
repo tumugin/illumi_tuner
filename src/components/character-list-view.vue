@@ -1,14 +1,20 @@
 <template>
-  <div class="characterListView">
-    <character-item
-      v-for="item in characters"
-      class="characterItem"
-      :character-name="item.name"
-      :key="item.key"
-      :checked="item.checked"
-      :character-color="item.colorHEX"
-      @onCheckStateChanged="characterItemUpdateCheckedState(item, $event)"
-    />
+  <div>
+    <div>
+      <input v-model="filterText" />
+    </div>
+    <div class="characterListView">
+      <character-item
+        v-for="item in characters"
+        class="characterItem"
+        :character-name="item.name"
+        :character-title="item.title"
+        :key="item.key"
+        :checked="item.checked"
+        :character-color="item.colorHEX"
+        @onCheckStateChanged="characterItemUpdateCheckedState(item, $event)"
+      />
+    </div>
   </div>
 </template>
 
@@ -20,12 +26,19 @@ import CharacterItem from './character-item.vue'
 import INameAndColor from '../models/i-name-and-color'
 
 const CharacterListView = Vue.extend({
+  data() {
+    return {
+      filterText: ''
+    }
+  },
   components: {
     CharacterItem
   },
   computed: {
     characters() {
       return IllumiTunerVuexModule.imasCharacters
+        .sort((a, b) => a.title.localeCompare(b.title))
+        .filter(item => item.name.includes(this.$data.filterText) || item.nameKana.includes(this.$data.filterText))
     }
   },
   async mounted() {

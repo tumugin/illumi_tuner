@@ -14,6 +14,12 @@ interface IImasparqlApiResponce {
         name: {
           value: string
         }
+        namekana: {
+          value: string
+        }
+        title: {
+          value: string
+        }
       }
     ]
   }
@@ -29,10 +35,25 @@ export default class ImasparqlApi {
       const mappedItem: INameAndColor = {
         colorHEX: `#${item.color.value}`,
         name: item.name.value,
+        nameKana: item.namekana.value,
+        title: this.getShortTitle(item.title.value),
         key: uuidv4(),
         checked: false
       }
       return mappedItem
     })
+  }
+
+  static getShortTitle(title: string) {
+    switch (title) {
+      case '283Pro':
+        return 'シャニ'
+      case 'MillionStars':
+        return 'ミリ'
+      case 'CinderellaGirls':
+        return 'デレ'
+      default:
+        return title
+    }
   }
 }

@@ -1,3 +1,16 @@
 PREFIX schema: <http://schema.org/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX imas: <https://sparql.crssnky.xyz/imasrdf/URIs/imas-schema.ttl#>
-SELECT (sample(?o) as ?name)(sample(?cl)as ?color) ?s WHERE {?s schema:name | schema:alternateName ?o;imas:Color ?cl;} group by ?s order by ?s
+PREFIX imasrdf: <https://sparql.crssnky.xyz/imasrdf/RDFs/detail/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX math: <http://www.w3.org/2005/xpath-functions/math#>
+PREFIX xsd: <https://www.w3.org/TR/xmlschema11-2/#>
+PREFIX rdfs:  <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?name ?namekana ?color ?title
+WHERE {
+  ?x schema:name ?name.
+  ?x imas:nameKana ?namekana.
+  ?x imas:Color ?color.
+  ?x imas:Title ?title.
+}

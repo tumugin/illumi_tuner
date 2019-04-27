@@ -1,10 +1,14 @@
 <template>
   <div
     :style="{ backgroundColor: characterColor }"
-    :class="{ characterBox: alwaysTrue, checked: $props.checked }"
+    :class="{ characterBox: true, checked: $props.checked }"
     @click="onParentBoxClicked"
   >
-    {{ characterName }}
+    <div class="textContainer">
+      <span class="titleView whiteBox">{{ characterTitle }}</span>
+      <br />
+      <span :class="{ whiteBox: true, characterNameView: true, smallNameView: isLongName }">{{ characterName }}</span>
+    </div>
   </div>
 </template>
 
@@ -12,8 +16,11 @@
 import Vue from 'vue'
 const CharacterItem = Vue.extend({
   data() {
-    return {
-      alwaysTrue: true
+    return {}
+  },
+  computed: {
+    isLongName() {
+      return (this.$props.characterName as string).length > 5
     }
   },
   props: {
@@ -24,6 +31,10 @@ const CharacterItem = Vue.extend({
     characterColor: {
       type: String,
       required: true
+    },
+    characterTitle: {
+      type: String,
+      default: null
     },
     checked: {
       type: Boolean,
@@ -50,6 +61,23 @@ export default CharacterItem
   cursor: pointer;
   border-radius: 5px;
   user-select: none;
+  .textContainer {
+    text-align: center;
+  }
+  .whiteBox {
+    background-color: white;
+    padding: 3px;
+    border-radius: 5px;
+  }
+  .titleView {
+    font-size: calc(50% + 0.1vw);
+  }
+  .characterNameView {
+    font-size: calc(100% + 0.1vw);
+    &.smallNameView {
+      font-size: calc(70% + 0.1vw);
+    }
+  }
   &.checked {
     transform: rotate(-5deg);
   }
