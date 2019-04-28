@@ -1,15 +1,12 @@
 <template>
   <div class="penlightColorContainer">
-    <div
-      class="penlightColor"
-      v-for="item in suggestedPenlightColor"
-      :key="item.nameAndColor.key"
-      :style="{ backgroundColor: item.penlightColor.colorHEX }"
-    >
-      {{ item.nameAndColor.name }}
-      <br />
-      {{ item.penlightColor.colorName }}
-    </div>
+    <penlight-item
+      v-for="item in suggestedPenlightColor2"
+      :key="item.key"
+      :penlight-color="item.color"
+      :idols="item.idols"
+      class="item"
+    />
   </div>
 </template>
 
@@ -17,23 +14,43 @@
 import Vue from 'vue'
 import IllumiTunerVuexModule from '../store/illumi-tuner-vuex-module'
 import MixPenla from '../service/penlight/mix-penla'
+import PenlightItem from './penlight-item.vue'
+// eslint-disable-next-line no-unused-vars,no-unused-vars
+import AbstractPenlight from '../service/penlight/abstract-penlight'
 // eslint-disable-next-line no-unused-vars
-import INameAndColorWithPenlightColor from '../models/i-name-and-color-with-penlight-color'
+import AbstractPenlightColor from '../models/abstract-penlight-color'
+// eslint-disable-next-line no-unused-vars
+import INameAndColor from '../models/i-name-and-color'
+import * as md5 from 'md5'
+
+interface PenlightColorWithIdolList {
+  color: AbstractPenlightColor
+  idols: INameAndColor[]
+  key: string
+}
 
 const PenlightListView = Vue.extend({
+  components: {
+    PenlightItem
+  },
   data() {
     return {
       penlight: new MixPenla()
     }
   },
   computed: {
-    suggestedPenlightColor() {
+    suggestedPenlightColor2() {
       const checkedItem = IllumiTunerVuexModule.imasCharacters.filter(item => item.checked)
-      return this.$data.penlight
-        .searchColor(checkedItem, false)
-        .sort((a: INameAndColorWithPenlightColor, b: INameAndColorWithPenlightColor) =>
-          a.penlightColor.colorHEX.localeCompare(b.penlightColor.colorHEX)
-        )
+      const searchResult = (this.$data.penlight as AbstractPenlight).searchColor(checkedItem, false)
+      const distinctColors = [...new Set(searchResult.map(item => item.penlightColor))]
+      return distinctColors.map(penlightColor => {
+        const penlightColorWithIdolList: PenlightColorWithIdolList = {
+          color: penlightColor,
+          idols: searchResult.filter(idol => idol.penlightColor === penlightColor).map(idol => idol.nameAndColor),
+          key: md5(penlightColor.colorName + penlightColor.colorHEX)
+        }
+        return penlightColorWithIdolList
+      })
     }
   }
 })
@@ -48,18 +65,7 @@ p {
 .penlightColorContainer {
   display: flex;
   flex-wrap: wrap;
-
-  .penlightColor {
-    width: 200px;
-    height: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    word-break: break-all;
-    cursor: pointer;
-    border-radius: 5px;
-    user-select: none;
+  .item{
     margin: 5px;
   }
 }
