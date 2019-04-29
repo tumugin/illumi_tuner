@@ -2,7 +2,10 @@
   <div :style="{ backgroundColor: penlightColor.colorHEX }" class="container">
     <span class="title">{{ penlightColor.colorName }}</span>
     <div class="idolListContainer">
-      <span v-for="idol in idols" :key="idol.key" class="idol">{{ idol.name }}</span>
+      <span v-for="idol in idols" :key="idol.key" class="idol">
+        <div class="colorIndicator" :style="{ backgroundColor: idol.colorHEX }"></div>
+        {{ idol.name }}
+      </span>
     </div>
   </div>
 </template>
@@ -27,7 +30,8 @@ export default PenlightItem
 <style scoped lang="scss">
 .container {
   border-radius: 5px;
-  padding: 10px;
+  padding: 15px;
+  width: 300px;
   .title {
     background-color: white;
     border-radius: 5px;
@@ -36,13 +40,19 @@ export default PenlightItem
   }
   .idolListContainer {
     display: flex;
-    margin-top: 3px;
+    flex-flow: wrap;
+    margin-top: 10px;
     .idol {
-      padding: 2px;
+      padding: 5px;
       background-color: white;
-      border-radius: 15px;
-      margin-right: 3px;
+      border-radius: 10px;
+      margin: 3px;
+      font-size: calc(70% + 0.1vw);
     }
   }
+}
+.colorIndicator {
+  height: 5px;
+  border-radius: 30px;
 }
 </style>

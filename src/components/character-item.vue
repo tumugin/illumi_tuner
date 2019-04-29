@@ -5,9 +5,8 @@
     @click="onParentBoxClicked"
   >
     <div class="textContainer">
-      <span class="titleView whiteBox">{{ characterTitle }}</span>
-      <br />
-      <span :class="{ whiteBox: true, characterNameView: true, smallNameView: isLongName }">{{ characterName }}</span>
+      <div class="titleView whiteBox">{{ characterTitle }}</div>
+      <div :class="{ whiteBox: true, characterNameView: true, smallNameView: isLongName }">{{ characterName }}</div>
     </div>
   </div>
 </template>
@@ -68,9 +67,13 @@ export default CharacterItem
     background-color: white;
     padding: 3px;
     border-radius: 5px;
+    display: table;
   }
   .titleView {
     font-size: calc(50% + 0.1vw);
+    margin-bottom: 5px;
+    margin-right: auto;
+    margin-left: auto;
   }
   .characterNameView {
     font-size: calc(100% + 0.1vw);

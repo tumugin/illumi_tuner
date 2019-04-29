@@ -65,7 +65,7 @@ p {
 .penlightColorContainer {
   display: flex;
   flex-wrap: wrap;
-  .item{
+  .item {
     margin: 5px;
   }
 }
