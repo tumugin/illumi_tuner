@@ -13,4 +13,5 @@ WHERE {
   ?x imas:nameKana ?namekana.
   ?x imas:Color ?color.
   ?x imas:Title ?title.
+  FILTER (lang(?name) = 'ja')
 }
