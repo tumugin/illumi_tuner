@@ -1,7 +1,9 @@
 <template>
   <div>
     <b-navbar type="dark" variant="dark">
-      <b-navbar-brand href="#">IllumiTuner</b-navbar-brand>
+      <b-navbar-brand href="#">
+        IllumiTuner β
+      </b-navbar-brand>
     </b-navbar>
     <router-view class="mainview" />
   </div>
