@@ -6,6 +6,7 @@
         <b-form-checkbox v-for="(officeName, index) in idolOfficeList" :key="index" :value="officeName">
           {{ officeName }}
         </b-form-checkbox>
+        <b-form-checkbox disabled>SideM(近日実装予定)</b-form-checkbox>
       </b-form-checkbox-group>
     </div>
     <div class="characterListView">

@@ -52,6 +52,8 @@ export default class ImasparqlApi {
         return 'ミリ'
       case 'CinderellaGirls':
         return 'デレ'
+      case '315ProIdols':
+        return 'SideM'
       default:
         return title
     }
