@@ -67,6 +67,7 @@ p {
   flex-wrap: wrap;
   .item {
     margin: 5px;
+    flex: 1;
   }
 }
 </style>

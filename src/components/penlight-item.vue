@@ -31,7 +31,7 @@ export default PenlightItem
 .container {
   border-radius: 5px;
   padding: 15px;
-  width: 300px;
+  min-width: 300px;
   .title {
     background-color: white;
     border-radius: 5px;

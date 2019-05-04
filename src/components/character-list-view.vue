@@ -1,7 +1,12 @@
 <template>
   <div>
     <div>
-      <input v-model="filterText" />
+      <b-form-input placeholder="キャラ名" v-model="filterText" />
+      <b-form-checkbox-group v-model="filterOffice">
+        <b-form-checkbox v-for="(officeName, index) in idolOfficeList" :key="index" :value="officeName">
+          {{ officeName }}
+        </b-form-checkbox>
+      </b-form-checkbox-group>
     </div>
     <div class="characterListView">
       <character-item
@@ -28,7 +33,8 @@ import INameAndColor from '../models/i-name-and-color'
 const CharacterListView = Vue.extend({
   data() {
     return {
-      filterText: ''
+      filterText: '',
+      filterOffice: Array<String>(0)
     }
   },
   components: {
@@ -39,10 +45,19 @@ const CharacterListView = Vue.extend({
       return IllumiTunerVuexModule.imasCharacters
         .sort((a, b) => a.title.localeCompare(b.title))
         .filter(item => item.name.includes(this.$data.filterText) || item.nameKana.includes(this.$data.filterText))
+        .filter(item => (this.$data.filterOffice as Array<String>).includes(item.title))
+    },
+    idolOfficeList() {
+      return [...new Set(IllumiTunerVuexModule.imasCharacters.map(item => item.title))]
     }
   },
-  async mounted() {
-    await IllumiTunerVuexModule.fetchImasCharacters()
+  watch: {
+    idolOfficeList: function(value: Array<string>, oldValue: Array<string>) {
+      // infinity update loop対策
+      if (JSON.stringify(value) !== JSON.stringify(oldValue)) {
+        this.$data.filterOffice = value
+      }
+    }
   },
   methods: {
     characterItemUpdateCheckedState(item: INameAndColor, state: boolean) {
@@ -62,6 +77,7 @@ export default CharacterListView
 
   .characterItem {
     margin: 5px;
+    flex: 1;
   }
 }
 </style>

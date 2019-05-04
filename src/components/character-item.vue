@@ -51,8 +51,9 @@ export default CharacterItem
 
 <style scoped lang="scss">
 .characterBox {
-  width: 100px;
-  height: 70px;
+  min-width: 120px;
+  max-width: 180px;
+  min-height: 70px;
   display: flex;
   align-items: center;
   justify-content: center;
