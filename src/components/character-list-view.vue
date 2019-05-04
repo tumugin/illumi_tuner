@@ -9,6 +9,12 @@
       </b-form-checkbox-group>
     </div>
     <div class="characterListView">
+      <b-button class="characterItem button" variant="outline-danger" @click="unselectAllButtonClicked()">
+        すべて選択解除
+      </b-button>
+      <b-button class="characterItem button" variant="outline-success" @click="selectAllButtonClicked()">
+        すべて選択
+      </b-button>
       <character-item
         v-for="item in characters"
         class="characterItem"
@@ -64,6 +70,12 @@ const CharacterListView = Vue.extend({
       const updatedItem = Object.assign({}, item)
       updatedItem.checked = state
       IllumiTunerVuexModule.updateImasCharacter(updatedItem, item.key)
+    },
+    selectAllButtonClicked() {
+      this.characters.forEach(item => this.characterItemUpdateCheckedState(item, true))
+    },
+    unselectAllButtonClicked() {
+      this.characters.forEach(item => this.characterItemUpdateCheckedState(item, false))
     }
   }
 })
@@ -78,6 +90,11 @@ export default CharacterListView
   .characterItem {
     margin: 5px;
     flex: 1;
+  }
+  .button {
+    min-width: 120px;
+    max-width: 180px;
+    min-height: 70px;
   }
 }
 </style>
