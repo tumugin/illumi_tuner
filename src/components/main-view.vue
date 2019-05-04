@@ -1,7 +1,10 @@
 <template>
   <b-container>
     <character-list-view />
-    <penlight-list-view :style="{ marginTop: '20px' }" />
+    <penlight-list-view :style="{ marginTop: '20px' }" v-observe-visibility="onPenlightVisible" id="penlightListView" />
+    <div class="jumpToDown" :class="{ visible: !isPenlightVisible }" @click="moveToPenlightView">
+      クリックして色プレビューを表示する
+    </div>
   </b-container>
 </template>
 
@@ -12,15 +15,46 @@ import PenlightListView from './penlight-list-view.vue'
 import IllumiTunerVuexModule from '../store/illumi-tuner-vuex-module'
 
 const MainView = Vue.extend({
+  data() {
+    return {
+      isPenlightVisible: false
+    }
+  },
   components: {
     CharacterListView,
     PenlightListView
   },
   async mounted() {
     await IllumiTunerVuexModule.fetchImasCharacters()
+  },
+  methods: {
+    onPenlightVisible(isVisible: boolean) {
+      this.$data.isPenlightVisible = isVisible
+    },
+    moveToPenlightView() {
+      this.$scrollTo('#penlightListView', 1000)
+    }
   }
 })
 export default MainView
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.jumpToDown {
+  display: none;
+  position: sticky;
+  bottom: 0;
+  background-color: dimgray;
+  color: white;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  &.visible {
+    display: block;
+  }
+}
+</style>
