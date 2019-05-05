@@ -13,6 +13,7 @@ function resolve(dir) {
 
 //delete dist files
 rm.sync(resolve('dist'))
+rm.sync(resolve('prod'))
 
 module.exports = {
   output: {

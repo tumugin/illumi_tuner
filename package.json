@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "webpack-dev-server --progress --config build/webpack.dev.conf.js",
     "builddev": "webpack --progress --config build/webpack.noserverdev.conf.js",
-    "prod": "webpack --progress --config build/webpack.prod.conf",
+    "prod": "NODE_ENV=production webpack --progress --config build/webpack.prod.conf",
     "lint": "eslint --ext .js,.vue src",
     "lint:fix": "eslint --ext .js,.vue src --fix"
   },
@@ -66,6 +66,7 @@
     "url-loader": "^1.1.2",
     "uuid": "^3.3.2",
     "vue": "^2.6.10",
+    "vue-analytics": "^5.16.4",
     "vue-class-component": "^7.0.2",
     "vue-eslint-parser": "^6.0.4",
     "vue-loader": "^15.7.0",

@@ -5,6 +5,9 @@ const baseConfig = require('./webpack.base.conf.js')
 const MiniCssExtractPlugin  = require('mini-css-extract-plugin')
 
 module.exports = merge(baseConfig, {
+  output: {
+    path: resolve('prod')
+  },
   mode: 'production',
   optimization: {
     splitChunks: {

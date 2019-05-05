@@ -8,10 +8,24 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import VueObserveVisibility from 'vue-observe-visibility'
 import * as VueScrollTo from 'vue-scrollto'
+// @ts-ignore
+import VueAnalytics from 'vue-analytics'
 
 Vue.use(BootstrapVue)
 Vue.use(VueObserveVisibility)
 Vue.use(VueScrollTo)
+
+const isProduction = process.env.NODE_ENV === 'production'
+if (!isProduction) {
+  console.log('App is running in debug mode!!')
+}
+Vue.use(VueAnalytics, {
+  id: 'UA-139621116-1',
+  debug: {
+    sendHitTask: isProduction
+  },
+  router: approuter
+})
 
 // eslint-disable-next-line no-new
 new Vue({
