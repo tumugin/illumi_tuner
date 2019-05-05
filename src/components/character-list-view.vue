@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <b-form-input placeholder="キャラ名" v-model="filterText" />
+      <b-form-input placeholder="キャラ名を入力して検索" v-model="filterText" />
       <b-form-checkbox-group v-model="filterOffice">
         <b-form-checkbox v-for="(officeName, index) in idolOfficeList" :key="index" :value="officeName">
           {{ officeName }}
