@@ -7,8 +7,9 @@ import INameAndColor from '../../models/i-name-and-color'
 // eslint-disable-next-line no-unused-vars
 import INameAndColorWithPenlightColor from '../../models/i-name-and-color-with-penlight-color'
 import PenlightColor from '../../models/penlight-color'
+import IdolColorWorkaround from './idol-color-workaround'
 
-interface IColorDiffWithIPenlightColor {
+export interface IColorDiffWithIPenlightColor {
   penlightColor: AbstractPenlightColor
   diff: number
 }
@@ -47,6 +48,8 @@ export default abstract class AbstractPenlight {
       return searchResultMapValue
     })
 
+    IdolColorWorkaround.applyWorkaround(searchResult, this.availableColors)
+
     // if not using basic color priority mode
     if (!useBasicColor) {
       return searchResult
@@ -61,8 +64,7 @@ export default abstract class AbstractPenlight {
       .filter(item => item.penlightColor.isBasicColor)
       .map(item => item.penlightColor)
     // 標準色のみで表現可能なアイドルを取得する
-    const basicColorIdols = searchResult
-      .filter(item => !item.penlightColor.isBasicColor)
+    const basicColorIdols = searchResult.filter(item => !item.penlightColor.isBasicColor)
     // そうでないアイドルの色を標準色で表現させる
     const notBasicColorIdols = searchResult
       .filter(item => !item.penlightColor.isBasicColor)
