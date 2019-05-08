@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-unused-vars
 import IRgb from '../../models/i-rgb'
 import ColorUtils from './color-utils'
 

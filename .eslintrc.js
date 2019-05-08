@@ -21,10 +21,7 @@ module.exports = {
     'prettier'
   ],
   // required to lint *.vue files
-  plugins: [
-    'vue',
-    '@typescript-eslint'
-  ],
+  plugins: ['vue', '@typescript-eslint'],
   // add your custom rules here
   rules: {
     'vue/max-attributes-per-line': 'off',
@@ -33,6 +30,8 @@ module.exports = {
     'generator-star-spacing': 'off',
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'no-return-await': 'off'
+    'no-return-await': 'off',
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': ['error', { vars: 'all', args: 'after-used', ignoreRestSiblings: false }]
   }
 }

@@ -1,6 +1,5 @@
 import { Action, getModule, Module, Mutation, VuexModule } from 'vuex-module-decorators'
 import mainStore from './main-store'
-// eslint-disable-next-line no-unused-vars
 import INameAndColor from '../models/i-name-and-color'
 import ImasparqlApi from '../webapi/imasparql-api'
 

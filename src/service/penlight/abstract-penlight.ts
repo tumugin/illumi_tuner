@@ -1,10 +1,7 @@
 import ColorUtils from '../color/color-utils'
-// eslint-disable-next-line no-unused-vars
 import AbstractPenlightColor from '../../models/abstract-penlight-color'
 import Ciede2000 from '../color/ciede2000'
-// eslint-disable-next-line no-unused-vars
 import INameAndColor from '../../models/i-name-and-color'
-// eslint-disable-next-line no-unused-vars
 import INameAndColorWithPenlightColor from '../../models/i-name-and-color-with-penlight-color'
 import PenlightColor from '../../models/penlight-color'
 import IdolColorWorkaround from './idol-color-workaround'

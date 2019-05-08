@@ -1,6 +1,4 @@
-// eslint-disable-next-line no-unused-vars
 import INameAndColorWithPenlightColor from '../../models/i-name-and-color-with-penlight-color'
-// eslint-disable-next-line no-unused-vars
 import AbstractPenlightColor from '../../models/abstract-penlight-color'
 
 export default class IdolColorWorkaround {

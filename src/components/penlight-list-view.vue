@@ -15,11 +15,8 @@ import Vue from 'vue'
 import IllumiTunerVuexModule from '../store/illumi-tuner-vuex-module'
 import MixPenla from '../service/penlight/mix-penla'
 import PenlightItem from './penlight-item.vue'
-// eslint-disable-next-line no-unused-vars,no-unused-vars
 import AbstractPenlight from '../service/penlight/abstract-penlight'
-// eslint-disable-next-line no-unused-vars
 import AbstractPenlightColor from '../models/abstract-penlight-color'
-// eslint-disable-next-line no-unused-vars
 import INameAndColor from '../models/i-name-and-color'
 import * as md5 from 'md5'
 

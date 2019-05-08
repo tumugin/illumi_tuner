@@ -1,6 +1,4 @@
-// eslint-disable-next-line no-unused-vars
 import IRgb from 'src/models/i-rgb'
-// eslint-disable-next-line no-unused-vars
 import ILab from '../../models/i-lab'
 
 export default class ColorUtils {

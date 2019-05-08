@@ -34,7 +34,6 @@
 import Vue from 'vue'
 import IllumiTunerVuexModule from '../store/illumi-tuner-vuex-module'
 import CharacterItem from './character-item.vue'
-// eslint-disable-next-line no-unused-vars
 import INameAndColor from '../models/i-name-and-color'
 
 const CharacterListView = Vue.extend({

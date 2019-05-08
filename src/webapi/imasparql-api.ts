@@ -1,6 +1,5 @@
 // eslint-disable-next-line import/no-webpack-loader-syntax
 import findNameAndColorQuery from 'raw-loader!./imasparql-query/find-name-and-color.sparql'
-// eslint-disable-next-line no-unused-vars
 import INameAndColor from '../models/i-name-and-color'
 import * as uuidv4 from 'uuid/v4'
 
