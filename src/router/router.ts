@@ -4,11 +4,12 @@ import MainView from '../components/main-view.vue'
 
 Vue.use(Router)
 export default new Router({
-  routes:[
+  routes: [
     {
-      path:'/',
+      path: '/',
       name: 'Main',
       component: MainView
     }
-  ]
+  ],
+  mode: 'history'
 })
