@@ -2,7 +2,7 @@ import INameAndColorWithPenlightColor from '../../models/i-name-and-color-with-p
 import AbstractPenlightColor from '../../models/abstract-penlight-color'
 
 export default class IdolColorWorkaround {
-  static applyWorkaround(list: INameAndColorWithPenlightColor[], availableColors: AbstractPenlightColor[]) {
+  static applyMixPenlaWorkaround(list: INameAndColorWithPenlightColor[], availableColors: AbstractPenlightColor[]) {
     // 近似色選択の通りだと一般的に使われるペンライトの色から外れてしまうアイドル用のworkaround
     list.forEach(idol => {
       switch (idol.nameAndColor.name) {
@@ -11,6 +11,9 @@ export default class IdolColorWorkaround {
           break
         case '高山紗代子':
           idol.penlightColor = availableColors.find(item => item.colorName === '#22パープル')!
+          break
+        case '所恵美':
+          idol.penlightColor = availableColors.find(item => item.colorName === '#4ブルー')!
           break
         default:
           break

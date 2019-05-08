@@ -1,5 +1,8 @@
 import AbstractPenlight from './abstract-penlight'
 import PenlightColor from '../../models/penlight-color'
+import INameAndColor from '../../models/i-name-and-color'
+import INameAndColorWithPenlightColor from '../../models/i-name-and-color-with-penlight-color'
+import IdolColorWorkaround from './idol-color-workaround'
 
 export default class MixPenla extends AbstractPenlight {
   availableColors = [
@@ -31,4 +34,10 @@ export default class MixPenla extends AbstractPenlight {
   isColorAdjustable = false
   productManufacture = 'ターンオン'
   productName = 'MIX PENLa PRO'
+
+  searchColor(arrayOfIdol: INameAndColor[], useBasicColor: boolean): INameAndColorWithPenlightColor[] {
+    const result = super.searchColor(arrayOfIdol, useBasicColor)
+    IdolColorWorkaround.applyMixPenlaWorkaround(result, this.availableColors)
+    return result
+  }
 }

@@ -4,7 +4,6 @@ import Ciede2000 from '../color/ciede2000'
 import INameAndColor from '../../models/i-name-and-color'
 import INameAndColorWithPenlightColor from '../../models/i-name-and-color-with-penlight-color'
 import PenlightColor from '../../models/penlight-color'
-import IdolColorWorkaround from './idol-color-workaround'
 
 export interface IColorDiffWithIPenlightColor {
   penlightColor: AbstractPenlightColor
@@ -44,8 +43,6 @@ export default abstract class AbstractPenlight {
       }
       return searchResultMapValue
     })
-
-    IdolColorWorkaround.applyWorkaround(searchResult, this.availableColors)
 
     // if not using basic color priority mode
     if (!useBasicColor) {
