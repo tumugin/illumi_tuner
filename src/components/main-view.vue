@@ -1,6 +1,9 @@
 <template>
   <b-container>
     <character-list-view />
+    <b-alert show dismissible class="alertStyle" variant="danger">
+      以下のペンライト色の表示は自動的に色差を計算した結果を元に表示しています。実際の色と異なる場合があるかもしれないのでご注意ください。
+    </b-alert>
     <penlight-list-view :style="{ marginTop: '20px' }" v-observe-visibility="onPenlightVisible" id="penlightListView" />
     <div class="jumpToDown" :class="{ visible: !isPenlightVisible && isAnyIdolSelected }" @click="moveToPenlightView">
       {{ isTouch ? 'タップ' : 'クリック' }}して色プレビューを表示する
@@ -48,6 +51,9 @@ export default MainView
 </script>
 
 <style lang="scss" scoped>
+.alertStyle {
+  margin-top: 15px;
+}
 .jumpToDown {
   display: none;
   position: sticky;
