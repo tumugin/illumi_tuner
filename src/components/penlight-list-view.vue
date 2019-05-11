@@ -24,6 +24,7 @@ interface PenlightColorWithIdolList {
   color: AbstractPenlightColor
   idols: INameAndColor[]
   key: string
+  index: number
 }
 
 const PenlightListView = Vue.extend({
@@ -40,14 +41,16 @@ const PenlightListView = Vue.extend({
       const checkedItem = IllumiTunerVuexModule.imasCharacters.filter(item => item.checked)
       const searchResult = (this.$data.penlight as AbstractPenlight).searchColor(checkedItem, false)
       const distinctColors = [...new Set(searchResult.map(item => item.penlightColor))]
-      return distinctColors.map(penlightColor => {
-        const penlightColorWithIdolList: PenlightColorWithIdolList = {
-          color: penlightColor,
-          idols: searchResult.filter(idol => idol.penlightColor === penlightColor).map(idol => idol.nameAndColor),
-          key: md5(penlightColor.colorName + penlightColor.colorHEX)
-        }
-        return penlightColorWithIdolList
-      })
+      return distinctColors
+        .map(penlightColor => {
+          return {
+            color: penlightColor,
+            idols: searchResult.filter(idol => idol.penlightColor === penlightColor).map(idol => idol.nameAndColor),
+            key: md5(penlightColor.colorName + penlightColor.colorHEX),
+            index: this.$data.penlight.availableColors.indexOf(penlightColor)
+          } as PenlightColorWithIdolList
+        })
+        .sort((a, b) => a.index - b.index)
     }
   }
 })

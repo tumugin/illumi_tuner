@@ -49,6 +49,7 @@ const CharacterListView = Vue.extend({
   computed: {
     characters() {
       return IllumiTunerVuexModule.imasCharacters
+        .sort((a, b) => a.nameKana.localeCompare(b.nameKana))
         .sort((a, b) => a.title.localeCompare(b.title))
         .filter(item => item.name.includes(this.$data.filterText) || item.nameKana.includes(this.$data.filterText))
         .filter(item => (this.$data.filterOffice as Array<String>).includes(item.title))
