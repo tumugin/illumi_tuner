@@ -11,20 +11,14 @@ module.exports = merge(baseConfig, {
   mode: 'development',
   devtool: 'eval-source-map',
 
-  serve: {
-    LogLevel: 'warn',
+  devServer: {
     hot: true,
-    content: 'dist',
-    //compress: true,
+    contentBase: 'dist',
+    compress: true,
     host: HOST,
     port: PORT,
     open: true,
-    //overlay: { warnings: false, errors: true },
-    //publicPath: '/',
-    //quiet: true,
-    //watchOptions: {
-    //  poll: true
-    //}
+    historyApiFallback: true
   },
 
   module: {

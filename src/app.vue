@@ -1,9 +1,14 @@
 <template>
   <div>
     <b-navbar type="dark" variant="dark">
-      <b-navbar-brand href="#">
+      <b-navbar-brand to="/">
         IllumiTuner β
       </b-navbar-brand>
+      <b-collapse is-nav id="main-navigation">
+        <b-navbar-nav>
+          <b-nav-item to="/about">これなあに</b-nav-item>
+        </b-navbar-nav>
+      </b-collapse>
     </b-navbar>
     <router-view class="mainview" />
   </div>

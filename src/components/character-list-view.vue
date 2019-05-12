@@ -39,8 +39,7 @@ import INameAndColor from '../models/i-name-and-color'
 const CharacterListView = Vue.extend({
   data() {
     return {
-      filterText: '',
-      filterOffice: Array<String>(0)
+      filterText: ''
     }
   },
   components: {
@@ -52,17 +51,25 @@ const CharacterListView = Vue.extend({
         .sort((a, b) => a.nameKana.localeCompare(b.nameKana))
         .sort((a, b) => a.title.localeCompare(b.title))
         .filter(item => item.name.includes(this.$data.filterText) || item.nameKana.includes(this.$data.filterText))
-        .filter(item => (this.$data.filterOffice as Array<String>).includes(item.title))
+        .filter(item => (IllumiTunerVuexModule.filterOffice).includes(item.title))
     },
     idolOfficeList() {
       return [...new Set(IllumiTunerVuexModule.imasCharacters.map(item => item.title))]
+    },
+    filterOffice: {
+      get() {
+        return IllumiTunerVuexModule.filterOffice
+      },
+      set(value: string[]) {
+        IllumiTunerVuexModule.setFilterOffice(value)
+      }
     }
   },
   watch: {
     idolOfficeList: function(value: Array<string>, oldValue: Array<string>) {
       // infinity update loop対策
       if (JSON.stringify(value) !== JSON.stringify(oldValue)) {
-        this.$data.filterOffice = value
+        IllumiTunerVuexModule.setFilterOffice(value)
       }
     }
   },

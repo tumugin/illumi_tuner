@@ -1,9 +1,14 @@
 <template>
   <b-container>
     <character-list-view />
-    <b-alert show dismissible class="alertStyle" variant="danger">
-      以下のペンライト色の表示は自動的に色差を計算した結果を元に表示しています。実際の色と異なる場合があるかもしれないのでご注意ください。
-    </b-alert>
+    <div class="alertStyle" v-if="penlightColorAlert || !isAnyIdolSelected">
+      <b-alert dismissible class="alertStyle" variant="danger" v-model="penlightColorAlert">
+        以下のペンライト色の表示は自動的に色差を計算した結果を元に表示しています。実際の色と異なる場合があるかもしれないのでご注意ください。
+      </b-alert>
+      <b-alert :show="!isAnyIdolSelected">
+        まだどのアイドルも選択されてません！誰か一人でも選択してみましょう
+      </b-alert>
+    </div>
     <penlight-list-view :style="{ marginTop: '20px' }" v-observe-visibility="onPenlightVisible" id="penlightListView" />
     <div class="jumpToDown" :class="{ visible: !isPenlightVisible && isAnyIdolSelected }" @click="moveToPenlightView">
       {{ isTouch ? 'タップ' : 'クリック' }}して色プレビューを表示する
@@ -16,11 +21,13 @@ import Vue from 'vue'
 import CharacterListView from './character-list-view.vue'
 import PenlightListView from './penlight-list-view.vue'
 import IllumiTunerVuexModule from '../store/illumi-tuner-vuex-module'
+import LocalStorageUtils from '../utils/local-storage-utils'
 
 const MainView = Vue.extend({
   data() {
     return {
-      isPenlightVisible: false
+      isPenlightVisible: false,
+      penlightColorAlert: LocalStorageUtils.getLocalStorageData('AlertMesgColorMightBeWrong', true, 'boolean')
     }
   },
   components: {
@@ -28,7 +35,9 @@ const MainView = Vue.extend({
     PenlightListView
   },
   async mounted() {
-    await IllumiTunerVuexModule.fetchImasCharacters()
+    if (IllumiTunerVuexModule.imasCharacters.length === 0) {
+      await IllumiTunerVuexModule.fetchImasCharacters()
+    }
   },
   computed: {
     isAnyIdolSelected() {
@@ -44,6 +53,11 @@ const MainView = Vue.extend({
     },
     moveToPenlightView() {
       this.$scrollTo('#penlightListView', 1000)
+    }
+  },
+  watch: {
+    penlightColorAlert(value: boolean) {
+      LocalStorageUtils.setLocalStorageData('AlertMesgColorMightBeWrong', value)
     }
   }
 })

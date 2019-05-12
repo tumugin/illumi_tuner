@@ -17,7 +17,9 @@ rm.sync(resolve('prod'))
 
 module.exports = {
   output: {
-    path: resolve('dist')
+    path: resolve('dist'),
+    chunkFilename: '[name].[hash].js',
+    publicPath: '/'
   },
   entry: {
     app: './src/main.ts'

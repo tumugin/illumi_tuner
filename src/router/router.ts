@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import MainView from '../components/main-view.vue'
 
 Vue.use(Router)
 export default new Router({
@@ -8,7 +7,12 @@ export default new Router({
     {
       path: '/',
       name: 'Main',
-      component: MainView
+      component: async () => await require('../components/main-view.vue')
+    },
+    {
+      path: '/about',
+      name: 'About',
+      component: async () => await require('../components/about-page.vue')
     }
   ],
   mode: 'history'
