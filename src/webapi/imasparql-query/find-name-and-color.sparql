@@ -9,9 +9,8 @@ PREFIX rdfs:  <http://www.w3.org/2000/01/rdf-schema#>
 
 SELECT ?name ?namekana ?color ?title
 WHERE {
-  ?x schema:name ?name.
-  ?x imas:nameKana ?namekana.
+  ?x rdfs:label ?name.
   ?x imas:Color ?color.
   ?x imas:Title ?title.
-  FILTER (lang(?name) = 'ja')
+  { ?x imas:nameKana ?namekana } UNION { ?x imas:alternateNameKana ?namekana }
 }
