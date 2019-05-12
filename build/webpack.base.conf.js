@@ -17,8 +17,9 @@ rm.sync(resolve('prod'))
 
 module.exports = {
   output: {
+    filename: '[name].[hash].bundle.js',
     path: resolve('dist'),
-    chunkFilename: '[name].[hash].js',
+    chunkFilename: '[name].[hash].bundle.js',
     publicPath: '/'
   },
   entry: {
