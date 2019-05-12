@@ -13,6 +13,11 @@ export default new Router({
       path: '/about',
       name: 'About',
       component: async () => await require('../components/about-page.vue')
+    },
+    {
+      path: '/terms',
+      name: 'Terms',
+      component: async () => await require('../components/terms-page.vue')
     }
   ],
   mode: 'history'
