@@ -41,12 +41,20 @@ module.exports = {
         include: [resolve('src'), resolve('test')],
         use: [
           {
+            loader: 'thread-loader',
+            options: {
+              workers: require('os').cpus().length - 1,
+              poolTimeout: Infinity
+            }
+          },
+          {
             loader: 'babel-loader'
           },
           {
             loader: 'ts-loader',
             options: {
-              appendTsSuffixTo: [/\.vue$/]
+              appendTsSuffixTo: [/\.vue$/],
+              happyPackMode: true
             }
           }
         ]
