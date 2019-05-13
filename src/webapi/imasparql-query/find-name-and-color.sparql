@@ -12,5 +12,6 @@ WHERE {
   ?x rdfs:label ?name.
   ?x imas:Color ?color.
   ?x imas:Title ?title.
-  { ?x imas:nameKana ?namekana } UNION { ?x imas:alternateNameKana ?namekana }
+  OPTIONAL { ?x imas:alternateNameKana ?namekana }.
+  OPTIONAL { ?x imas:nameKana ?namekana }.
 }
