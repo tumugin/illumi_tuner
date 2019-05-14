@@ -2,10 +2,12 @@ import { Action, getModule, Module, Mutation, VuexModule } from 'vuex-module-dec
 import mainStore from './main-store'
 import INameAndColor from '../models/i-name-and-color'
 import ImasparqlApi from '../webapi/imasparql-api'
+import ILive from '../models/i-live'
 
 @Module({ dynamic: true, name: 'IllumiTunerStore', store: mainStore })
 export class IllumiTunerVuexModuleClass extends VuexModule {
   imasCharacters: INameAndColor[] = []
+  imasLiveList: ILive[] = []
   filterOffice = Array<string>(0)
 
   @Mutation
@@ -22,6 +24,11 @@ export class IllumiTunerVuexModuleClass extends VuexModule {
   @Mutation
   public setFilterOffice(param: string[]) {
     this.filterOffice = param
+  }
+
+  @Mutation
+  public setImasLiveList(param: ILive[]) {
+    this.imasLiveList = param
   }
 
   @Action({})

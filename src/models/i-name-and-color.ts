@@ -3,6 +3,7 @@ export default interface INameAndColor {
   name: string
   nameKana: string
   title: string
+  actor: string
   key: string
   checked: boolean
 }

@@ -1,9 +1,12 @@
 // eslint-disable-next-line import/no-webpack-loader-syntax
 import findNameAndColorQuery from 'raw-loader!./imasparql-query/find-name-and-color.sparql'
+// eslint-disable-next-line import/no-webpack-loader-syntax
+import findNextLiveQuery from 'raw-loader!./imasparql-query/find-next-live.sparql'
 import INameAndColor from '../models/i-name-and-color'
 import * as uuidv4 from 'uuid/v4'
+import ILive from '../models/i-live'
 
-interface IImasparqlApiResponce {
+interface IImasparqlApiResponse {
   results: {
     bindings: [
       {
@@ -19,6 +22,27 @@ interface IImasparqlApiResponce {
         title: {
           value: string
         }
+        actor: {
+          value: string
+        }
+      }
+    ]
+  }
+}
+
+interface IImasparqlLiveListResponse {
+  results: {
+    bindings: [
+      {
+        liveName: {
+          value: string
+        }
+        liveDate: {
+          value: string
+        }
+        liveActor: {
+          value: string
+        }
       }
     ]
   }
@@ -29,17 +53,34 @@ export default class ImasparqlApi {
 
   static async fetchNameAndColor() {
     const uri = `${this.ApiEndpoint}?query=${encodeURIComponent(findNameAndColorQuery)}`
-    const response = (await (await fetch(uri)).json()) as IImasparqlApiResponce
+    const response = (await (await fetch(uri)).json()) as IImasparqlApiResponse
     return response.results.bindings.map(item => {
       const mappedItem: INameAndColor = {
         colorHEX: `#${item.color.value}`,
         name: item.name.value,
         nameKana: item.namekana.value,
         title: this.getShortTitle(item.title.value),
+        actor: item.actor.value,
         key: uuidv4(),
         checked: false
       }
       return mappedItem
+    })
+  }
+
+  static async fetchNextLive() {
+    const currentDateTime = new Date()
+    const date =
+      currentDateTime.getFullYear() + '-' + (currentDateTime.getMonth() + 1) + '-' + currentDateTime.getDate()
+    const queryText = findNextLiveQuery.replace('@@DATE@@', date)
+    const uri = `${this.ApiEndpoint}?query=${encodeURIComponent(queryText)}`
+    const response = (await (await fetch(uri)).json()) as IImasparqlLiveListResponse
+    return response.results.bindings.map(item => {
+      return {
+        liveName: item.liveName.value,
+        liveDate: new Date(item.liveDate.value),
+        liveActor: item.liveActor.value.split(' ')
+      } as ILive
     })
   }
 
