@@ -36,6 +36,12 @@ export class IllumiTunerVuexModuleClass extends VuexModule {
     const result = await ImasparqlApi.fetchNameAndColor()
     this.setImasCharacters(result)
   }
+
+  @Action({})
+  public async fetchImasLiveList() {
+    const result = await ImasparqlApi.fetchNextLive()
+    this.setImasLiveList(result)
+  }
 }
 
 const IllumiTunerVuexModule = getModule(IllumiTunerVuexModuleClass)
