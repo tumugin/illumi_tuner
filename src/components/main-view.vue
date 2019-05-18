@@ -1,6 +1,6 @@
 <template>
   <b-container>
-    <live-select-view :live-list="liveList" class="buttonMargin" />
+    <live-select-view :live-list="liveList" class="buttonMargin" @live-selected="moveToPenlightView" />
     <character-list-view />
     <div class="alertStyle" v-if="penlightColorAlert || !isAnyIdolSelected">
       <b-alert dismissible class="alertStyle" variant="danger" v-model="penlightColorAlert">
