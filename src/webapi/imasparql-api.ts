@@ -5,6 +5,7 @@ import findNextLiveQuery from 'raw-loader!./imasparql-query/find-next-live.sparq
 import INameAndColor from '../models/i-name-and-color'
 import * as uuidv4 from 'uuid/v4'
 import ILive from '../models/i-live'
+import { formatDate } from '../utils/date-utils'
 
 interface IImasparqlApiResponse {
   results: {
@@ -43,6 +44,9 @@ interface IImasparqlLiveListResponse {
         liveActor: {
           value: string
         }
+        liveLocation: {
+          value: string
+        }
       }
     ]
   }
@@ -70,8 +74,7 @@ export default class ImasparqlApi {
 
   static async fetchNextLive() {
     const currentDateTime = new Date()
-    const date =
-      currentDateTime.getFullYear() + '-' + (currentDateTime.getMonth() + 1) + '-' + currentDateTime.getDate()
+    const date = formatDate(currentDateTime, 'YYYY-MM-DD')
     const queryText = findNextLiveQuery.replace('@@DATE@@', date)
     const uri = `${this.ApiEndpoint}?query=${encodeURIComponent(queryText)}`
     const response = (await (await fetch(uri)).json()) as IImasparqlLiveListResponse
@@ -79,7 +82,8 @@ export default class ImasparqlApi {
       return {
         liveName: item.liveName.value,
         liveDate: new Date(item.liveDate.value),
-        liveActor: item.liveActor.value.split(' ')
+        liveActor: item.liveActor.value.split(' '),
+        liveLocation: item.liveLocation.value
       } as ILive
     })
   }

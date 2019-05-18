@@ -1,5 +1,6 @@
 <template>
   <b-container>
+    <live-select-view :live-list="liveList" class="buttonMargin" />
     <character-list-view />
     <div class="alertStyle" v-if="penlightColorAlert || !isAnyIdolSelected">
       <b-alert dismissible class="alertStyle" variant="danger" v-model="penlightColorAlert">
@@ -22,6 +23,7 @@ import CharacterListView from './character-list-view.vue'
 import PenlightListView from './penlight-list-view.vue'
 import IllumiTunerVuexModule from '../store/illumi-tuner-vuex-module'
 import LocalStorageUtils from '../utils/local-storage-utils'
+import LiveSelectView from './live-select-view.vue'
 
 const MainView = Vue.extend({
   data() {
@@ -32,12 +34,14 @@ const MainView = Vue.extend({
   },
   components: {
     CharacterListView,
-    PenlightListView
+    PenlightListView,
+    LiveSelectView
   },
   async mounted() {
     if (IllumiTunerVuexModule.imasCharacters.length === 0) {
       await IllumiTunerVuexModule.fetchImasCharacters()
     }
+    await IllumiTunerVuexModule.fetchImasLiveList()
   },
   computed: {
     isAnyIdolSelected() {
@@ -45,6 +49,9 @@ const MainView = Vue.extend({
     },
     isTouch() {
       return 'ontouchstart' in window || navigator.maxTouchPoints
+    },
+    liveList() {
+      return IllumiTunerVuexModule.imasLiveList
     }
   },
   methods: {
@@ -65,6 +72,9 @@ export default MainView
 </script>
 
 <style lang="scss" scoped>
+.buttonMargin {
+  margin-bottom: 5px;
+}
 .alertStyle {
   margin-top: 15px;
 }
