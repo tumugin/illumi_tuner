@@ -77,7 +77,7 @@ const CharacterListView = Vue.extend({
     characterItemUpdateCheckedState(item: INameAndColor, state: boolean) {
       const updatedItem = Object.assign({}, item)
       updatedItem.checked = state
-      IllumiTunerVuexModule.updateImasCharacter(updatedItem, item.key)
+      IllumiTunerVuexModule.updateImasCharacter(updatedItem)
     },
     selectAllButtonClicked() {
       this.characters.forEach(item => this.characterItemUpdateCheckedState(item, true))

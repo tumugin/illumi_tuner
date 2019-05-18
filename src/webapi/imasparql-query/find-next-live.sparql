@@ -7,13 +7,12 @@ PREFIX math: <http://www.w3.org/2005/xpath-functions/math#>
 PREFIX xsd: <https://www.w3.org/TR/xmlschema11-2/#>
 PREFIX rdfs:  <http://www.w3.org/2000/01/rdf-schema#>
 
-SELECT ?name ?namekana ?color ?title ?actor
+SELECT (sample(?n)as ?liveName) (sample(?sD)as ?liveDate) (sample(?loc)as ?liveLocation) (group_concat(?a)as ?liveActor)
 WHERE {
-  ?x rdfs:label ?name.
-  ?x imas:Color ?color.
-  ?x imas:Title ?title.
-  ?x imas:cv ?actor.
-  OPTIONAL { ?x imas:alternateNameKana ?namekana }.
-  OPTIONAL { ?x imas:nameKana ?namekana }.
-  FILTER (isLiteral(?actor)).
-}
+  ?s rdf:type imas:Live;
+       schema:startDate ?sD;
+       schema:name ?n;
+       schema:location ?loc;
+       schema:actor ?a
+  filter(?sD>="@@DATE@@"^^<http://www.w3.org/2001/XMLSchema#date>)
+}group by ?s order by ?sD
