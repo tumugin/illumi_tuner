@@ -9,7 +9,8 @@
     "builddev": "webpack --progress --config build/webpack.noserverdev.conf.js",
     "prod": "NODE_ENV=production webpack --progress --config build/webpack.prod.conf",
     "lint": "eslint --ext .js,.vue src",
-    "lint:fix": "eslint --ext .js,.vue src --fix"
+    "lint:fix": "eslint --ext .js,.vue src --fix",
+    "storybook": "start-storybook -p 9001"
   },
   "dependencies": {
     "@babel/core": "^7.4.4",
@@ -17,13 +18,18 @@
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/polyfill": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
+    "@storybook/addon-knobs": "^5.0.11",
+    "@storybook/vue": "^5.0.11",
     "@types/md5": "^2.1.33",
+    "@types/storybook__addon-knobs": "^5.0.0",
+    "@types/storybook__vue": "^5.0.1",
     "@types/uuid": "^3.4.4",
     "@types/vue-scrollto": "^2.14.0",
     "@typescript-eslint/eslint-plugin": "^1.9.0",
     "autoprefixer": "^9.5.1",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.6",
+    "babel-preset-vue": "^2.0.2",
     "bootstrap": "^4.3.1",
     "bootstrap-vue": "^2.0.0-rc.19",
     "chalk": "^2.4.2",
