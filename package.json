@@ -11,7 +11,7 @@
     "lint": "eslint --ext .js,.vue src",
     "lint:fix": "eslint --ext .js,.vue src --fix",
     "storybook": "start-storybook -p 9001",
-    "test": "jest"
+    "test": "jest --verbose"
   },
   "dependencies": {
     "@babel/core": "^7.4.4",
