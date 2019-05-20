@@ -3,7 +3,14 @@ import initStoryshots from '@storybook/addon-storyshots'
 import { imageSnapshot } from '@storybook/addon-storyshots-puppeteer'
 import * as path from 'path'
 
+const getMatchOptions = () => {
+  return {
+    failureThreshold: 5,
+    failureThresholdType: 'percent'
+  }
+}
+
 initStoryshots({
   configPath: '.storybook/config-jest.ts',
-  test: imageSnapshot({ storybookUrl: 'file://' + path.resolve('./storyshot-public/') })
+  test: imageSnapshot({ storybookUrl: 'file://' + path.resolve('./storyshot-public/'), getMatchOptions })
 })
