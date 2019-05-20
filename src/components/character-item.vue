@@ -6,7 +6,7 @@
   >
     <div class="textContainer">
       <div class="titleView whiteBox">{{ characterTitle }}</div>
-      <div :class="{ whiteBox: true, characterNameView: true, smallNameView: isLongName }">{{ characterName }}</div>
+      <div class="whiteBox characterNameView" :class="{ smallNameView: isLongName }">{{ characterName }}</div>
     </div>
   </div>
 </template>
@@ -78,6 +78,8 @@ export default CharacterItem
   }
   .characterNameView {
     font-size: calc(100% + 0.1vw);
+    margin-right: auto;
+    margin-left: auto;
     &.smallNameView {
       font-size: calc(70% + 0.1vw);
     }

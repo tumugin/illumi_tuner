@@ -5,7 +5,7 @@ import * as path from 'path'
 
 const getMatchOptions = () => {
   return {
-    failureThreshold: 5,
+    failureThreshold: 0.03,
     failureThresholdType: 'percent'
   }
 }

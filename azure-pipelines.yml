@@ -9,6 +9,9 @@ steps:
       yarn install
     displayName: 'yarn install'
   - script: |
+      sudo apt install -y fonts-takao
+    displayName: 'システムにフォントをインストール'
+  - script: |
       yarn test
     displayName: 'テスト'
   - script: |
