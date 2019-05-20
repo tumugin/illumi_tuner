@@ -4,7 +4,13 @@ steps:
   - task: NodeTool@0
     inputs:
       versionSpec: '11.14.0'
+    displayName: 'Node.jsバージョン指定'
   - script: |
       yarn install
+    displayName: 'yarn install'
+  - script: |
       yarn test
+    displayName: 'テスト'
+  - script: |
       yarn prod
+    displayName: 'プロダクション環境向けビルド'
