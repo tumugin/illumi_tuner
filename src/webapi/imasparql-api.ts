@@ -3,7 +3,7 @@ import findNameAndColorQuery from 'raw-loader!./imasparql-query/find-name-and-co
 // eslint-disable-next-line import/no-webpack-loader-syntax
 import findNextLiveQuery from 'raw-loader!./imasparql-query/find-next-live.sparql'
 import INameAndColor from '../models/i-name-and-color'
-import * as uuidv4 from 'uuid/v4'
+import uuidv4 from 'uuid/v4'
 import ILive from '../models/i-live'
 import { formatDate } from '../utils/date-utils'
 
