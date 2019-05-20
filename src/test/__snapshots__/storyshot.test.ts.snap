@@ -1,5 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Storyshots Character CharacterItem 1`] = `
+<div
+  class="characterBox"
+  style="background-color: rgb(234, 91, 118);"
+>
+  <div
+    class="textContainer"
+  >
+    <div
+      class="titleView whiteBox"
+    >
+      STAR ELEMENTS
+    </div>
+     
+    <div
+      class="whiteBox characterNameView"
+    >
+      天羽光
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Storyshots Penlight PenlightItem 1`] = `
 <div
   class="container"
@@ -23,6 +46,28 @@ exports[`Storyshots Penlight PenlightItem 1`] = `
       />
       
       天羽光
+    
+    </span>
+    <span
+      class="idol"
+    >
+      <div
+        class="colorIndicator"
+        style="background-color: rgb(245, 173, 59);"
+      />
+      
+      神埼澪
+    
+    </span>
+    <span
+      class="idol"
+    >
+      <div
+        class="colorIndicator"
+        style="background-color: rgb(146, 207, 187);"
+      />
+      
+      草薙星蘭
     
     </span>
   </div>

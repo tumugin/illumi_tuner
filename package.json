@@ -11,7 +11,8 @@
     "lint": "eslint --ext .js,.vue src",
     "lint:fix": "eslint --ext .js,.vue src --fix",
     "storybook": "start-storybook -p 9001",
-    "test": "jest --verbose"
+    "build-storybook": "build-storybook -o ./storyshot-public",
+    "test": "yarn build-storybook && jest --verbose"
   },
   "dependencies": {
     "@babel/core": "^7.4.4",
@@ -22,6 +23,7 @@
     "@babel/template": "^7.4.4",
     "@storybook/addon-knobs": "^5.0.11",
     "@storybook/addon-storyshots": "^5.0.11",
+    "@storybook/addon-storyshots-puppeteer": "^5.0.11",
     "@storybook/vue": "^5.0.11",
     "@types/jest": "^24.0.13",
     "@types/md5": "^2.1.33",
