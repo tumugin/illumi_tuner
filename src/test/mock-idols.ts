@@ -1,5 +1,5 @@
 import INameAndColor from '../models/i-name-and-color'
-import * as uuidv4 from 'uuid/v4'
+import uuidv4 from 'uuid/v4'
 
 const MockIdols: INameAndColor[] = [
   {

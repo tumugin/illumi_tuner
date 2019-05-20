@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Penlight PenlightItem 1`] = `
+<div
+  class="container"
+  style="background-color: rgb(58, 117, 187);"
+>
+  <span
+    class="title"
+  >
+    ほげほげの色
+  </span>
+   
+  <div
+    class="idolListContainer"
+  >
+    <span
+      class="idol"
+    >
+      <div
+        class="colorIndicator"
+        style="background-color: rgb(234, 91, 118);"
+      />
+      
+      天羽光
+    
+    </span>
+  </div>
+</div>
+`;

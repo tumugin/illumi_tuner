@@ -39,7 +39,7 @@ storiesOf('Penlight', module).add(
         },
         idols: {
           type: Array,
-          default: MockIdols
+          default: () => MockIdols
         }
       }
     } as ComponentOptions<Vue>)
