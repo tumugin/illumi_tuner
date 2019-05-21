@@ -1,6 +1,6 @@
 <template>
   <b-container>
-    <live-select-view :live-list="liveList" class="buttonMargin" @live-selected="moveToPenlightView" />
+    <live-select-view :live-list="liveList" class="buttonMargin" @live-selected="liveSelected" />
     <character-list-view />
     <div class="alertStyle" v-if="penlightColorAlert || !isAnyIdolSelected">
       <b-alert dismissible class="alertStyle" variant="danger" v-model="penlightColorAlert">
@@ -24,6 +24,7 @@ import PenlightListView from './penlight-list-view.vue'
 import IllumiTunerVuexModule from '../store/illumi-tuner-vuex-module'
 import LocalStorageUtils from '../utils/local-storage-utils'
 import LiveSelectView from './live-select-view.vue'
+import ILive from '../models/i-live'
 
 const MainView = Vue.extend({
   data() {
@@ -60,6 +61,20 @@ const MainView = Vue.extend({
     },
     moveToPenlightView() {
       this.$scrollTo('#penlightListView', 1000)
+    },
+    liveSelected(live: ILive) {
+      IllumiTunerVuexModule.imasCharacters.forEach(item => {
+        const updatedItem = Object.assign({}, item)
+        updatedItem.checked = false
+        IllumiTunerVuexModule.updateImasCharacter(updatedItem)
+      })
+      const selectedIdol = IllumiTunerVuexModule.imasCharacters.filter(item => live.liveActor.includes(item.actor))
+      selectedIdol.forEach(item => {
+        const updatedItem = Object.assign({}, item)
+        updatedItem.checked = true
+        IllumiTunerVuexModule.updateImasCharacter(updatedItem)
+      })
+      this.moveToPenlightView()
     }
   },
   watch: {
