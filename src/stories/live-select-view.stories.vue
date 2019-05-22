@@ -34,7 +34,7 @@ story.add(
     } as ComponentOptions<Vue>)
 )
 story.add(
-  'LiveSelectView[PC]',
+  'LiveSelectView[PC][HasAnimation]',
   () =>
     ({
       ...LiveSelectViewStories,
@@ -54,7 +54,7 @@ story.add(
     } as ComponentOptions<Vue>)
 )
 story.add(
-  'LiveSelectView[Mobile]',
+  'LiveSelectView[Mobile][HasAnimation]',
   () =>
     ({
       ...LiveSelectViewStories,

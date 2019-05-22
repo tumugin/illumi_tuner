@@ -371,7 +371,7 @@ exports[`Storyshots UI LiveSelectView 1`] = `
 </div>
 `;
 
-exports[`Storyshots UI LiveSelectView[Mobile] 1`] = `
+exports[`Storyshots UI LiveSelectView[Mobile][HasAnimation] 1`] = `
 <div>
   <button
     class="btn dropdown-toggle btn-secondary"
@@ -537,7 +537,7 @@ exports[`Storyshots UI LiveSelectView[Mobile] 1`] = `
 </div>
 `;
 
-exports[`Storyshots UI LiveSelectView[PC] 1`] = `
+exports[`Storyshots UI LiveSelectView[PC][HasAnimation] 1`] = `
 <div>
   <div
     class="btn-group b-dropdown dropdown"
