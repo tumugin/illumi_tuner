@@ -73,3 +73,763 @@ exports[`Storyshots Penlight PenlightItem 1`] = `
   </div>
 </div>
 `;
+
+exports[`Storyshots UI LiveSelectView 1`] = `
+<div>
+  <div
+    class="btn-group b-dropdown dropdown"
+  >
+    <!---->
+    <button
+      aria-expanded="false"
+      aria-haspopup="true"
+      class="btn btn-secondary dropdown-toggle"
+      type="button"
+    >
+      公演を選択する
+    </button>
+    <ul
+      class="dropdown-menu"
+      role="menu"
+      tabindex="-1"
+    >
+      <li>
+        <a
+          class="dropdown-item"
+          href="#"
+          role="menuitem"
+          target="_self"
+        >
+          <span
+            class="badge badge-primary"
+          >
+            
+          2019/01/01
+        
+          </span>
+           
+          <span
+            class="badge badge-dark"
+          >
+            
+          さいたまスーパーアリーナ
+        
+          </span>
+           
+          <div>
+            
+          THE IDOLM@STER MILLION LIVE! 俺が考えた最強のライブ starring 俺
+        
+          </div>
+        </a>
+      </li>
+      <li>
+        <a
+          class="dropdown-item"
+          href="#"
+          role="menuitem"
+          target="_self"
+        >
+          <span
+            class="badge badge-primary"
+          >
+            
+          2019/02/01
+        
+          </span>
+           
+          <span
+            class="badge badge-dark"
+          >
+            
+          メットライフドーム
+        
+          </span>
+           
+          <div>
+            
+          THE IDOLM@STER MILLION LIVE! 神すぎて神になるライブ
+        
+          </div>
+        </a>
+      </li>
+      <li>
+        <a
+          class="dropdown-item"
+          href="#"
+          role="menuitem"
+          target="_self"
+        >
+          <span
+            class="badge badge-primary"
+          >
+            
+          2019/03/01
+        
+          </span>
+           
+          <span
+            class="badge badge-dark"
+          >
+            
+          東京ドーム
+        
+          </span>
+           
+          <div>
+            
+          THE IDOLM@STER MILLION LIVE! 7th 東京ドーム公演
+        
+          </div>
+        </a>
+      </li>
+      <li>
+        <a
+          class="dropdown-item"
+          href="#"
+          role="menuitem"
+          target="_self"
+        >
+          <span
+            class="badge badge-primary"
+          >
+            
+          2019/04/01
+        
+          </span>
+           
+          <span
+            class="badge badge-dark"
+          >
+            
+          日産スタジアム
+        
+          </span>
+           
+          <div>
+            
+          THE IDOLM@STER ALL PRODUCTION ぶち上がり合同ライブ
+        
+          </div>
+        </a>
+      </li>
+    </ul>
+  </div>
+   
+  <div>
+    <div
+      style="position: absolute; z-index: 1040;"
+    >
+      <div
+        aria-hidden="true"
+        class="modal fade"
+        role="dialog"
+        style="display: none;"
+        tabindex="-1"
+      >
+        <div
+          class="modal-dialog modal-md"
+        >
+          <div
+            class="modal-content"
+            role="document"
+          >
+            <header
+              class="modal-header"
+            >
+              <h5
+                class="modal-title"
+              >
+                公演を選択してください
+              </h5>
+              <button
+                aria-label="Close"
+                class="close"
+                type="button"
+              >
+                ×
+              </button>
+            </header>
+            <div
+              class="modal-body"
+            >
+              <div>
+                <span
+                  class="badge badge-primary"
+                >
+                  
+          2019/01/01
+        
+                </span>
+                 
+                <span
+                  class="badge badge-dark"
+                >
+                  
+          さいたまスーパーアリーナ
+        
+                </span>
+                 
+                <div>
+                  
+          THE IDOLM@STER MILLION LIVE! 俺が考えた最強のライブ starring 俺
+        
+                </div>
+                 
+                <hr
+                  class="dropdown-divider"
+                />
+              </div>
+              <div>
+                <span
+                  class="badge badge-primary"
+                >
+                  
+          2019/02/01
+        
+                </span>
+                 
+                <span
+                  class="badge badge-dark"
+                >
+                  
+          メットライフドーム
+        
+                </span>
+                 
+                <div>
+                  
+          THE IDOLM@STER MILLION LIVE! 神すぎて神になるライブ
+        
+                </div>
+                 
+                <hr
+                  class="dropdown-divider"
+                />
+              </div>
+              <div>
+                <span
+                  class="badge badge-primary"
+                >
+                  
+          2019/03/01
+        
+                </span>
+                 
+                <span
+                  class="badge badge-dark"
+                >
+                  
+          東京ドーム
+        
+                </span>
+                 
+                <div>
+                  
+          THE IDOLM@STER MILLION LIVE! 7th 東京ドーム公演
+        
+                </div>
+                 
+                <hr
+                  class="dropdown-divider"
+                />
+              </div>
+              <div>
+                <span
+                  class="badge badge-primary"
+                >
+                  
+          2019/04/01
+        
+                </span>
+                 
+                <span
+                  class="badge badge-dark"
+                >
+                  
+          日産スタジアム
+        
+                </span>
+                 
+                <div>
+                  
+          THE IDOLM@STER ALL PRODUCTION ぶち上がり合同ライブ
+        
+                </div>
+                 
+                <!---->
+              </div>
+            </div>
+            <!---->
+          </div>
+        </div>
+      </div>
+      <!---->
+      <!---->
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots UI LiveSelectView[Mobile][HasAnimation] 1`] = `
+<div>
+  <button
+    class="btn dropdown-toggle btn-secondary"
+    type="button"
+  >
+    
+    公演を選択する
+  
+  </button>
+   
+  <div>
+    <div
+      style="position: absolute; z-index: 1040;"
+    >
+      <div
+        aria-hidden="true"
+        class="modal fade"
+        role="dialog"
+        style="display: none;"
+        tabindex="-1"
+      >
+        <div
+          class="modal-dialog modal-md"
+        >
+          <div
+            class="modal-content"
+            role="document"
+          >
+            <header
+              class="modal-header"
+            >
+              <h5
+                class="modal-title"
+              >
+                公演を選択してください
+              </h5>
+              <button
+                aria-label="Close"
+                class="close"
+                type="button"
+              >
+                ×
+              </button>
+            </header>
+            <div
+              class="modal-body"
+            >
+              <div>
+                <span
+                  class="badge badge-primary"
+                >
+                  
+          2019/01/01
+        
+                </span>
+                 
+                <span
+                  class="badge badge-dark"
+                >
+                  
+          さいたまスーパーアリーナ
+        
+                </span>
+                 
+                <div>
+                  
+          THE IDOLM@STER MILLION LIVE! 俺が考えた最強のライブ starring 俺
+        
+                </div>
+                 
+                <hr
+                  class="dropdown-divider"
+                />
+              </div>
+              <div>
+                <span
+                  class="badge badge-primary"
+                >
+                  
+          2019/02/01
+        
+                </span>
+                 
+                <span
+                  class="badge badge-dark"
+                >
+                  
+          メットライフドーム
+        
+                </span>
+                 
+                <div>
+                  
+          THE IDOLM@STER MILLION LIVE! 神すぎて神になるライブ
+        
+                </div>
+                 
+                <hr
+                  class="dropdown-divider"
+                />
+              </div>
+              <div>
+                <span
+                  class="badge badge-primary"
+                >
+                  
+          2019/03/01
+        
+                </span>
+                 
+                <span
+                  class="badge badge-dark"
+                >
+                  
+          東京ドーム
+        
+                </span>
+                 
+                <div>
+                  
+          THE IDOLM@STER MILLION LIVE! 7th 東京ドーム公演
+        
+                </div>
+                 
+                <hr
+                  class="dropdown-divider"
+                />
+              </div>
+              <div>
+                <span
+                  class="badge badge-primary"
+                >
+                  
+          2019/04/01
+        
+                </span>
+                 
+                <span
+                  class="badge badge-dark"
+                >
+                  
+          日産スタジアム
+        
+                </span>
+                 
+                <div>
+                  
+          THE IDOLM@STER ALL PRODUCTION ぶち上がり合同ライブ
+        
+                </div>
+                 
+                <!---->
+              </div>
+            </div>
+            <!---->
+          </div>
+        </div>
+      </div>
+      <!---->
+      <!---->
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots UI LiveSelectView[PC][HasAnimation] 1`] = `
+<div>
+  <div
+    class="btn-group b-dropdown dropdown"
+  >
+    <!---->
+    <button
+      aria-expanded="false"
+      aria-haspopup="true"
+      class="btn btn-secondary dropdown-toggle"
+      type="button"
+    >
+      公演を選択する
+    </button>
+    <ul
+      class="dropdown-menu"
+      role="menu"
+      tabindex="-1"
+    >
+      <li>
+        <a
+          class="dropdown-item"
+          href="#"
+          role="menuitem"
+          target="_self"
+        >
+          <span
+            class="badge badge-primary"
+          >
+            
+          2019/01/01
+        
+          </span>
+           
+          <span
+            class="badge badge-dark"
+          >
+            
+          さいたまスーパーアリーナ
+        
+          </span>
+           
+          <div>
+            
+          THE IDOLM@STER MILLION LIVE! 俺が考えた最強のライブ starring 俺
+        
+          </div>
+        </a>
+      </li>
+      <li>
+        <a
+          class="dropdown-item"
+          href="#"
+          role="menuitem"
+          target="_self"
+        >
+          <span
+            class="badge badge-primary"
+          >
+            
+          2019/02/01
+        
+          </span>
+           
+          <span
+            class="badge badge-dark"
+          >
+            
+          メットライフドーム
+        
+          </span>
+           
+          <div>
+            
+          THE IDOLM@STER MILLION LIVE! 神すぎて神になるライブ
+        
+          </div>
+        </a>
+      </li>
+      <li>
+        <a
+          class="dropdown-item"
+          href="#"
+          role="menuitem"
+          target="_self"
+        >
+          <span
+            class="badge badge-primary"
+          >
+            
+          2019/03/01
+        
+          </span>
+           
+          <span
+            class="badge badge-dark"
+          >
+            
+          東京ドーム
+        
+          </span>
+           
+          <div>
+            
+          THE IDOLM@STER MILLION LIVE! 7th 東京ドーム公演
+        
+          </div>
+        </a>
+      </li>
+      <li>
+        <a
+          class="dropdown-item"
+          href="#"
+          role="menuitem"
+          target="_self"
+        >
+          <span
+            class="badge badge-primary"
+          >
+            
+          2019/04/01
+        
+          </span>
+           
+          <span
+            class="badge badge-dark"
+          >
+            
+          日産スタジアム
+        
+          </span>
+           
+          <div>
+            
+          THE IDOLM@STER ALL PRODUCTION ぶち上がり合同ライブ
+        
+          </div>
+        </a>
+      </li>
+    </ul>
+  </div>
+   
+  <div>
+    <div
+      style="position: absolute; z-index: 1040;"
+    >
+      <div
+        aria-hidden="true"
+        class="modal fade"
+        role="dialog"
+        style="display: none;"
+        tabindex="-1"
+      >
+        <div
+          class="modal-dialog modal-md"
+        >
+          <div
+            class="modal-content"
+            role="document"
+          >
+            <header
+              class="modal-header"
+            >
+              <h5
+                class="modal-title"
+              >
+                公演を選択してください
+              </h5>
+              <button
+                aria-label="Close"
+                class="close"
+                type="button"
+              >
+                ×
+              </button>
+            </header>
+            <div
+              class="modal-body"
+            >
+              <div>
+                <span
+                  class="badge badge-primary"
+                >
+                  
+          2019/01/01
+        
+                </span>
+                 
+                <span
+                  class="badge badge-dark"
+                >
+                  
+          さいたまスーパーアリーナ
+        
+                </span>
+                 
+                <div>
+                  
+          THE IDOLM@STER MILLION LIVE! 俺が考えた最強のライブ starring 俺
+        
+                </div>
+                 
+                <hr
+                  class="dropdown-divider"
+                />
+              </div>
+              <div>
+                <span
+                  class="badge badge-primary"
+                >
+                  
+          2019/02/01
+        
+                </span>
+                 
+                <span
+                  class="badge badge-dark"
+                >
+                  
+          メットライフドーム
+        
+                </span>
+                 
+                <div>
+                  
+          THE IDOLM@STER MILLION LIVE! 神すぎて神になるライブ
+        
+                </div>
+                 
+                <hr
+                  class="dropdown-divider"
+                />
+              </div>
+              <div>
+                <span
+                  class="badge badge-primary"
+                >
+                  
+          2019/03/01
+        
+                </span>
+                 
+                <span
+                  class="badge badge-dark"
+                >
+                  
+          東京ドーム
+        
+                </span>
+                 
+                <div>
+                  
+          THE IDOLM@STER MILLION LIVE! 7th 東京ドーム公演
+        
+                </div>
+                 
+                <hr
+                  class="dropdown-divider"
+                />
+              </div>
+              <div>
+                <span
+                  class="badge badge-primary"
+                >
+                  
+          2019/04/01
+        
+                </span>
+                 
+                <span
+                  class="badge badge-dark"
+                >
+                  
+          日産スタジアム
+        
+                </span>
+                 
+                <div>
+                  
+          THE IDOLM@STER ALL PRODUCTION ぶち上がり合同ライブ
+        
+                </div>
+                 
+                <!---->
+              </div>
+            </div>
+            <!---->
+          </div>
+        </div>
+      </div>
+      <!---->
+      <!---->
+    </div>
+  </div>
+</div>
+`;

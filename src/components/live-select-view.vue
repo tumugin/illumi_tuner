@@ -43,7 +43,6 @@
 <script lang="ts">
 import Vue from 'vue'
 import { formatDate } from '../utils/date-utils'
-import IllumiTunerVuexModule from '../store/illumi-tuner-vuex-module'
 import ILive from '../models/i-live'
 
 const LiveSelectView = Vue.extend({
@@ -56,30 +55,17 @@ const LiveSelectView = Vue.extend({
     liveList: {
       type: Array,
       required: true
-    }
-  },
-  computed: {
-    isMobile() {
-      // 以下のコードは動的なリサイズを変更検知できない
-      return window.innerWidth < 700
+    },
+    isMobile: {
+      type: Boolean,
+      default: () => window.innerWidth < 700 // computedで動的に検知できないのでpropsを使う
     }
   },
   methods: {
     formatDate: formatDate,
     selectLive(live: ILive) {
       this.showMobileModal = false
-      IllumiTunerVuexModule.imasCharacters.forEach(item => {
-        const updatedItem = Object.assign({}, item)
-        updatedItem.checked = false
-        IllumiTunerVuexModule.updateImasCharacter(updatedItem)
-      })
-      const selectedIdol = IllumiTunerVuexModule.imasCharacters.filter(item => live.liveActor.includes(item.actor))
-      selectedIdol.forEach(item => {
-        const updatedItem = Object.assign({}, item)
-        updatedItem.checked = true
-        IllumiTunerVuexModule.updateImasCharacter(updatedItem)
-      })
-      this.$emit('live-selected')
+      this.$emit('live-selected', live)
     },
     openMobileModal() {
       if (this.isMobile) {
