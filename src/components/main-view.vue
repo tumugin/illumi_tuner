@@ -106,8 +106,21 @@ export default MainView
   border-top-right-radius: 10px;
   text-align: center;
   cursor: pointer;
+  filter: drop-shadow(0 0 0.7rem white);
+  font-weight: bold;
+
   &.visible {
     display: block;
+    animation-name: fadeIn;
+    animation-duration: 0.3s;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 </style>
