@@ -86,7 +86,7 @@ exports[`Storyshots UI LiveSelectView 1`] = `
       class="btn btn-secondary dropdown-toggle"
       type="button"
     >
-      公演から選択する
+      公演を選択する
     </button>
     <ul
       class="dropdown-menu"
@@ -378,7 +378,7 @@ exports[`Storyshots UI LiveSelectView[Mobile][HasAnimation] 1`] = `
     type="button"
   >
     
-    公演から選択する
+    公演を選択する
   
   </button>
    
@@ -549,7 +549,7 @@ exports[`Storyshots UI LiveSelectView[PC][HasAnimation] 1`] = `
       class="btn btn-secondary dropdown-toggle"
       type="button"
     >
-      公演から選択する
+      公演を選択する
     </button>
     <ul
       class="dropdown-menu"
