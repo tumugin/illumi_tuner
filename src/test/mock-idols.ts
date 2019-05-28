@@ -4,7 +4,7 @@ import uuidv4 from 'uuid/v4'
 const MockIdols: INameAndColor[] = [
   {
     colorHEX: '#EA5B76',
-    name: '天羽光',
+    name: '天羽光駆',
     nameKana: 'あまばひかる',
     title: 'STAR ELEMENTS',
     actor: '春日未来',
@@ -13,7 +13,7 @@ const MockIdols: INameAndColor[] = [
   },
   {
     colorHEX: '#F5AD3B',
-    name: '神埼澪',
+    name: '神崎水桜',
     nameKana: 'かんざきみお',
     title: 'STAR ELEMENTS',
     actor: '矢吹可奈',
