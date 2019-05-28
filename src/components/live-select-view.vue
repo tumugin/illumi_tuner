@@ -1,7 +1,7 @@
 <template>
   <div>
     <!--デスクトップ用公演選択画面-->
-    <b-dropdown text="公演を選択する" v-if="!isMobile">
+    <b-dropdown text="公演から選択する" v-if="!isMobile">
       <template v-for="(live, index) in liveList">
         <b-dropdown-item :key="index" @click="selectLive(live)">
           <b-badge variant="primary">
@@ -18,7 +18,7 @@
     </b-dropdown>
     <!--モバイル用公演選択画面-->
     <b-button @click="openMobileModal" class="dropdown-toggle" v-else>
-      公演を選択する
+      公演から選択する
     </b-button>
     <!--モバイル用公演選択モーダル-->
     <b-modal :visible="showMobileModal" title="公演を選択してください" hide-footer @hidden="closeModal">
