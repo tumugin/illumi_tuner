@@ -17,7 +17,7 @@ exports[`Storyshots Character CharacterItem 1`] = `
     <div
       class="whiteBox characterNameView"
     >
-      天羽光
+      天羽光駆
     </div>
   </div>
 </div>
@@ -45,7 +45,7 @@ exports[`Storyshots Penlight PenlightItem 1`] = `
         style="background-color: rgb(234, 91, 118);"
       />
       
-      天羽光
+      天羽光駆
     
     </span>
     <span
@@ -56,7 +56,7 @@ exports[`Storyshots Penlight PenlightItem 1`] = `
         style="background-color: rgb(245, 173, 59);"
       />
       
-      神埼澪
+      神崎水桜
     
     </span>
     <span
