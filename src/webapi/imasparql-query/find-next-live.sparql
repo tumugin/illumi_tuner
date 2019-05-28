@@ -15,4 +15,4 @@ WHERE {
        schema:location ?loc;
        schema:actor ?a
   filter(?sD>="@@DATE@@"^^<http://www.w3.org/2001/XMLSchema#date>)
-}group by ?s order by ?sD
+}group by ?s order by ?liveDate
