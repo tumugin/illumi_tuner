@@ -5,7 +5,8 @@ import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
-if (process.env.IS_STORYSHOT) {
+// @ts-ignore
+if (IS_STORYSHOT) {
   // @ts-ignore
   import('../src/test/imagestoryshot.css')
 }
