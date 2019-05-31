@@ -3,3 +3,8 @@
 body {
   font-family: 'Noto Sans Japanese', sans-serif;
 }
+
+* {
+  /* workaround for difference of OS's font renderer */
+  color: rgba(0, 0, 0, 0) !important;
+}
