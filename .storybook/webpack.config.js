@@ -1,4 +1,5 @@
 const path = require('path')
+const webpack = require('webpack')
 // your app's webpack.config.js
 const custom = require('../build/webpack.dev.conf')
 
@@ -10,6 +11,11 @@ module.exports = async ({ config, mode }) => {
     path.resolve(__dirname, '../node_modules')
   ]
   config.resolve.extensions.push('.ts')
+  config.plugins.push(
+    new webpack.DefinePlugin({
+      IS_STORYSHOT: JSON.stringify(process.env.IS_STORYSHOT)
+    })
+  )
   delete config.resolve.alias['core-js']
   return {
     ...config,

@@ -11,8 +11,8 @@
     "lint": "eslint --ext .js,.vue src",
     "lint:fix": "eslint --ext .js,.vue src --fix",
     "storybook": "start-storybook -p 9001",
-    "build-storybook": "build-storybook -o ./storyshot-public",
-    "test": "yarn build-storybook && jest --verbose",
+    "buildstorybook": "IS_STORYSHOT=1 build-storybook -o ./storyshot-public",
+    "test": "yarn buildstorybook && jest --verbose",
     "gitcleanup": "git remote prune origin && git branch -v | cut -c 3- | awk '$3 ~/\\[gone\\]/ { print $1 }' | xargs git branch --delete"
   },
   "dependencies": {
