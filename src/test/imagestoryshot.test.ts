@@ -5,7 +5,7 @@ import Pupetter from 'puppeteer'
 
 const getMatchOptions = () => {
   return {
-    failureThreshold: 0.05,
+    failureThreshold: 0.01,
     failureThresholdType: 'percent'
   }
 }
