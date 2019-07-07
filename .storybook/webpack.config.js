@@ -16,7 +16,6 @@ module.exports = async ({ config, mode }) => {
       IS_STORYSHOT: JSON.stringify(process.env.IS_STORYSHOT)
     })
   )
-  delete config.resolve.alias['core-js']
   return {
     ...config,
     module: { ...config.module, rules: custom.module.rules }
