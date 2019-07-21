@@ -7,6 +7,7 @@ const { VueLoaderPlugin } = require('vue-loader')
 const utils = require('./utils')
 const rm = require('rimraf')
 const path = require('path')
+const WebpackBar = require('webpackbar')
 function resolve(dir) {
   return path.join(__dirname, '..', dir)
 }
@@ -118,6 +119,7 @@ module.exports = {
   },
 
   plugins: [
+    new WebpackBar(),
     new FriendlyErrorsWebpackPlugin(),
     new HtmlWebpackPlugin({
       filename: 'index.html',
