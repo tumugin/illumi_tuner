@@ -2,7 +2,9 @@ import AbstractPenlightColor from './abstract-penlight-color'
 
 export default class PenlightColor extends AbstractPenlightColor {
   colorHEX: string
+
   colorName: string
+
   isBasicColor: boolean
 
   constructor(colorHEX: string, colorName: string, isBasicColor: boolean) {

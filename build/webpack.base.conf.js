@@ -119,8 +119,10 @@ module.exports = {
   },
 
   plugins: [
-    new WebpackBar(),
-    new FriendlyErrorsWebpackPlugin(),
+    new WebpackBar({
+      color: '#58A6DC',
+      profile: true
+    }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: './public/index.html',

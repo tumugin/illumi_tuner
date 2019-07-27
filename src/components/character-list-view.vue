@@ -13,7 +13,7 @@
         すべて選択解除
       </b-button>
       <b-button class="characterItem button" variant="outline-success" @click="selectAllButtonClicked()">
-        すべて選択
+        表示アイテムを<br />すべて選択
       </b-button>
       <character-item
         v-for="item in characters"
@@ -50,7 +50,7 @@ const CharacterListView = Vue.extend({
         .sort((a, b) => a.nameKana.localeCompare(b.nameKana))
         .sort((a, b) => a.title.localeCompare(b.title))
         .filter(item => item.name.includes(this.$data.filterText) || item.nameKana.includes(this.$data.filterText))
-        .filter(item => (IllumiTunerVuexModule.filterOffice).includes(item.title))
+        .filter(item => IllumiTunerVuexModule.filterOffice.includes(item.title))
     },
     idolOfficeList() {
       return [...new Set(IllumiTunerVuexModule.imasCharacters.map(item => item.title))]
@@ -82,7 +82,7 @@ const CharacterListView = Vue.extend({
       this.characters.forEach(item => this.characterItemUpdateCheckedState(item, true))
     },
     unselectAllButtonClicked() {
-      this.characters.forEach(item => this.characterItemUpdateCheckedState(item, false))
+      IllumiTunerVuexModule.imasCharacters.forEach(item => this.characterItemUpdateCheckedState(item, false))
     }
   }
 })

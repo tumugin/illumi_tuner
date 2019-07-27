@@ -19,7 +19,7 @@ const CharacterItem = Vue.extend({
   },
   computed: {
     isLongName() {
-      return (this.$props.characterName as string).length > 5
+      return (this.characterName as string).length > 5
     }
   },
   props: {

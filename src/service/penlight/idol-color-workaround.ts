@@ -15,6 +15,9 @@ export default class IdolColorWorkaround {
         case '所恵美':
           idol.penlightColor = availableColors.find(item => item.colorName === '#4ブルー')!
           break
+        case 'ジュリア':
+          idol.penlightColor = availableColors.find(item => item.colorName === '#1レッド')!
+          break
         default:
           break
       }

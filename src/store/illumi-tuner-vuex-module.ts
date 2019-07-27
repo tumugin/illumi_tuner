@@ -7,7 +7,9 @@ import ILive from '../models/i-live'
 @Module({ dynamic: true, name: 'IllumiTunerStore', store: mainStore })
 export class IllumiTunerVuexModuleClass extends VuexModule {
   imasCharacters: INameAndColor[] = []
+
   imasLiveList: ILive[] = []
+
   filterOffice = Array<string>(0)
 
   @Mutation
