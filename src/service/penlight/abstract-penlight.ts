@@ -12,8 +12,11 @@ export interface IColorDiffWithIPenlightColor {
 
 export default abstract class AbstractPenlight {
   abstract productName: string
+
   abstract productManufacture: string
+
   abstract isColorAdjustable: boolean
+
   abstract availableColors: AbstractPenlightColor[]
 
   searchColor(arrayOfIdol: INameAndColor[], useBasicColor: boolean): INameAndColorWithPenlightColor[] {

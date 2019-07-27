@@ -31,8 +31,11 @@ export default class MixPenla extends AbstractPenlight {
     new PenlightColor('#E967F4', '#23ラベンダーパープル', false),
     new PenlightColor('#F1F2FD', '#24ホワイト', true)
   ]
+
   isColorAdjustable = false
+
   productManufacture = 'ターンオン'
+
   productName = 'MIX PENLa PRO'
 
   searchColor(arrayOfIdol: INameAndColor[], useBasicColor: boolean): INameAndColorWithPenlightColor[] {

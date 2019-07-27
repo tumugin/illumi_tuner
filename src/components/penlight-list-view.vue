@@ -18,7 +18,7 @@ import PenlightItem from './penlight-item.vue'
 import AbstractPenlight from '../service/penlight/abstract-penlight'
 import AbstractPenlightColor from '../models/abstract-penlight-color'
 import INameAndColor from '../models/i-name-and-color'
-import * as md5 from 'md5'
+import md5 from 'md5'
 
 interface PenlightColorWithIdolList {
   color: AbstractPenlightColor

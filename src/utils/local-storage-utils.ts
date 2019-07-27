@@ -28,6 +28,7 @@ export default class LocalStorageUtils {
         return Number(storageValue) || defaultValue
     }
   }
+
   static setLocalStorageData(key: LocalStorageKeys, value: AvailableTypes) {
     localStorage.setItem(key, JSON.stringify(value))
   }
