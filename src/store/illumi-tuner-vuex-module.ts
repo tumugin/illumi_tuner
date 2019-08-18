@@ -37,6 +37,9 @@ export class IllumiTunerVuexModuleClass extends VuexModule {
   public async fetchImasCharacters() {
     const result = await ImasparqlApi.fetchNameAndColor()
     this.setImasCharacters(result)
+    // キャラクターリストを更新すると事務所も一旦リセットする必要がある
+    // 今のデフォルトは全て選択された状態
+    this.setFilterOffice([...new Set(this.imasCharacters.map(item => item.title))])
   }
 
   @Action({})

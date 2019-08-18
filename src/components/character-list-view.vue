@@ -64,14 +64,6 @@ const CharacterListView = Vue.extend({
       }
     }
   },
-  watch: {
-    idolOfficeList: function(value: Array<string>, oldValue: Array<string>) {
-      // infinity update loop対策
-      if (JSON.stringify(value) !== JSON.stringify(oldValue)) {
-        IllumiTunerVuexModule.setFilterOffice(value)
-      }
-    }
-  },
   methods: {
     characterItemUpdateCheckedState(item: INameAndColor, state: boolean) {
       const updatedItem = Object.assign({}, item)
