@@ -3,7 +3,7 @@
     <span class="title">{{ penlightColor.colorName }}</span>
     <div class="idolListContainer">
       <span v-for="idol in idols" :key="idol.key" class="idol">
-        <div class="colorIndicator" :style="{ backgroundColor: idol.colorHEX }"></div>
+        <div class="colorIndicator" :style="{ backgroundColor: idol.colorHEX }"/>
         {{ idol.name }}
       </span>
     </div>

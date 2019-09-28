@@ -5,8 +5,12 @@
     @click="onParentBoxClicked"
   >
     <div class="textContainer">
-      <div class="titleView whiteBox">{{ characterTitle }}</div>
-      <div class="whiteBox characterNameView" :class="{ smallNameView: isLongName }">{{ characterName }}</div>
+      <div class="titleView whiteBox">
+        {{ characterTitle }}
+      </div>
+      <div class="whiteBox characterNameView" :class="{ smallNameView: isLongName }">
+        {{ characterName }}
+      </div>
     </div>
   </div>
 </template>

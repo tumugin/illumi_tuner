@@ -6,8 +6,8 @@ import INameAndColorWithPenlightColor from '../../models/i-name-and-color-with-p
 import PenlightColor from '../../models/penlight-color'
 
 export interface IColorDiffWithIPenlightColor {
-  penlightColor: AbstractPenlightColor
-  diff: number
+  penlightColor: AbstractPenlightColor;
+  diff: number;
 }
 
 export default abstract class AbstractPenlight {

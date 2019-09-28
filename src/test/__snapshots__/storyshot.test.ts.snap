@@ -11,13 +11,17 @@ exports[`Storyshots Character CharacterItem 1`] = `
     <div
       class="titleView whiteBox"
     >
+      
       STAR ELEMENTS
+    
     </div>
      
     <div
       class="whiteBox characterNameView"
     >
+      
       天羽光駆
+    
     </div>
   </div>
 </div>
@@ -93,7 +97,9 @@ exports[`Storyshots UI LiveSelectView 1`] = `
       role="menu"
       tabindex="-1"
     >
-      <li>
+      <li
+        role="presentation"
+      >
         <a
           class="dropdown-item"
           href="#"
@@ -123,7 +129,9 @@ exports[`Storyshots UI LiveSelectView 1`] = `
           </div>
         </a>
       </li>
-      <li>
+      <li
+        role="presentation"
+      >
         <a
           class="dropdown-item"
           href="#"
@@ -153,7 +161,9 @@ exports[`Storyshots UI LiveSelectView 1`] = `
           </div>
         </a>
       </li>
-      <li>
+      <li
+        role="presentation"
+      >
         <a
           class="dropdown-item"
           href="#"
@@ -183,7 +193,9 @@ exports[`Storyshots UI LiveSelectView 1`] = `
           </div>
         </a>
       </li>
-      <li>
+      <li
+        role="presentation"
+      >
         <a
           class="dropdown-item"
           href="#"
@@ -254,7 +266,9 @@ exports[`Storyshots UI LiveSelectView[PC][HasAnimation] 1`] = `
       role="menu"
       tabindex="-1"
     >
-      <li>
+      <li
+        role="presentation"
+      >
         <a
           class="dropdown-item"
           href="#"
@@ -284,7 +298,9 @@ exports[`Storyshots UI LiveSelectView[PC][HasAnimation] 1`] = `
           </div>
         </a>
       </li>
-      <li>
+      <li
+        role="presentation"
+      >
         <a
           class="dropdown-item"
           href="#"
@@ -314,7 +330,9 @@ exports[`Storyshots UI LiveSelectView[PC][HasAnimation] 1`] = `
           </div>
         </a>
       </li>
-      <li>
+      <li
+        role="presentation"
+      >
         <a
           class="dropdown-item"
           href="#"
@@ -344,7 +362,9 @@ exports[`Storyshots UI LiveSelectView[PC][HasAnimation] 1`] = `
           </div>
         </a>
       </li>
-      <li>
+      <li
+        role="presentation"
+      >
         <a
           class="dropdown-item"
           href="#"

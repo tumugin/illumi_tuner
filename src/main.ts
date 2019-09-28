@@ -1,4 +1,3 @@
-/* tslint:disable:no-unused-expression */
 import approuter from './router/router'
 import Vue from 'vue'
 import App from './app.vue'
@@ -7,7 +6,7 @@ import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import VueObserveVisibility from 'vue-observe-visibility'
-import * as VueScrollTo from 'vue-scrollto'
+import VueScrollTo from 'vue-scrollto'
 // @ts-ignore
 import VueAnalytics from 'vue-analytics'
 
@@ -27,11 +26,18 @@ Vue.use(VueAnalytics, {
   router: approuter
 })
 
-// eslint-disable-next-line no-new
-new Vue({
-  el: '#root',
+const app = new Vue({
   router: approuter,
   store,
   components: { App },
-  template: '<App/>'
+  render(h) {
+    return h(App)
+  }
+})
+
+document.addEventListener('DOMContentLoaded', () => {
+  const mountPoint = document.getElementById('root')
+  if (mountPoint) {
+    app.$mount(mountPoint)
+  }
 })

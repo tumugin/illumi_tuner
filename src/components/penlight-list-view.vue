@@ -21,10 +21,10 @@ import INameAndColor from '../models/i-name-and-color'
 import md5 from 'md5'
 
 interface PenlightColorWithIdolList {
-  color: AbstractPenlightColor
-  idols: INameAndColor[]
-  key: string
-  index: number
+  color: AbstractPenlightColor;
+  idols: INameAndColor[];
+  key: string;
+  index: number;
 }
 
 const PenlightListView = Vue.extend({

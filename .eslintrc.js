@@ -2,27 +2,24 @@
 
 module.exports = {
   root: true,
+  parser: 'vue-eslint-parser',
   // Settings for TypeScript linting
   parserOptions: {
-    parser: '@typescript-eslint/parser',
-    sourceType: 'module',
-    project: './tsconfig.json'
+    parser: '@typescript-eslint/parser'
   },
   env: {
     browser: true,
     jest: true
   },
   extends: [
-    // https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
-    // consider switching to `plugin:vue/strongly-recommended` or `plugin:vue/recommended` for stricter rules.
-    'plugin:vue/strongly-recommended',
+    'plugin:@typescript-eslint/recommended',
     'plugin:vue/base',
-    // https://github.com/standard/standard/blob/master/docs/RULES-en.md
-    'standard',
-    'prettier'
+    'plugin:vue/strongly-recommended',
+    'prettier',
+    'prettier/vue'
   ],
   // required to lint *.vue files
-  plugins: ['vue', '@typescript-eslint'],
+  plugins: ['@typescript-eslint', 'vue'],
   // add your custom rules here
   rules: {
     'vue/max-attributes-per-line': 'off',
@@ -33,6 +30,9 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-return-await': 'off',
     'no-unused-vars': 'off',
+    '@typescript-eslint/interface-name-prefix': 'off',
+    '@typescript-eslint/ban-ts-ignore': 'off',
+    '@typescript-eslint/explicit-function-return-type' : 'off',
     '@typescript-eslint/no-unused-vars': ['error', { vars: 'all', args: 'after-used', ignoreRestSiblings: false }]
   }
 }

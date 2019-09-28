@@ -17,5 +17,5 @@
     }
   },
   "typeRoots": ["node_modules/@types", "type/*.d.ts"],
-  "includes": "src/**/*.ts"
+  "includes": ["src/**/*.ts"]
 }
