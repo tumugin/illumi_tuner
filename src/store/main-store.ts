@@ -5,7 +5,7 @@ import { IllumiTunerVuexModuleClass } from './illumi-tuner-vuex-module'
 Vue.use(Vuex)
 
 export interface IMainStore {
-  illumiTunerStore: IllumiTunerVuexModuleClass
+  illumiTunerStore: IllumiTunerVuexModuleClass;
 }
 
 const mainStore = new Vuex.Store<IMainStore>({})

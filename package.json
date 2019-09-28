@@ -8,7 +8,7 @@
     "dev": "webpack-dev-server --progress --config build/webpack.dev.conf.js",
     "builddev": "webpack --progress --config build/webpack.noserverdev.conf.js",
     "prod": "NODE_ENV=production webpack --progress --config build/webpack.prod.conf",
-    "lint": "eslint --ext .js,.vue src",
+    "lint": "eslint --ext .ts,.js,.vue src",
     "lint:fix": "eslint --ext .js,.vue src --fix",
     "storybook": "start-storybook -p 9001",
     "buildstorybook": "IS_STORYSHOT=1 build-storybook -o ./storyshot-public",

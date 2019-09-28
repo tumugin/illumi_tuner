@@ -13,7 +13,7 @@
         すべて選択解除
       </b-button>
       <b-button class="characterItem button" variant="outline-success" @click="selectAllButtonClicked()">
-        表示アイテムを<br />すべて選択
+        表示アイテムを<br >すべて選択
       </b-button>
       <character-item
         v-for="item in characters"

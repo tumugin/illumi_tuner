@@ -1,6 +1,4 @@
-// eslint-disable-next-line import/no-webpack-loader-syntax
 import findNameAndColorQuery from 'raw-loader!./imasparql-query/find-name-and-color.sparql'
-// eslint-disable-next-line import/no-webpack-loader-syntax
 import findNextLiveQuery from 'raw-loader!./imasparql-query/find-next-live.sparql'
 import INameAndColor from '../models/i-name-and-color'
 import uuidv4 from 'uuid/v4'
@@ -12,23 +10,23 @@ interface IImasparqlApiResponse {
     bindings: [
       {
         color: {
-          value: string
-        }
+          value: string;
+        };
         name: {
-          value: string
-        }
+          value: string;
+        };
         namekana: {
-          value: string
-        }
+          value: string;
+        };
         title: {
-          value: string
-        }
+          value: string;
+        };
         actor: {
-          value: string
-        }
+          value: string;
+        };
       }
-    ]
-  }
+    ];
+  };
 }
 
 interface IImasparqlLiveListResponse {
@@ -36,20 +34,20 @@ interface IImasparqlLiveListResponse {
     bindings: [
       {
         liveName: {
-          value: string
-        }
+          value: string;
+        };
         liveDate: {
-          value: string
-        }
+          value: string;
+        };
         liveActor: {
-          value: string
-        }
+          value: string;
+        };
         liveLocation: {
-          value: string
-        }
+          value: string;
+        };
       }
-    ]
-  }
+    ];
+  };
 }
 
 export default class ImasparqlApi {
