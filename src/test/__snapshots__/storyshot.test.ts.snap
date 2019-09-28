@@ -11,13 +11,17 @@ exports[`Storyshots Character CharacterItem 1`] = `
     <div
       class="titleView whiteBox"
     >
+      
       STAR ELEMENTS
+    
     </div>
      
     <div
       class="whiteBox characterNameView"
     >
+      
       天羽光駆
+    
     </div>
   </div>
 </div>
