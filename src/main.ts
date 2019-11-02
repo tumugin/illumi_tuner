@@ -9,7 +9,9 @@ import VueObserveVisibility from 'vue-observe-visibility'
 import VueScrollTo from 'vue-scrollto'
 // @ts-ignore
 import VueAnalytics from 'vue-analytics'
+import VueCompositionApi from '@vue/composition-api'
 
+Vue.use(VueCompositionApi)
 Vue.use(BootstrapVue)
 Vue.use(VueObserveVisibility)
 Vue.use(VueScrollTo)

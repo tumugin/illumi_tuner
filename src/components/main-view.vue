@@ -14,6 +14,7 @@
     <div class="jumpToDown" :class="{ visible: !isPenlightVisible && isAnyIdolSelected }" @click="moveToPenlightView">
       {{ isTouch ? 'タップ' : 'クリック' }}して色プレビューを表示する
     </div>
+    <loading-view :is-visible="isLoading" :is-load-failed="isLoadFailed" />
   </b-container>
 </template>
 
@@ -25,24 +26,34 @@ import IllumiTunerVuexModule from '../store/illumi-tuner-vuex-module'
 import LocalStorageUtils from '../utils/local-storage-utils'
 import LiveSelectView from './live-select-view.vue'
 import ILive from '../models/i-live'
+import LoadingView from '../components/loading-view.vue'
 
 const MainView = Vue.extend({
   data() {
     return {
       isPenlightVisible: false,
-      penlightColorAlert: LocalStorageUtils.getLocalStorageData('AlertMesgColorMightBeWrong', true, 'boolean')
+      penlightColorAlert: LocalStorageUtils.getLocalStorageData('AlertMesgColorMightBeWrong', true, 'boolean'),
+      isLoading: false,
+      isLoadFailed: false
     }
   },
   components: {
     CharacterListView,
     PenlightListView,
-    LiveSelectView
+    LiveSelectView,
+    LoadingView
   },
   async created() {
-    if (IllumiTunerVuexModule.imasCharacters.length === 0) {
-      await IllumiTunerVuexModule.fetchImasCharacters()
+    try {
+      if (IllumiTunerVuexModule.imasCharacters.length === 0 || IllumiTunerVuexModule.imasLiveList.length === 0) {
+        this.isLoading = true
+        await IllumiTunerVuexModule.fetchImasCharacters()
+        await IllumiTunerVuexModule.fetchImasLiveList()
+        this.isLoading = false
+      }
+    } catch {
+      this.isLoadFailed = false
     }
-    await IllumiTunerVuexModule.fetchImasLiveList()
   },
   computed: {
     isAnyIdolSelected() {
