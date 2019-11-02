@@ -38,7 +38,7 @@ const MainView = Vue.extend({
     PenlightListView,
     LiveSelectView
   },
-  async mounted() {
+  async created() {
     if (IllumiTunerVuexModule.imasCharacters.length === 0) {
       await IllumiTunerVuexModule.fetchImasCharacters()
     }
