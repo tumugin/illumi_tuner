@@ -400,3 +400,5 @@ exports[`Storyshots UI LiveSelectView[PC][HasAnimation] 1`] = `
   <!---->
 </div>
 `;
+
+exports[`Storyshots UI LoadingView 1`] = `<!---->`;
