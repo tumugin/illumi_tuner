@@ -81,7 +81,7 @@ exports[`Storyshots Penlight PenlightItem 1`] = `
 exports[`Storyshots UI LiveSelectView 1`] = `
 <div>
   <div
-    class="dropdown btn-group b-dropdown"
+    class="dropdown b-dropdown btn-group"
   >
     <!---->
     <button
@@ -250,7 +250,7 @@ exports[`Storyshots UI LiveSelectView[Mobile][HasAnimation] 1`] = `
 exports[`Storyshots UI LiveSelectView[PC][HasAnimation] 1`] = `
 <div>
   <div
-    class="dropdown btn-group b-dropdown"
+    class="dropdown b-dropdown btn-group"
   >
     <!---->
     <button
