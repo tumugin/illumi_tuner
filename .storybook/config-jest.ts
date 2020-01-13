@@ -7,7 +7,7 @@ import BootstrapVue from 'bootstrap-vue'
 const req = requireContext('../src/stories', true, /\.stories/)
 
 function loadStories() {
-  req.keys().forEach(req)
+  req.keys().forEach(filename => req(filename))
 }
 
 Vue.use(BootstrapVue)

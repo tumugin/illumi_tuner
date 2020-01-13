@@ -29,5 +29,6 @@ initStoryshots({
     storybookUrl: 'file://' + path.resolve('./storyshot-public/'),
     getMatchOptions,
     beforeScreenshot
-  })
+  }),
+  framework: 'vue'
 })

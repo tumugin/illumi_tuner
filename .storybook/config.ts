@@ -15,7 +15,7 @@ if (IS_STORYSHOT) {
 const req = require.context('../src/stories', true, /\.stories/)
 
 function loadStories() {
-  req.keys().forEach(req)
+  req.keys().forEach(filename => req(filename))
 }
 
 Vue.use(BootstrapVue)
