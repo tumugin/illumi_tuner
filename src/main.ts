@@ -16,6 +16,7 @@ Vue.use(VueCompositionApi)
 Vue.use(BootstrapVue)
 Vue.use(VueObserveVisibility)
 Vue.use(VueScrollTo)
+Vue.mixin(titleMixin)
 
 const isProduction = process.env.NODE_ENV === 'production'
 if (!isProduction) {
@@ -36,7 +37,6 @@ Vue.use(VueAnalytics, {
 const app = new Vue({
   router: router,
   store,
-  mixins: [titleMixin],
   components: { App },
   render(h) {
     return h(App)
