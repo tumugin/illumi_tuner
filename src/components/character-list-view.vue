@@ -66,6 +66,10 @@ export default Vue.extend({
     }
   },
   methods: {
+    characterItemUpdateCheckedState(item: INameAndColor, state: boolean) {
+      const newItem = this.makeUpdatedCharacterByState(item, state)
+      IllumiTunerVuexModule(this.$store).updateImasCharacter(newItem)
+    },
     makeUpdatedCharacterByState(item: INameAndColor, state: boolean) {
       const updatedItem = Object.assign({}, item)
       updatedItem.checked = state

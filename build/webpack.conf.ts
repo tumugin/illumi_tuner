@@ -19,7 +19,7 @@ export default function config(
     entry: {
       app: path.resolve('src/main.ts')
     },
-    devtool: argv.mode === 'production' ? false : 'inline-source-map',
+    devtool: argv.mode === 'production' ? false : 'eval-source-map',
     optimization: {
       splitChunks: {
         chunks: 'all',
