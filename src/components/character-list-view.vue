@@ -9,11 +9,11 @@
       </b-form-checkbox-group>
     </div>
     <div class="characterListView">
-      <b-button class="characterItem button" variant="outline-danger" @click="unselectAllButtonClicked()">
+      <b-button class="characterItem button" variant="outline-danger" @click="unselectAllButtonClicked">
         すべて選択解除
       </b-button>
-      <b-button class="characterItem button" variant="outline-success" @click="selectAllButtonClicked()">
-        表示アイテムを<br >すべて選択
+      <b-button class="characterItem button" variant="outline-success" @click="selectAllButtonClicked">
+        表示アイテムを<br />すべて選択
       </b-button>
       <character-item
         v-for="item in characters"
@@ -35,7 +35,8 @@ import IllumiTunerVuexModule from '../store/illumi-tuner-vuex-module'
 import CharacterItem from './character-item.vue'
 import INameAndColor from '../models/i-name-and-color'
 
-const CharacterListView = Vue.extend({
+export default Vue.extend({
+  name: 'CharacterListView',
   data() {
     return {
       filterText: ''
@@ -46,39 +47,42 @@ const CharacterListView = Vue.extend({
   },
   computed: {
     characters() {
-      return IllumiTunerVuexModule.imasCharacters
-        .sort((a, b) => a.nameKana.localeCompare(b.nameKana))
+      return IllumiTunerVuexModule(this.$store)
+        .imasCharacters.sort((a, b) => a.nameKana.localeCompare(b.nameKana))
         .sort((a, b) => a.title.localeCompare(b.title))
         .filter(item => item.name.includes(this.$data.filterText) || item.nameKana.includes(this.$data.filterText))
-        .filter(item => IllumiTunerVuexModule.filterOffice.includes(item.title))
+        .filter(item => IllumiTunerVuexModule(this.$store).filterOffice.includes(item.title))
     },
     idolOfficeList() {
-      return [...new Set(IllumiTunerVuexModule.imasCharacters.map(item => item.title))]
+      return [...new Set(IllumiTunerVuexModule(this.$store).imasCharacters.map(item => item.title))]
     },
     filterOffice: {
       get() {
-        return IllumiTunerVuexModule.filterOffice
+        return IllumiTunerVuexModule(this.$store).filterOffice
       },
       set(value: string[]) {
-        IllumiTunerVuexModule.setFilterOffice(value)
+        IllumiTunerVuexModule(this.$store).setFilterOffice(value)
       }
     }
   },
   methods: {
-    characterItemUpdateCheckedState(item: INameAndColor, state: boolean) {
+    makeUpdatedCharacterByState(item: INameAndColor, state: boolean) {
       const updatedItem = Object.assign({}, item)
       updatedItem.checked = state
-      IllumiTunerVuexModule.updateImasCharacter(updatedItem)
+      return updatedItem
     },
     selectAllButtonClicked() {
-      this.characters.forEach(item => this.characterItemUpdateCheckedState(item, true))
+      IllumiTunerVuexModule(this.$store).updateImasCharacters(
+        this.characters.map(item => this.makeUpdatedCharacterByState(item, true))
+      )
     },
     unselectAllButtonClicked() {
-      IllumiTunerVuexModule.imasCharacters.forEach(item => this.characterItemUpdateCheckedState(item, false))
+      IllumiTunerVuexModule(this.$store).updateImasCharacters(
+        this.characters.map(item => this.makeUpdatedCharacterByState(item, false))
+      )
     }
   }
 })
-export default CharacterListView
 </script>
 
 <style scoped lang="scss">

@@ -22,7 +22,8 @@
     </p>
     <h2>仕組み</h2>
     <p>
-      データの取得元である、<a href="https://sparql.crssnky.xyz/imas/">im@sparql</a>からアイドルの名前と色と所属を取得し、
+      データの取得元である、<a href="https://sparql.crssnky.xyz/imas/">im@sparql</a
+      >からアイドルの名前と色と所属を取得し、
       ペンライトで発色可能な色と一人ひとりのアイドルの色との色差を計算し一番差が小さい色を選択しています。
     </p>
     <p>
@@ -47,8 +48,7 @@
 <script lang="ts">
 import Vue from 'vue'
 
-const AboutPage = Vue.extend({})
-export default AboutPage
+export default Vue.extend({ name: 'AboutPage', title: 'これなあに - IllumiTuner' })
 </script>
 
 <style scoped></style>

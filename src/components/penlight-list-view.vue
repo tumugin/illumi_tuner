@@ -21,13 +21,14 @@ import INameAndColor from '../models/i-name-and-color'
 import md5 from 'md5'
 
 interface PenlightColorWithIdolList {
-  color: AbstractPenlightColor;
-  idols: INameAndColor[];
-  key: string;
-  index: number;
+  color: AbstractPenlightColor
+  idols: INameAndColor[]
+  key: string
+  index: number
 }
 
-const PenlightListView = Vue.extend({
+export default Vue.extend({
+  name: 'PenlightListView',
   components: {
     PenlightItem
   },
@@ -38,7 +39,7 @@ const PenlightListView = Vue.extend({
   },
   computed: {
     suggestedPenlightColor2() {
-      const checkedItem = IllumiTunerVuexModule.imasCharacters.filter(item => item.checked)
+      const checkedItem = IllumiTunerVuexModule(this.$store).imasCharacters.filter(item => item.checked)
       const searchResult = (this.$data.penlight as AbstractPenlight).searchColor(checkedItem, false)
       const distinctColors = [...new Set(searchResult.map(item => item.penlightColor))]
       return distinctColors
@@ -54,7 +55,6 @@ const PenlightListView = Vue.extend({
     }
   }
 })
-export default PenlightListView
 </script>
 
 <style scoped lang="scss">

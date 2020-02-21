@@ -1,10 +1,11 @@
 import { Action, getModule, Module, Mutation, VuexModule } from 'vuex-module-decorators'
-import mainStore from './main-store'
 import INameAndColor from '../models/i-name-and-color'
 import ImasparqlApi from '../webapi/imasparql-api'
 import ILive from '../models/i-live'
+import { Store } from 'vuex'
+import { RootState } from './main-store'
 
-@Module({ dynamic: true, name: 'IllumiTunerStore', store: mainStore })
+@Module({ name: 'IllumiTunerStore' })
 export class IllumiTunerVuexModuleClass extends VuexModule {
   imasCharacters: INameAndColor[] = []
 
@@ -21,6 +22,14 @@ export class IllumiTunerVuexModuleClass extends VuexModule {
   public updateImasCharacter(param: INameAndColor) {
     const index = this.imasCharacters.findIndex(item => item.key === param.key)
     this.imasCharacters.splice(index, 1, param)
+  }
+
+  @Mutation
+  public updateImasCharacters(param: INameAndColor[]) {
+    param.forEach(character => {
+      const index = this.imasCharacters.findIndex(item => item.key === character.key)
+      this.imasCharacters.splice(index, 1, character)
+    })
   }
 
   @Mutation
@@ -49,5 +58,11 @@ export class IllumiTunerVuexModuleClass extends VuexModule {
   }
 }
 
-const IllumiTunerVuexModule = getModule(IllumiTunerVuexModuleClass)
+const IllumiTunerVuexModule = (store: Store<RootState>) => getModule(IllumiTunerVuexModuleClass, store)
 export default IllumiTunerVuexModule
+
+export function registerIllumiTunerModule(store: Store<RootState>) {
+  if (!store.state.IllumiTunerStore) {
+    store.registerModule('IllumiTunerStore', IllumiTunerVuexModuleClass)
+  }
+}

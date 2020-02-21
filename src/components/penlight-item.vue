@@ -3,7 +3,7 @@
     <span class="title">{{ penlightColor.colorName }}</span>
     <div class="idolListContainer">
       <span v-for="idol in idols" :key="idol.key" class="idol">
-        <div class="colorIndicator" :style="{ backgroundColor: idol.colorHEX }"/>
+        <div class="colorIndicator" :style="{ backgroundColor: idol.colorHEX }" />
         {{ idol.name }}
       </span>
     </div>
@@ -12,7 +12,8 @@
 
 <script lang="ts">
 import Vue from 'vue'
-const PenlightItem = Vue.extend({
+export default Vue.extend({
+  name: 'PenlightItem',
   props: {
     penlightColor: {
       type: Object,
@@ -24,7 +25,6 @@ const PenlightItem = Vue.extend({
     }
   }
 })
-export default PenlightItem
 </script>
 
 <style scoped lang="scss">

@@ -1,7 +1,5 @@
-import approuter from './router/router'
 import Vue from 'vue'
 import App from './app.vue'
-import store from './store/main-store'
 import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -10,26 +8,34 @@ import VueScrollTo from 'vue-scrollto'
 // @ts-ignore
 import VueAnalytics from 'vue-analytics'
 import VueCompositionApi from '@vue/composition-api'
+import titleMixin from './mixins/title-mixin'
+import { createRouter } from './router/router'
+import createStore from './store/main-store'
 
 Vue.use(VueCompositionApi)
 Vue.use(BootstrapVue)
 Vue.use(VueObserveVisibility)
 Vue.use(VueScrollTo)
+Vue.mixin(titleMixin)
 
 const isProduction = process.env.NODE_ENV === 'production'
 if (!isProduction) {
   console.log('App is running in debug mode!!')
 }
+
+const router = createRouter()
+const store = createStore()
+
 Vue.use(VueAnalytics, {
   id: 'UA-139621116-1',
   debug: {
     sendHitTask: isProduction
   },
-  router: approuter
+  router: router
 })
 
 const app = new Vue({
-  router: approuter,
+  router: router,
   store,
   components: { App },
   render(h) {

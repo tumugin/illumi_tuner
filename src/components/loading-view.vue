@@ -22,8 +22,8 @@
 <script lang="ts">
 import { createComponent } from '@vue/composition-api'
 
-const LoadingView = createComponent({
-  name: 'loading-view',
+export default createComponent({
+  name: 'LoadingView',
   props: {
     isVisible: {
       type: Boolean,
@@ -34,7 +34,6 @@ const LoadingView = createComponent({
     }
   }
 })
-export default LoadingView
 </script>
 
 <style scoped lang="scss">

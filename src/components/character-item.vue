@@ -17,7 +17,8 @@
 
 <script lang="ts">
 import Vue from 'vue'
-const CharacterItem = Vue.extend({
+export default Vue.extend({
+  name: 'CharacterItem',
   data() {
     return {}
   },
@@ -50,7 +51,6 @@ const CharacterItem = Vue.extend({
     }
   }
 })
-export default CharacterItem
 </script>
 
 <style scoped lang="scss">
