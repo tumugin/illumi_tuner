@@ -1,12 +1,16 @@
 import Vuex from 'vuex'
 import Vue from 'vue'
-import { IllumiTunerVuexModuleClass } from './illumi-tuner-vuex-module'
+import { IllumiTunerVuexModuleClass, registerIllumiTunerModule } from './illumi-tuner-vuex-module'
 
 Vue.use(Vuex)
 
-export interface IMainStore {
-  illumiTunerStore: IllumiTunerVuexModuleClass;
+export interface RootState {
+  IllumiTunerStore: IllumiTunerVuexModuleClass
 }
 
-const mainStore = new Vuex.Store<IMainStore>({})
-export default mainStore
+export default function createStore() {
+  const store = new Vuex.Store<RootState>({})
+  // とりあえず必要なmoduleはここでregisterしておく
+  registerIllumiTunerModule(store)
+  return store
+}
