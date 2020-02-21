@@ -1,7 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 // your app's webpack.config.js
-const custom = require('../build/webpack.dev.conf')
+const custom = require('../build/webpack.conf')
 
 module.exports = async ({ config, mode }) => {
   config.resolve.modules = [
