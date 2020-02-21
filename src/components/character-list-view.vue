@@ -36,6 +36,7 @@ import CharacterItem from './character-item.vue'
 import INameAndColor from '../models/i-name-and-color'
 
 export default Vue.extend({
+  name: 'CharacterListView',
   data() {
     return {
       filterText: ''

@@ -48,8 +48,7 @@
 <script lang="ts">
 import Vue from 'vue'
 
-const AboutPage = Vue.extend({ title: 'これなあに - IllumiTuner' })
-export default AboutPage
+export default Vue.extend({ name: 'AboutPage', title: 'これなあに - IllumiTuner' })
 </script>
 
 <style scoped></style>

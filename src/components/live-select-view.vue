@@ -33,7 +33,7 @@
           <div>
             {{ live.liveName }}
           </div>
-          <hr class="dropdown-divider" v-if="index + 1 !== liveList.length" >
+          <hr class="dropdown-divider" v-if="index + 1 !== liveList.length" />
         </div>
       </template>
     </b-modal>
@@ -45,7 +45,8 @@ import Vue from 'vue'
 import { formatDate } from '../utils/date-utils'
 import ILive from '../models/i-live'
 
-const LiveSelectView = Vue.extend({
+export default Vue.extend({
+  name: 'LiveSelectView',
   data() {
     return {
       showMobileModal: false
@@ -77,7 +78,6 @@ const LiveSelectView = Vue.extend({
     }
   }
 })
-export default LiveSelectView
 </script>
 
 <style scoped></style>

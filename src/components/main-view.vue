@@ -28,7 +28,8 @@ import LiveSelectView from './live-select-view.vue'
 import ILive from '../models/i-live'
 import LoadingView from '../components/loading-view.vue'
 
-const MainView = Vue.extend({
+export default Vue.extend({
+  name: 'MainView',
   data() {
     return {
       isPenlightVisible: false,
@@ -100,7 +101,6 @@ const MainView = Vue.extend({
   },
   title: 'IllumiTuner β'
 })
-export default MainView
 </script>
 
 <style lang="scss" scoped>

@@ -27,7 +27,8 @@ interface PenlightColorWithIdolList {
   index: number
 }
 
-const PenlightListView = Vue.extend({
+export default Vue.extend({
+  name: 'PenlightListView',
   components: {
     PenlightItem
   },
@@ -54,7 +55,6 @@ const PenlightListView = Vue.extend({
     }
   }
 })
-export default PenlightListView
 </script>
 
 <style scoped lang="scss">

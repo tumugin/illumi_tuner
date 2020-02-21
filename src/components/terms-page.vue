@@ -26,8 +26,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-const TermsPage = Vue.extend({ title: '利用規約 - IllumiTuner' })
-export default TermsPage
+export default Vue.extend({ name: 'TermsPage', title: '利用規約 - IllumiTuner' })
 </script>
 
 <style scoped></style>
