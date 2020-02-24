@@ -59,7 +59,10 @@ export default function config(
               loader: 'ts-loader',
               options: {
                 appendTsSuffixTo: [/\.vue$/],
-                happyPackMode: true
+                happyPackMode: true,
+                compilerOptions: {
+                  module: 'esnext'
+                }
               }
             }
           ]
