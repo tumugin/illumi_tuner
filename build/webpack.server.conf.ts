@@ -17,7 +17,7 @@ export default function config(
     },
     target: 'node',
     output: {
-      path: path.resolve(argv.mode === 'production' ? 'prod/' : 'dist/'),
+      path: path.resolve(argv.mode === 'production' ? 'prod-server/' : 'dist-server/'),
       libraryTarget: 'commonjs2'
     },
     optimization: undefined,
