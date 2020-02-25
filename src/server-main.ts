@@ -1,6 +1,6 @@
 import createApp from './app-main'
 
-export default async function context(context: { url: string; rendered?: () => void; state?: object }) {
+export default async function context(context: { url: string; rendered?: () => void; state?: object; title?: string }) {
   const { app, router, store } = createApp()
   const result = await router.push(context.url)
   if (result.matched.length === 0) {
@@ -14,5 +14,9 @@ export default async function context(context: { url: string; rendered?: () => v
       resolve()
     }, reject)
   })
+  if (!context.title) {
+    // 何も無いと落ちるので
+    context.title = ''
+  }
   return app
 }

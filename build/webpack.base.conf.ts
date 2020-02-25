@@ -20,6 +20,9 @@ export default function config(
       publicPath: '/'
     },
     devtool: isProduction ? false : 'source-map',
+    devServer: {
+      historyApiFallback: true
+    },
     optimization: {
       splitChunks: {
         chunks: 'all',

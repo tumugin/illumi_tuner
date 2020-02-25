@@ -6,8 +6,6 @@ declare module 'vue/types/options' {
   }
 }
 
-const defaultTitle = ''
-
 function getTitle(vm: Vue): string | undefined {
   const { title } = vm.$options
   if (title) {
@@ -20,8 +18,8 @@ const serverTitleMixin = {
   created() {
     const vue = (this as unknown) as Vue
     const title = getTitle(vue)
-    if (vue.$ssrContext) {
-      vue.$ssrContext.title = title || defaultTitle
+    if (vue.$ssrContext && title) {
+      vue.$ssrContext.title = title
     }
   }
 }
@@ -30,7 +28,9 @@ const clientTitleMixin = {
   mounted() {
     const vue = (this as unknown) as Vue
     const title = getTitle(vue)
-    document.title = title || defaultTitle
+    if (title) {
+      document.title = title
+    }
   }
 }
 
