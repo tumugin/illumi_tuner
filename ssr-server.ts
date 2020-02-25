@@ -10,13 +10,13 @@ const renderer = createBundleRenderer(path.join(__dirname, 'dist-server/vue-ssr-
 })
 
 const server = express()
-server.use('/*.js', express.static('dist'))
-server.use('/*.js.map', express.static('dist'))
+server.use('/static', express.static(path.join(__dirname, 'dist', 'static')))
 server.get('*', (req, res) => {
   const context = { url: req.url }
   renderer.renderToString(context, (err, html) => {
     if (err) {
       console.error(err)
+      res.status(((err as unknown) as { code: number }).code || 500).end()
     }
     res.end(html)
   })

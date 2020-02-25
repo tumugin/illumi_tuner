@@ -1,18 +1,25 @@
 import * as webpack from 'webpack'
 import * as path from 'path'
+import { VueLoaderPlugin } from 'vue-loader'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 
 export default function config(
   env: { [key: string]: string | undefined },
-  argv: { [key: string]: string | undefined }
+  argv: { [key: string]: string | undefined },
+  options?: { isSSR: boolean }
 ) {
+  const isProduction = argv.mode === 'production'
+  // production => cssを別途出力
+  // debug => SSRでなければstyle-loaderを使用、SSRビルドでは使用できないためnull-loader
+  const styleLoader = isProduction ? MiniCssExtractPlugin.loader : options?.isSSR ? 'null-loader' : 'style-loader'
   const config: webpack.Configuration = {
     output: {
-      filename: '[name].[hash].bundle.js',
-      path: path.resolve(argv.mode === 'production' ? 'prod/' : 'dist/'),
-      chunkFilename: '[name].[hash].bundle.js',
+      filename: 'static/[name].[hash].bundle.js',
+      path: path.resolve(isProduction ? 'prod/' : 'dist/'),
+      chunkFilename: 'static/[name].[hash].bundle.js',
       publicPath: '/'
     },
-    devtool: argv.mode === 'production' ? false : 'source-map',
+    devtool: isProduction ? false : 'source-map',
     optimization: {
       splitChunks: {
         chunks: 'all',
@@ -71,7 +78,8 @@ export default function config(
                 scss: 'vue-style-loader!css-loader!postcss-loader!sass-loader',
                 sass: 'vue-style-loader!css-loader!postcss-loader!sass-loader?indentedSyntax',
                 css: 'vue-style-loader!css-loader!postcss-loader'
-              }
+              },
+              extractCSS: isProduction
             }
           }
         },
@@ -114,18 +122,19 @@ export default function config(
         },
         {
           test: /\.css$/,
-          use: ['style-loader', 'css-loader', 'postcss-loader']
+          use: [styleLoader, 'css-loader', 'postcss-loader']
         },
         {
           test: /\.styl(us)?$/,
-          use: ['style-loader', 'css-loader', 'postcss-loader', 'stylus-loader']
+          use: [styleLoader, 'css-loader', 'postcss-loader', 'stylus-loader']
         },
         {
           test: /\.scss$/,
-          use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
+          use: [styleLoader, 'css-loader', 'postcss-loader', 'sass-loader']
         }
       ]
-    }
+    },
+    plugins: [new VueLoaderPlugin(), new MiniCssExtractPlugin({ filename: 'common.[chunkhash].css' })]
   }
   return config
 }

@@ -3,11 +3,10 @@ import Vue from 'vue'
 declare module 'vue/types/options' {
   interface ComponentOptions<V extends Vue> {
     title?: string | (() => string)
-    ssrContext?: {
-      title: string
-    }
   }
 }
+
+const defaultTitle = ''
 
 function getTitle(vm: Vue): string | undefined {
   const { title } = vm.$options
@@ -21,8 +20,8 @@ const serverTitleMixin = {
   created() {
     const vue = (this as unknown) as Vue
     const title = getTitle(vue)
-    if (title && vue.$options.ssrContext) {
-      vue.$options.ssrContext.title = title
+    if (vue.$ssrContext) {
+      vue.$ssrContext.title = title || defaultTitle
     }
   }
 }
@@ -31,9 +30,7 @@ const clientTitleMixin = {
   mounted() {
     const vue = (this as unknown) as Vue
     const title = getTitle(vue)
-    if (title) {
-      document.title = title
-    }
+    document.title = title || defaultTitle
   }
 }
 

@@ -12,7 +12,7 @@
     </div>
     <penlight-list-view :style="{ marginTop: '20px' }" v-observe-visibility="onPenlightVisible" id="penlightListView" />
     <div class="jumpToDown" :class="{ visible: !isPenlightVisible && isAnyIdolSelected }" @click="moveToPenlightView">
-      {{ isTouch ? 'タップ' : 'クリック' }}して色プレビューを表示する
+      ここを選択して色プレビューを表示する
     </div>
     <loading-view :is-visible="isLoading" :is-load-failed="isLoadFailed" />
   </b-container>
@@ -62,9 +62,6 @@ export default Vue.extend({
   computed: {
     isAnyIdolSelected() {
       return IllumiTunerVuexModule(this.$store).imasCharacters.filter(item => item.checked).length > 0
-    },
-    isTouch() {
-      return 'ontouchstart' in window || navigator.maxTouchPoints
     },
     liveList() {
       return IllumiTunerVuexModule(this.$store).imasLiveList

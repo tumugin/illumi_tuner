@@ -10,11 +10,10 @@ export default function config(
   env: { [key: string]: string | undefined },
   argv: { [key: string]: string | undefined }
 ) {
+  const base = baseConfig(env, argv, { isSSR: true })
   const config: webpack.Configuration = {
-    ...baseConfig(env, argv),
-    entry: {
-      app: path.resolve('src/server-main.ts')
-    },
+    ...base,
+    entry: { app: path.resolve('src/server-main.ts') },
     target: 'node',
     output: {
       path: path.resolve(argv.mode === 'production' ? 'prod-server/' : 'dist-server/'),
@@ -25,12 +24,12 @@ export default function config(
       whitelist: /\.css$/
     }),
     plugins: [
+      ...(base.plugins || []),
       new WebpackBar({
         color: '#f7a1ba',
         profile: true,
         name: 'server'
       }),
-      new VueLoaderPlugin(),
       new VueSSRServerPlugin()
     ]
   }

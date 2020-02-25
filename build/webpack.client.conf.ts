@@ -11,12 +11,14 @@ export default function config(
   env: { [key: string]: string | undefined },
   argv: { [key: string]: string | undefined }
 ) {
+  const base = baseConfig(env, argv)
   const config: webpack.Configuration = {
-    ...baseConfig(env, argv),
+    ...base,
     entry: {
       app: path.resolve('src/main.ts')
     },
     plugins: [
+      ...(base.plugins || []),
       new WebpackBar({
         color: '#7adad6',
         profile: true,
@@ -27,7 +29,6 @@ export default function config(
         template: path.resolve('public/index.html'),
         inject: true
       }),
-      new VueLoaderPlugin(),
       new CopyWebpackPlugin([
         {
           from: path.resolve('static/img'),

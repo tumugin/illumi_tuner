@@ -59,7 +59,7 @@ export default Vue.extend({
     },
     isMobile: {
       type: Boolean,
-      default: () => window.innerWidth < 700 // computedで動的に検知できないのでpropsを使う
+      default: () => (typeof window !== 'undefined' ? window.innerWidth < 700 : false) // computedで動的に検知できないのでpropsを使う
     }
   },
   methods: {

@@ -9,7 +9,7 @@ import VueCompositionApi from '@vue/composition-api'
 import titleMixin from './mixins/title-mixin'
 import { createRouter } from './router/router'
 import createStore from './store/main-store'
-import VueAnalytics from "vue-analytics";
+import VueAnalytics from 'vue-analytics'
 
 Vue.use(VueCompositionApi)
 Vue.use(BootstrapVue)
