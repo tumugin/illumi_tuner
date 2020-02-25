@@ -137,7 +137,7 @@ export default function config(
         }
       ]
     },
-    plugins: [new VueLoaderPlugin(), new MiniCssExtractPlugin({ filename: 'common.[chunkhash].css' })]
+    plugins: [new VueLoaderPlugin(), new MiniCssExtractPlugin({ filename: 'static/common.[chunkhash].css' })]
   }
   return config
 }
