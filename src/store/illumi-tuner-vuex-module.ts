@@ -5,7 +5,7 @@ import ILive from '../models/i-live'
 import { Store } from 'vuex'
 import { RootState } from './main-store'
 
-@Module({ name: 'IllumiTunerStore' })
+@Module({ name: 'IllumiTunerStore', namespaced: true, stateFactory: true })
 export class IllumiTunerVuexModuleClass extends VuexModule {
   imasCharacters: INameAndColor[] = []
 

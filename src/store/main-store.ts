@@ -12,5 +12,6 @@ export default function createStore() {
   const store = new Vuex.Store<RootState>({})
   // とりあえず必要なmoduleはここでregisterしておく
   registerIllumiTunerModule(store)
+  console.log(store.state)
   return store
 }

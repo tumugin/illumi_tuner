@@ -3,7 +3,6 @@ import * as webpack from 'webpack'
 import * as path from 'path'
 import WebpackBar from 'webpackbar'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
-import { VueLoaderPlugin } from 'vue-loader'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
 import VueSSRClientPlugin from 'vue-server-renderer/client-plugin'
 

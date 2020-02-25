@@ -2,7 +2,6 @@ import * as webpack from 'webpack'
 import baseConfig from './webpack.base.conf'
 import * as path from 'path'
 import WebpackBar from 'webpackbar'
-import { VueLoaderPlugin } from 'vue-loader'
 import VueSSRServerPlugin from 'vue-server-renderer/server-plugin'
 import nodeExternals from 'webpack-node-externals'
 

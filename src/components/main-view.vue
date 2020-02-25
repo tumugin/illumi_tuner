@@ -44,6 +44,10 @@ export default Vue.extend({
     LiveSelectView,
     LoadingView
   },
+  async serverPrefetch() {
+    await IllumiTunerVuexModule(this.$store).fetchImasCharacters()
+    await IllumiTunerVuexModule(this.$store).fetchImasLiveList()
+  },
   async created() {
     try {
       if (

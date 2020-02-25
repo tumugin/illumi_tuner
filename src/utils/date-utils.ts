@@ -1,7 +1,8 @@
-export function formatDate(date: Date, format: string) {
+export function formatDate(baseDate: Date | string, format: string) {
   if (!format) {
     format = 'YYYY-MM-DD hh:mm:ss.SSS'
   }
+  const date = typeof baseDate === 'string' ? new Date(baseDate) : baseDate
   format = format.replace(/YYYY/g, date.getFullYear().toString())
   format = format.replace(/MM/g, ('0' + (date.getMonth() + 1)).slice(-2))
   format = format.replace(/DD/g, ('0' + date.getDate()).slice(-2))
