@@ -4,6 +4,8 @@ export type LocalStorageDataTypes = 'string' | 'boolean' | 'number'
 
 export type AvailableTypes = string | boolean | number
 
+const isServer = typeof localStorage === 'undefined'
+
 function booleanDefaultWhenNull(value: boolean | null, defaultValue: boolean) {
   if (value !== null) {
     return value
@@ -18,7 +20,7 @@ export default class LocalStorageUtils {
     defaultValue: AvailableTypes,
     type: LocalStorageDataTypes
   ): AvailableTypes {
-    const storageValue = localStorage.getItem(key)
+    const storageValue = !isServer ? localStorage.getItem(key) : null
     switch (type) {
       case 'string':
         return storageValue || defaultValue
@@ -30,6 +32,8 @@ export default class LocalStorageUtils {
   }
 
   static setLocalStorageData(key: LocalStorageKeys, value: AvailableTypes) {
-    localStorage.setItem(key, JSON.stringify(value))
+    if (!isServer) {
+      localStorage.setItem(key, JSON.stringify(value))
+    }
   }
 }

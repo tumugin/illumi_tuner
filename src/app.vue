@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="root">
     <b-navbar type="dark" variant="dark" toggleable="sm">
       <b-navbar-brand to="/">
         IllumiTuner β

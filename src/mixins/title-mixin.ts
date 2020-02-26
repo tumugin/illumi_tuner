@@ -3,9 +3,6 @@ import Vue from 'vue'
 declare module 'vue/types/options' {
   interface ComponentOptions<V extends Vue> {
     title?: string | (() => string)
-    ssrContext?: {
-      title: string
-    }
   }
 }
 
@@ -21,8 +18,8 @@ const serverTitleMixin = {
   created() {
     const vue = (this as unknown) as Vue
     const title = getTitle(vue)
-    if (title && vue.$options.ssrContext) {
-      vue.$options.ssrContext.title = title
+    if (vue.$ssrContext && title) {
+      vue.$ssrContext.title = title
     }
   }
 }

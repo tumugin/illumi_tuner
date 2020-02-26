@@ -1,6 +1,6 @@
 import * as path from 'path'
 import * as webpack from 'webpack'
-import custom from '../build/webpack.conf'
+import custom from '../build/webpack.client.conf'
 
 module.exports = async ({ config }: { config: webpack.Configuration }) => {
   config.resolve!.modules = [

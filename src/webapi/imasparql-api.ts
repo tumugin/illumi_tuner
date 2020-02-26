@@ -4,29 +4,30 @@ import INameAndColor from '../models/i-name-and-color'
 import uuidv4 from 'uuid/v4'
 import ILive from '../models/i-live'
 import { formatDate } from '../utils/date-utils'
+import Axios from 'axios'
 
 interface IImasparqlApiResponse {
   results: {
     bindings: [
       {
         color: {
-          value: string;
-        };
+          value: string
+        }
         name: {
-          value: string;
-        };
+          value: string
+        }
         namekana: {
-          value: string;
-        };
+          value: string
+        }
         title: {
-          value: string;
-        };
+          value: string
+        }
         actor: {
-          value: string;
-        };
+          value: string
+        }
       }
-    ];
-  };
+    ]
+  }
 }
 
 interface IImasparqlLiveListResponse {
@@ -34,29 +35,30 @@ interface IImasparqlLiveListResponse {
     bindings: [
       {
         liveName: {
-          value: string;
-        };
+          value: string
+        }
         liveDate: {
-          value: string;
-        };
+          value: string
+        }
         liveActor: {
-          value: string;
-        };
+          value: string
+        }
         liveLocation: {
-          value: string;
-        };
+          value: string
+        }
       }
-    ];
-  };
+    ]
+  }
 }
 
 export default class ImasparqlApi {
   static readonly ApiEndpoint = 'https://sparql.crssnky.xyz/spql/imas/query'
 
   static async fetchNameAndColor() {
-    const uri = `${this.ApiEndpoint}?query=${encodeURIComponent(findNameAndColorQuery)}`
-    const response = (await (await fetch(uri)).json()) as IImasparqlApiResponse
-    return response.results.bindings.map(item => {
+    const response = await Axios.get<IImasparqlApiResponse>(this.ApiEndpoint, {
+      params: { query: findNameAndColorQuery }
+    })
+    return response.data.results.bindings.map(item => {
       const mappedItem: INameAndColor = {
         colorHEX: `#${item.color.value}`,
         name: item.name.value,
@@ -74,12 +76,11 @@ export default class ImasparqlApi {
     const currentDateTime = new Date()
     const date = formatDate(currentDateTime, 'YYYY-MM-DD')
     const queryText = findNextLiveQuery.replace('@@DATE@@', date)
-    const uri = `${this.ApiEndpoint}?query=${encodeURIComponent(queryText)}`
-    const response = (await (await fetch(uri)).json()) as IImasparqlLiveListResponse
-    return response.results.bindings.map(item => {
+    const response = await Axios.get<IImasparqlLiveListResponse>(this.ApiEndpoint, { params: { query: queryText } })
+    return response.data.results.bindings.map(item => {
       return {
         liveName: item.liveName.value,
-        liveDate: new Date(item.liveDate.value),
+        liveDate: item.liveDate.value,
         liveActor: item.liveActor.value.split(' '),
         liveLocation: item.liveLocation.value
       } as ILive
