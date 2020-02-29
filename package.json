@@ -4,12 +4,16 @@
   "description": "A Vue.js project",
   "author": "Kazuki Oishi <oishikazuki@gmail.com>",
   "private": true,
+  "workspaces": [
+    "functions"
+  ],
   "scripts": {
     "dev": "webpack-dev-server --config build/webpack.conf.ts --mode=development",
     "builddev": "webpack --config build/webpack.conf.ts --mode=development",
     "watch": "webpack --config build/webpack.conf.ts --mode=development --watch",
     "prod": "webpack --config build/webpack.conf.ts --mode=production",
-    "ssr:server": "ts-node ./ssr-server.ts",
+    "ssr:dev": "NODE_ENV=development ts-node ./ssr-server.ts",
+    "ssr:prod": "NODE_ENV=production ts-node ./ssr-server.ts",
     "lint": "eslint --ext .ts,.js,.vue src",
     "lint:fix": "eslint --ext .js,.vue src --fix",
     "storybook": "start-storybook -p 9001",

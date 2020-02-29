@@ -9,6 +9,9 @@ steps:
       yarn install
     displayName: 'yarn install'
   - script: |
+      yarn run lint
+    displayName: 'Lint'
+  - script: |
       sudo apt install -y fonts-takao
     displayName: 'システムにフォントをインストール'
   - script: |
