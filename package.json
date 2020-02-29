@@ -24,7 +24,7 @@
     "clean:prod": "rm -rf prod prod-server",
     "clean": "yarn run clean:dev && yarn run clean:prod",
     "deploy": "yarn run clean:prod && yarn run prod && firebase deploy",
-    "copyfunctionfiles": "cp prod/vue-ssr-client-manifest.json functions/dist/ && cp prod-server/vue-ssr-server-bundle.json functions/dist/ && cp public/index.ssr.template.html functions/dist/"
+    "copyfunctionfiles": "mkdir -p functions/dist/ && cp prod/vue-ssr-client-manifest.json functions/dist/ && cp prod-server/vue-ssr-server-bundle.json functions/dist/ && cp public/index.ssr.template.html functions/dist/"
   },
   "dependencies": {
     "@vue/composition-api": "^0.4.0",
