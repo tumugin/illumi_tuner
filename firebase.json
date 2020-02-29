@@ -1,16 +1,15 @@
 {
   "hosting": {
     "public": "prod",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       {
         "source": "**",
         "destination": "/index.html"
       }
     ]
+  },
+  "functions": {
+    "predeploy": ["yarn workspace functions run lint", "yarn workspace functions run build"]
   }
 }

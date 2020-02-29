@@ -10,8 +10,9 @@ export default function config(
 ) {
   const isProduction = argv.mode === 'production'
   // production => cssを別途出力
-  // debug => SSRでなければstyle-loaderを使用、SSRビルドでは使用できないためnull-loader
-  const styleLoader = isProduction ? MiniCssExtractPlugin.loader : options?.isSSR ? 'null-loader' : 'style-loader'
+  // debug => Clientであればstyle-loaderもしくはMiniCssExtractPlugin.loaderを使用、SSRビルドでは使用できないためnull-loader
+  const styleLoader = options?.isSSR ? 'null-loader' : isProduction ? MiniCssExtractPlugin.loader : 'style-loader'
+  const sourceMapEnabled = options?.isSSR || !isProduction
   const config: webpack.Configuration = {
     output: {
       filename: 'static/[name].[hash].bundle.js',
@@ -19,7 +20,7 @@ export default function config(
       chunkFilename: 'static/[name].[hash].bundle.js',
       publicPath: '/'
     },
-    devtool: isProduction ? false : 'source-map',
+    devtool: sourceMapEnabled && 'source-map',
     devServer: {
       historyApiFallback: true
     },
