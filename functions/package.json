@@ -11,7 +11,7 @@
     "logs": "yarn run firebase functions:log"
   },
   "engines": {
-    "node": "13"
+    "node": "10"
   },
   "main": "dist/index.js",
   "dependencies": {
