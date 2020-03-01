@@ -3,12 +3,15 @@
   "version": "1.0.0",
   "scripts": {
     "lint": "eslint --ext .ts,.js src",
-    "build": "tsc",
+    "build": "yarn run tsc",
     "serve": "yarn run build && firebase emulators:start --only functions",
     "shell": "yarn run build && firebase functions:shell",
     "start": "yarn run shell",
     "deploy": "yarn run firebase deploy --only functions",
     "logs": "yarn run firebase functions:log"
+  },
+  "engines": {
+    "node": "8"
   },
   "main": "dist/index.js",
   "dependencies": {

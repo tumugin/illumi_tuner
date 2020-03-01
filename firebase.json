@@ -9,7 +9,5 @@
       }
     ]
   },
-  "functions": {
-    "predeploy": ["yarn workspace functions run lint", "yarn workspace functions run build"]
-  }
+  "functions": {}
 }

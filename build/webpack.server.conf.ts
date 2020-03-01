@@ -10,18 +10,21 @@ export default function config(
   argv: { [key: string]: string | undefined }
 ) {
   const base = baseConfig(env, argv, { isSSR: true })
+  const isProduction = argv.mode === 'production'
   const config: webpack.Configuration = {
     ...base,
     entry: { app: path.resolve('src/server-main.ts') },
     target: 'node',
     output: {
-      path: path.resolve(argv.mode === 'production' ? 'prod-server/' : 'dist-server/'),
+      path: path.resolve(isProduction ? 'prod-server/' : 'dist-server/'),
       libraryTarget: 'commonjs2'
     },
     optimization: undefined,
-    externals: nodeExternals({
-      whitelist: /\.css$/
-    }),
+    externals: isProduction
+      ? undefined // firebase functions側のpackage.jsonを二重管理したくないので依存関係は全部突っ込む
+      : nodeExternals({
+          whitelist: /\.css$/
+        }),
     plugins: [
       ...(base.plugins || []),
       new WebpackBar({

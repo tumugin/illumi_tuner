@@ -4,9 +4,6 @@
   "description": "A Vue.js project",
   "author": "Kazuki Oishi <oishikazuki@gmail.com>",
   "private": true,
-  "workspaces": [
-    "functions"
-  ],
   "scripts": {
     "dev": "webpack-dev-server --mode=development",
     "builddev": "webpack --mode=development",
@@ -46,7 +43,8 @@
     "vuex": "^3.1.2",
     "vuex-class": "^0.3.2",
     "vuex-module-decorators": "^0.16.1",
-    "vuex-type-helper": "^1.2.2"
+    "vuex-type-helper": "^1.2.2",
+    "core-js": "^3.6.4"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
@@ -84,7 +82,6 @@
     "babel-preset-vue": "^2.0.2",
     "chalk": "^3.0.0",
     "copy-webpack-plugin": "^5.1.1",
-    "core-js": "^3.6.4",
     "css-loader": "^3.4.2",
     "cssnano": "^4.1.10",
     "eslint": "^6.8.0",
