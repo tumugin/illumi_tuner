@@ -20,8 +20,11 @@ export const vueSSRServer = functions.https.onRequest(async (request, response) 
   } catch (ex) {
     if (ex.code && typeof ex.code === 'number') {
       response.status(ex.code)
+      response.send()
+      return
     }
     console.error(ex)
     response.status(500)
+    response.send('Internal Server Error.')
   }
 })
