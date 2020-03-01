@@ -46,7 +46,7 @@ export const imasparqlCacheServer = functions.https.onRequest(async (request, re
   if (matchedCaches.length > 0) {
     // キャッシュが存在するのでそのまま返す
     const document = matchedCaches[0].data() as CacheData
-    console.log(`Request has cache until ${document.expire}. Query = ${query}`)
+    console.log(`Request has cache until ${document.expire.toDate()}. Query = ${query}`)
     response.send(document.data)
     return
   }
@@ -60,7 +60,7 @@ export const imasparqlCacheServer = functions.https.onRequest(async (request, re
       expire: Timestamp.fromMillis(
         moment()
           .add('1', 'days')
-          .milliseconds()
+          .valueOf()
       ),
       query
     }
