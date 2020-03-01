@@ -5,11 +5,10 @@
     "rewrites": [
       {
         "source": "**",
-        "destination": "/index.html"
+        "function": "vueSSRServer"
       }
-    ]
+    ],
+    "predeploy": ["rm -f prod/index.html"]
   },
-  "functions": {
-    "predeploy": ["yarn workspace functions run lint", "yarn workspace functions run build"]
-  }
+  "functions": {}
 }
