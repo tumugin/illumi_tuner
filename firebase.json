@@ -8,7 +8,7 @@
         "function": "vueSSRServer"
       }
     ],
-    "predeploy": ["rm prod/index.html"]
+    "predeploy": ["rm -f prod/index.html"]
   },
   "functions": {}
 }
