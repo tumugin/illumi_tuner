@@ -1,9 +1,9 @@
 import { Action, getModule, Module, Mutation, VuexModule } from 'vuex-module-decorators'
 import INameAndColor from '../models/i-name-and-color'
-import ImasparqlApi from '../webapi/imasparql-api'
 import ILive from '../models/i-live'
 import { Store } from 'vuex'
 import { RootState } from './main-store'
+import ImasparqlApi from '../webapi/imasparql-api'
 
 @Module({ name: 'IllumiTunerStore', namespaced: true, stateFactory: true })
 export class IllumiTunerVuexModuleClass extends VuexModule {
@@ -42,23 +42,25 @@ export class IllumiTunerVuexModuleClass extends VuexModule {
     this.imasLiveList = param
   }
 
-  @Action({})
+  @Action
   public async fetchImasCharacters() {
-    const result = await ImasparqlApi.fetchNameAndColor()
+    const imasparqlApi: ImasparqlApi = this.context.rootState.ApiClient.imasparqlApi
+    const result = await imasparqlApi.fetchNameAndColor()
     this.setImasCharacters(result)
     // キャラクターリストを更新すると事務所も一旦リセットする必要がある
     // 今のデフォルトは全て選択された状態
     this.setFilterOffice([...new Set(this.imasCharacters.map(item => item.title))])
   }
 
-  @Action({})
+  @Action
   public async fetchImasLiveList() {
-    const result = await ImasparqlApi.fetchNextLive()
+    const imasparqlApi: ImasparqlApi = this.context.rootState.ApiClient.imasparqlApi
+    const result = await imasparqlApi.fetchNextLive()
     this.setImasLiveList(result)
   }
 }
 
-const IllumiTunerVuexModule = (store: Store<RootState>) => getModule(IllumiTunerVuexModuleClass, store)
+const IllumiTunerVuexModule = (store?: Store<RootState>) => getModule(IllumiTunerVuexModuleClass, store)
 export default IllumiTunerVuexModule
 
 export function registerIllumiTunerModule(store: Store<RootState>) {

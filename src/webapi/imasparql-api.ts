@@ -52,9 +52,13 @@ interface IImasparqlLiveListResponse {
 }
 
 export default class ImasparqlApi {
-  static readonly ApiEndpoint = 'https://sparql.crssnky.xyz/spql/imas/query'
+  readonly ApiEndpoint: string
 
-  static async fetchNameAndColor() {
+  constructor(sparqlEndpoint = 'https://sparql.crssnky.xyz/spql/imas/query') {
+    this.ApiEndpoint = sparqlEndpoint
+  }
+
+  async fetchNameAndColor() {
     const response = await Axios.get<IImasparqlApiResponse>(this.ApiEndpoint, {
       params: { query: findNameAndColorQuery }
     })
@@ -72,7 +76,7 @@ export default class ImasparqlApi {
     })
   }
 
-  static async fetchNextLive() {
+  async fetchNextLive() {
     const currentDateTime = new Date()
     const date = formatDate(currentDateTime, 'YYYY-MM-DD')
     const queryText = findNextLiveQuery.replace('@@DATE@@', date)
@@ -87,7 +91,7 @@ export default class ImasparqlApi {
     })
   }
 
-  static getShortTitle(title: string) {
+  getShortTitle(title: string) {
     switch (title) {
       case '283Pro':
         return 'シャニ'
