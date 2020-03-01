@@ -10,5 +10,6 @@
     ],
     "predeploy": ["rm -f prod/index.html"]
   },
-  "functions": {}
+  "functions": {},
+  "firestore": {}
 }

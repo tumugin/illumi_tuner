@@ -4,7 +4,7 @@
   "scripts": {
     "lint": "eslint --ext .ts,.js src",
     "build": "yarn run tsc",
-    "serve": "yarn run build && firebase emulators:start --only functions",
+    "serve": "yarn run build && firebase emulators:start --only functions,firestore",
     "shell": "yarn run build && firebase functions:shell",
     "start": "yarn run shell",
     "deploy": "yarn run firebase deploy --only functions",
@@ -15,8 +15,10 @@
   },
   "main": "dist/index.js",
   "dependencies": {
+    "axios": "^0.19.2",
     "firebase-admin": "^8.9.2",
     "firebase-functions": "^3.3.0",
+    "moment": "^2.24.0",
     "vue-server-renderer": "^2.6.11"
   },
   "devDependencies": {
