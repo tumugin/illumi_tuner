@@ -14,7 +14,7 @@
     <div class="jumpToDown" :class="{ visible: !isPenlightVisible && isAnyIdolSelected }" @click="moveToPenlightView">
       ここを選択して色プレビューを表示する
     </div>
-    <loading-view :is-visible="isLoading" :is-load-failed="isLoadFailed" />
+    <loading-view v-if="!$isServer" :is-visible="isLoading" :is-load-failed="isLoadFailed" />
   </b-container>
 </template>
 
