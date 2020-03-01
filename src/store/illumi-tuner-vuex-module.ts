@@ -44,7 +44,7 @@ export class IllumiTunerVuexModuleClass extends VuexModule {
 
   @Action
   public async fetchImasCharacters() {
-    const imasparqlApi: ImasparqlApi = this.context.rootState.ApiClient.imasparqlApi
+    const imasparqlApi: ImasparqlApi = this.context.rootGetters['ApiClient/imasparqlApi']
     const result = await imasparqlApi.fetchNameAndColor()
     this.setImasCharacters(result)
     // キャラクターリストを更新すると事務所も一旦リセットする必要がある
@@ -54,7 +54,7 @@ export class IllumiTunerVuexModuleClass extends VuexModule {
 
   @Action
   public async fetchImasLiveList() {
-    const imasparqlApi: ImasparqlApi = this.context.rootState.ApiClient.imasparqlApi
+    const imasparqlApi: ImasparqlApi = this.context.rootGetters['ApiClient/imasparqlApi']
     const result = await imasparqlApi.fetchNextLive()
     this.setImasLiveList(result)
   }
