@@ -1,0 +1,19 @@
+import { RootState } from './main-store'
+import { Module, Store } from 'vuex'
+import ImasparqlApi from '../webapi/imasparql-api'
+
+const module: Module<{}, RootState> = {
+  namespaced: true,
+  getters: {
+    imasparqlApi: () =>
+      process.env.NODE_ENV === 'production'
+        ? new ImasparqlApi('https://illumituner.firebaseapp.com/api/imasparql')
+        : new ImasparqlApi()
+  }
+}
+
+export function registerApiClientModule(store: Store<RootState>) {
+  if (!store.state.ApiClient) {
+    store.registerModule('ApiClient', module)
+  }
+}
