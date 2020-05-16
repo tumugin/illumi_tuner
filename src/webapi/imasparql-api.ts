@@ -1,7 +1,7 @@
 import findNameAndColorQuery from 'raw-loader!./imasparql-query/find-name-and-color.sparql'
 import findNextLiveQuery from 'raw-loader!./imasparql-query/find-next-live.sparql'
 import INameAndColor from '../models/i-name-and-color'
-import uuidv4 from 'uuid/v4'
+import * as uuid from 'uuid'
 import ILive from '../models/i-live'
 import { formatDate } from '../utils/date-utils'
 import Axios from 'axios'
@@ -69,7 +69,7 @@ export default class ImasparqlApi {
         nameKana: item.namekana.value,
         title: this.getShortTitle(item.title.value),
         actor: item.actor.value,
-        key: uuidv4(),
+        key: uuid.v4(),
         checked: false
       }
       return mappedItem

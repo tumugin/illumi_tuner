@@ -3,6 +3,7 @@ import * as webpack from 'webpack'
 import * as path from 'path'
 import WebpackBar from 'webpackbar'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
+// @ts-ignore
 import CopyWebpackPlugin from 'copy-webpack-plugin'
 import VueSSRClientPlugin from 'vue-server-renderer/client-plugin'
 
@@ -14,34 +15,36 @@ export default function config(
   const config: webpack.Configuration = {
     ...base,
     entry: {
-      app: path.resolve('src/main.ts')
+      app: path.resolve('src/main.ts'),
     },
     plugins: [
       ...(base.plugins || []),
-      new WebpackBar({
+      (new WebpackBar({
         color: '#7adad6',
         profile: true,
-        name: 'client'
-      }),
+        name: 'client',
+      }) as unknown) as webpack.Plugin,
       new HtmlWebpackPlugin({
         filename: 'index.html',
         template: path.resolve('public/index.html'),
-        inject: true
+        inject: true,
       }),
-      new CopyWebpackPlugin([
-        {
-          from: path.resolve('static/img'),
-          to: path.resolve('dist/static/img'),
-          toType: 'dir'
-        },
-        {
-          from: path.resolve('static/img'),
-          to: path.resolve('prod/static/img'),
-          toType: 'dir'
-        }
-      ]),
-      new VueSSRClientPlugin()
-    ]
+      (new CopyWebpackPlugin({
+        patterns: [
+          {
+            from: path.resolve('static/img'),
+            to: path.resolve('dist/static/img'),
+            toType: 'dir',
+          },
+          {
+            from: path.resolve('static/img'),
+            to: path.resolve('prod/static/img'),
+            toType: 'dir',
+          },
+        ],
+      }) as unknown) as webpack.Plugin,
+      new VueSSRClientPlugin(),
+    ],
   }
   return config
 }

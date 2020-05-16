@@ -18,12 +18,9 @@ export default function config(
       filename: 'static/[name].[hash].bundle.js',
       path: path.resolve(isProduction ? 'prod/' : 'dist/'),
       chunkFilename: 'static/[name].[hash].bundle.js',
-      publicPath: '/'
+      publicPath: '/',
     },
     devtool: sourceMapEnabled && 'source-map',
-    devServer: {
-      historyApiFallback: true
-    },
     optimization: {
       splitChunks: {
         chunks: 'all',
@@ -31,19 +28,19 @@ export default function config(
           commons: {
             test: /[\\/]node_modules[\\/]/,
             name: 'vendor',
-            chunks: 'all'
-          }
-        }
+            chunks: 'all',
+          },
+        },
       },
       namedModules: true,
-      noEmitOnErrors: true
+      noEmitOnErrors: true,
     },
     resolve: {
       extensions: ['.js', '.vue', '.json', '.ts'],
       alias: {
         vue$: 'vue/dist/vue.runtime.esm.js',
-        '@': path.resolve('src/')
-      }
+        '@': path.resolve('src/'),
+      },
     },
     module: {
       rules: [
@@ -53,11 +50,11 @@ export default function config(
             {
               loader: 'thread-loader',
               options: {
-                workers: require('os').cpus().length - 1
-              }
+                workers: require('os').cpus().length - 1,
+              },
             },
             {
-              loader: 'babel-loader'
+              loader: 'babel-loader',
             },
             {
               loader: 'ts-loader',
@@ -65,11 +62,11 @@ export default function config(
                 appendTsSuffixTo: [/\.vue$/],
                 happyPackMode: true,
                 compilerOptions: {
-                  module: 'esnext'
-                }
-              }
-            }
-          ]
+                  module: 'esnext',
+                },
+              },
+            },
+          ],
         },
         {
           test: /\.vue$/,
@@ -81,18 +78,18 @@ export default function config(
               loaders: {
                 scss: 'vue-style-loader!css-loader!postcss-loader!sass-loader',
                 sass: 'vue-style-loader!css-loader!postcss-loader!sass-loader?indentedSyntax',
-                css: 'vue-style-loader!css-loader!postcss-loader'
+                css: 'vue-style-loader!css-loader!postcss-loader',
               },
-              extractCSS: isProduction
-            }
-          }
+              extractCSS: isProduction,
+            },
+          },
         },
         {
           test: /\.js$/,
           exclude: /node_modules/,
           use: {
-            loader: 'babel-loader'
-          }
+            loader: 'babel-loader',
+          },
         },
         {
           test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -100,9 +97,9 @@ export default function config(
             loader: 'url-loader',
             options: {
               limit: 10000,
-              name: 'img/[name].[hash:7].[ext]'
-            }
-          }
+              name: 'img/[name].[hash:7].[ext]',
+            },
+          },
         },
         {
           test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
@@ -110,9 +107,9 @@ export default function config(
             loader: 'url-loader',
             options: {
               limit: 10000,
-              name: 'media/[name].[hash:7].[ext]'
-            }
-          }
+              name: 'media/[name].[hash:7].[ext]',
+            },
+          },
         },
         {
           test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
@@ -120,25 +117,28 @@ export default function config(
             loader: 'url-loader',
             options: {
               limit: 10000,
-              name: 'fonts/[name].[hash:7].[ext]'
-            }
-          }
+              name: 'fonts/[name].[hash:7].[ext]',
+            },
+          },
         },
         {
           test: /\.css$/,
-          use: [styleLoader, 'css-loader', 'postcss-loader']
+          use: [styleLoader, 'css-loader', 'postcss-loader'],
         },
         {
           test: /\.styl(us)?$/,
-          use: [styleLoader, 'css-loader', 'postcss-loader', 'stylus-loader']
+          use: [styleLoader, 'css-loader', 'postcss-loader', 'stylus-loader'],
         },
         {
           test: /\.scss$/,
-          use: [styleLoader, 'css-loader', 'postcss-loader', 'sass-loader']
-        }
-      ]
+          use: [styleLoader, 'css-loader', 'postcss-loader', 'sass-loader'],
+        },
+      ],
     },
-    plugins: [new VueLoaderPlugin(), new MiniCssExtractPlugin({ filename: 'static/common.[chunkhash].css' })]
+    plugins: [
+      new VueLoaderPlugin(),
+      (new MiniCssExtractPlugin({ filename: 'static/common.[chunkhash].css' }) as unknown) as webpack.Plugin,
+    ],
   }
   return config
 }

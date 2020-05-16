@@ -1,13 +1,13 @@
 import Vuex from 'vuex'
 import Vue from 'vue'
 import { IllumiTunerVuexModuleClass, registerIllumiTunerModule } from './illumi-tuner-vuex-module'
-import { ApiClientModuleClass, registerApiClientModule } from './api-client-module'
+import { ApiClientModule, registerApiClientModule } from './api-client-module'
 
 Vue.use(Vuex)
 
 export interface RootState {
   IllumiTunerStore?: IllumiTunerVuexModuleClass
-  ApiClient?: ApiClientModuleClass
+  ApiClient?: ApiClientModule
 }
 
 export default function createStore() {

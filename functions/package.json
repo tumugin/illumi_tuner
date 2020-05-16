@@ -11,30 +11,31 @@
     "logs": "yarn run firebase functions:log"
   },
   "engines": {
-    "node": "8"
+    "node": "10"
   },
   "main": "dist/index.js",
   "dependencies": {
     "axios": "^0.19.2",
-    "firebase-admin": "^8.9.2",
-    "firebase-functions": "^3.3.0",
-    "moment": "^2.24.0",
+    "firebase-admin": "^8.12.1",
+    "firebase-functions": "^3.6.1",
+    "moment": "^2.25.3",
     "vue-server-renderer": "^2.6.11"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^2.20.0",
-    "@typescript-eslint/parser": "^2.20.0",
-    "eslint": "^6.8.0",
-    "eslint-config-prettier": "^6.10.0",
-    "eslint-config-standard": "^14.1.0",
+    "@types/node": "^14.0.1",
+    "@typescript-eslint/eslint-plugin": "^2.33.0",
+    "@typescript-eslint/parser": "^2.33.0",
+    "eslint": "^7.0.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-config-standard": "^14.1.1",
     "eslint-friendly-formatter": "^4.0.1",
-    "eslint-plugin-import": "^2.20.1",
-    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
-    "firebase-functions-test": "^0.2.0",
-    "firebase-tools": "^7.14.0",
-    "typescript": "^3.8.3"
+    "firebase-functions-test": "^0.2.1",
+    "firebase-tools": "^8.2.0",
+    "typescript": "^3.9.2"
   },
   "private": true
 }
