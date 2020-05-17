@@ -1,7 +1,6 @@
 import findNameAndColorQuery from 'raw-loader!./imasparql-query/find-name-and-color.sparql'
 import findNextLiveQuery from 'raw-loader!./imasparql-query/find-next-live.sparql'
 import INameAndColor from '../models/i-name-and-color'
-import * as uuid from 'uuid'
 import ILive from '../models/i-live'
 import { formatDate } from '../utils/date-utils'
 import Axios from 'axios'
@@ -60,17 +59,17 @@ export default class ImasparqlApi {
 
   async fetchNameAndColor() {
     const response = await Axios.get<IImasparqlApiResponse>(this.ApiEndpoint, {
-      params: { query: findNameAndColorQuery }
+      params: { query: findNameAndColorQuery },
     })
-    return response.data.results.bindings.map(item => {
+    return response.data.results.bindings.map((item, index) => {
       const mappedItem: INameAndColor = {
         colorHEX: `#${item.color.value}`,
         name: item.name.value,
         nameKana: item.namekana.value,
         title: this.getShortTitle(item.title.value),
         actor: item.actor.value,
-        key: uuid.v4(),
-        checked: false
+        key: index.toString(),
+        checked: false,
       }
       return mappedItem
     })
@@ -81,12 +80,12 @@ export default class ImasparqlApi {
     const date = formatDate(currentDateTime, 'YYYY-MM-DD')
     const queryText = findNextLiveQuery.replace('@@DATE@@', date)
     const response = await Axios.get<IImasparqlLiveListResponse>(this.ApiEndpoint, { params: { query: queryText } })
-    return response.data.results.bindings.map(item => {
+    return response.data.results.bindings.map((item) => {
       return {
         liveName: item.liveName.value,
         liveDate: item.liveDate.value,
         liveActor: item.liveActor.value.split(' '),
-        liveLocation: item.liveLocation.value
+        liveLocation: item.liveLocation.value,
       } as ILive
     })
   }

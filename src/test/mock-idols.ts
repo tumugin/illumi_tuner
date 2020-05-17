@@ -1,5 +1,4 @@
 import INameAndColor from '../models/i-name-and-color'
-import uuidv4 from 'uuid/v4'
 
 const MockIdols: INameAndColor[] = [
   {
@@ -8,8 +7,8 @@ const MockIdols: INameAndColor[] = [
     nameKana: 'あまばひかる',
     title: 'STAR ELEMENTS',
     actor: '春日未来',
-    key: uuidv4(),
-    checked: false
+    key: '1',
+    checked: false,
   },
   {
     colorHEX: '#F5AD3B',
@@ -17,8 +16,8 @@ const MockIdols: INameAndColor[] = [
     nameKana: 'かんざきみお',
     title: 'STAR ELEMENTS',
     actor: '矢吹可奈',
-    key: uuidv4(),
-    checked: false
+    key: '2',
+    checked: false,
   },
   {
     colorHEX: '#92CFBB',
@@ -26,9 +25,9 @@ const MockIdols: INameAndColor[] = [
     nameKana: 'くさなぎせいらん',
     title: 'STAR ELEMENTS',
     actor: '田中琴葉',
-    key: uuidv4(),
-    checked: false
-  }
+    key: '3',
+    checked: false,
+  },
 ]
 
 export default MockIdols
