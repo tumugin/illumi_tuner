@@ -12,6 +12,8 @@ const module: Module<{}, RootState> = {
   }
 }
 
+export type ApiClientModule = typeof module
+
 export function registerApiClientModule(store: Store<RootState>) {
   if (!store.state.ApiClient) {
     store.registerModule('ApiClient', module)

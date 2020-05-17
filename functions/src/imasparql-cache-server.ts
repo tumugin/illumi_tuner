@@ -14,19 +14,14 @@ initializeApp()
 
 async function deleteExpiredCache() {
   const appFirestore = firestore()
-  const matchedCaches = (
-    await appFirestore
-      .collection('cache')
-      .where('expire', '<', Timestamp.now())
-      .get()
-  ).docs
+  const matchedCaches = (await appFirestore.collection('cache').where('expire', '<', Timestamp.now()).get()).docs
   const batch = appFirestore.batch()
-  matchedCaches.forEach(item => batch.delete(item.ref))
+  matchedCaches.forEach((item) => batch.delete(item.ref))
   await batch.commit()
 }
 
 export const imasparqlCacheServer = functions.https.onRequest(async (request, response) => {
-  const query = request.query.query
+  const query = request.query.query as string
   const isMethodNotGet = request.method !== 'GET'
   const isNotHavingQuery = query === undefined
   if (isMethodNotGet || isNotHavingQuery) {
@@ -37,11 +32,7 @@ export const imasparqlCacheServer = functions.https.onRequest(async (request, re
 
   const appFirestore = firestore()
   const matchedCaches = (
-    await appFirestore
-      .collection('cache')
-      .where('expire', '>', Timestamp.now())
-      .where('query', '==', query)
-      .get()
+    await appFirestore.collection('cache').where('expire', '>', Timestamp.now()).where('query', '==', query).get()
   ).docs
   if (matchedCaches.length > 0) {
     // キャッシュが存在するのでそのまま返す
@@ -57,12 +48,8 @@ export const imasparqlCacheServer = functions.https.onRequest(async (request, re
     const apiResult = await Axios.get('https://sparql.crssnky.xyz/spql/imas/query', { params: { query } })
     const document: CacheData = {
       data: apiResult.data,
-      expire: Timestamp.fromMillis(
-        moment()
-          .add('1', 'days')
-          .valueOf()
-      ),
-      query
+      expire: Timestamp.fromMillis(moment().add('1', 'days').valueOf()),
+      query,
     }
     await appFirestore.collection('cache').add(document)
     response.send(document.data)

@@ -17,23 +17,23 @@ export default function config(
     target: 'node',
     output: {
       path: path.resolve(isProduction ? 'prod-server/' : 'dist-server/'),
-      libraryTarget: 'commonjs2'
+      libraryTarget: 'commonjs2',
     },
     optimization: undefined,
     externals: isProduction
       ? undefined // firebase functions側のpackage.jsonを二重管理したくないので依存関係は全部突っ込む
       : nodeExternals({
-          whitelist: /\.css$/
+          whitelist: /\.css$/,
         }),
     plugins: [
       ...(base.plugins || []),
-      new WebpackBar({
+      (new WebpackBar({
         color: '#f7a1ba',
         profile: true,
-        name: 'server'
-      }),
-      new VueSSRServerPlugin()
-    ]
+        name: 'server',
+      }) as unknown) as webpack.Plugin,
+      new VueSSRServerPlugin(),
+    ],
   }
   return config
 }
