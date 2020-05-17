@@ -16,8 +16,8 @@ import MockIdols from '../test/mock-idols'
 
 const CharacterItemStories = {
   components: {
-    CharacterItem
-  }
+    CharacterItem,
+  },
 } as Vue.Component
 export default CharacterItemStories
 
@@ -29,21 +29,21 @@ storiesOf('Character', module).add(
       props: {
         characterName: {
           type: String,
-          default: text('characterName', MockIdols[0].name)
+          default: text('characterName', MockIdols[0].name),
         },
         characterColor: {
           type: String,
-          default: color('characterColor', MockIdols[0].colorHEX)
+          default: color('characterColor', MockIdols[0].colorHEX),
         },
         characterTitle: {
           type: String,
-          default: text('characterTitle', MockIdols[0].title)
+          default: text('characterTitle', MockIdols[0].title),
         },
         checked: {
           type: Boolean,
-          default: boolean('checked', false)
-        }
-      }
+          default: boolean('checked', false),
+        },
+      },
     } as ComponentOptions<Vue>)
 )
 </script>

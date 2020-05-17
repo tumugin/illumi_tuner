@@ -9,7 +9,17 @@ export default class Ciede2000 {
     return this.calculateCiede2000(labFirst.L, labFirst.a, labFirst.b, labSecond.L, labSecond.a, labSecond.b)
   }
 
-  static calculateCiede2000(L1: number, a1: number, b1: number, L2: number, a2: number, b2: number, kL = 1, kC = 1, kH = 1) {
+  static calculateCiede2000(
+    L1: number,
+    a1: number,
+    b1: number,
+    L2: number,
+    a2: number,
+    b2: number,
+    kL = 1,
+    kC = 1,
+    kH = 1
+  ) {
     const deltaLp = L2 - L1
     const L_ = (L1 + L2) / 2
     const C1 = Math.sqrt(Math.pow(a1, 2) + Math.pow(b1, 2))
@@ -61,30 +71,27 @@ export default class Ciede2000 {
       HP_ = (hp1 + hp2) / 2
     }
 
-    const T = 1 -
+    const T =
+      1 -
       0.17 * Math.cos(MathUtils.degreeToRadian(HP_ - 30)) +
       0.24 * Math.cos(MathUtils.degreeToRadian(2 * HP_)) +
       0.32 * Math.cos(MathUtils.degreeToRadian(3 * HP_ + 6)) -
-      0.20 * Math.cos(MathUtils.degreeToRadian(4 * HP_ - 63))
+      0.2 * Math.cos(MathUtils.degreeToRadian(4 * HP_ - 63))
 
-    const SL = 1 + ((0.015 * Math.pow(L_ - 50, 2)) / Math.sqrt(20 + Math.pow(L_ - 50, 2)))
+    const SL = 1 + (0.015 * Math.pow(L_ - 50, 2)) / Math.sqrt(20 + Math.pow(L_ - 50, 2))
     const SC = 1 + 0.045 * CP_
     const SH = 1 + 0.015 * CP_ * T
 
-    const RT = -2 *
-      Math.sqrt(
-        Math.pow(CP_, 7) /
-        (Math.pow(CP_, 7) + Math.pow(25, 7))
-      ) *
-      Math.sin(MathUtils.degreeToRadian(
-        60 * Math.exp(-Math.pow((HP_ - 275) / 25, 2))
-      ))
+    const RT =
+      -2 *
+      Math.sqrt(Math.pow(CP_, 7) / (Math.pow(CP_, 7) + Math.pow(25, 7))) *
+      Math.sin(MathUtils.degreeToRadian(60 * Math.exp(-Math.pow((HP_ - 275) / 25, 2))))
 
     return Math.sqrt(
       Math.pow(deltaLp / (kL * SL), 2) +
-      Math.pow(deltaCp / (kC * SC), 2) +
-      Math.pow(deltaHp / (kH * SH), 2) +
-      RT * (deltaCp / (kC * SC)) * (deltaHp / (kH * SH))
+        Math.pow(deltaCp / (kC * SC), 2) +
+        Math.pow(deltaHp / (kH * SH), 2) +
+        RT * (deltaCp / (kC * SC)) * (deltaHp / (kH * SH))
     )
   }
 }

@@ -6,8 +6,8 @@ import INameAndColorWithPenlightColor from '../../models/i-name-and-color-with-p
 import PenlightColor from '../../models/penlight-color'
 
 export interface IColorDiffWithIPenlightColor {
-  penlightColor: AbstractPenlightColor;
-  diff: number;
+  penlightColor: AbstractPenlightColor
+  diff: number
 }
 
 export default abstract class AbstractPenlight {
@@ -22,27 +22,27 @@ export default abstract class AbstractPenlight {
   searchColor(arrayOfIdol: INameAndColor[], useBasicColor: boolean): INameAndColorWithPenlightColor[] {
     // with color adjustable penlights, no need to search nearest color
     if (this.isColorAdjustable) {
-      return arrayOfIdol.map(item => {
+      return arrayOfIdol.map((item) => {
         const mapItem: INameAndColorWithPenlightColor = {
           nameAndColor: item,
-          penlightColor: new PenlightColor(item.colorHEX, '', false)
+          penlightColor: new PenlightColor(item.colorHEX, '', false),
         }
         return mapItem
       })
     }
     // search the nearest color
-    const searchResult = arrayOfIdol.map(item => {
+    const searchResult = arrayOfIdol.map((item) => {
       const idolColorRGB = ColorUtils.convertColorCodeToRGB(item.colorHEX)
-      const colorDiffList = this.availableColors.map(penlightColorItem => {
+      const colorDiffList = this.availableColors.map((penlightColorItem) => {
         const mapValue: IColorDiffWithIPenlightColor = {
           penlightColor: penlightColorItem,
-          diff: Ciede2000.calculateCiede2000FromRGB(penlightColorItem.colorRGB, idolColorRGB)
+          diff: Ciede2000.calculateCiede2000FromRGB(penlightColorItem.colorRGB, idolColorRGB),
         }
         return mapValue
       })
       const searchResultMapValue: INameAndColorWithPenlightColor = {
         nameAndColor: item,
-        penlightColor: colorDiffList.sort((a, b) => a.diff - b.diff)[0].penlightColor
+        penlightColor: colorDiffList.sort((a, b) => a.diff - b.diff)[0].penlightColor,
       }
       return searchResultMapValue
     })
@@ -58,26 +58,26 @@ export default abstract class AbstractPenlight {
 
     // 標準色のみを求める
     const selectedBasicColors = searchResult
-      .filter(item => item.penlightColor.isBasicColor)
-      .map(item => item.penlightColor)
+      .filter((item) => item.penlightColor.isBasicColor)
+      .map((item) => item.penlightColor)
     // 標準色のみで表現可能なアイドルを取得する
-    const basicColorIdols = searchResult.filter(item => !item.penlightColor.isBasicColor)
+    const basicColorIdols = searchResult.filter((item) => !item.penlightColor.isBasicColor)
     // そうでないアイドルの色を標準色で表現させる
     const notBasicColorIdols = searchResult
-      .filter(item => !item.penlightColor.isBasicColor)
-      .map(item => item.nameAndColor)
-      .map(item => {
+      .filter((item) => !item.penlightColor.isBasicColor)
+      .map((item) => item.nameAndColor)
+      .map((item) => {
         const idolColorRGB = ColorUtils.convertColorCodeToRGB(item.colorHEX)
-        const colorDiffList = selectedBasicColors.map(penlightColorItem => {
+        const colorDiffList = selectedBasicColors.map((penlightColorItem) => {
           const mapValue: IColorDiffWithIPenlightColor = {
             penlightColor: penlightColorItem,
-            diff: Ciede2000.calculateCiede2000FromRGB(penlightColorItem.colorRGB, idolColorRGB)
+            diff: Ciede2000.calculateCiede2000FromRGB(penlightColorItem.colorRGB, idolColorRGB),
           }
           return mapValue
         })
         const searchResultMapValue: INameAndColorWithPenlightColor = {
           nameAndColor: item,
-          penlightColor: colorDiffList.sort((a, b) => a.diff - b.diff)[0].penlightColor
+          penlightColor: colorDiffList.sort((a, b) => a.diff - b.diff)[0].penlightColor,
         }
         return searchResultMapValue
       })

@@ -8,8 +8,8 @@ const module: Module<{}, RootState> = {
     imasparqlApi: () =>
       process.env.NODE_ENV === 'production'
         ? new ImasparqlApi('https://illumituner.firebaseapp.com/api/imasparql')
-        : new ImasparqlApi()
-  }
+        : new ImasparqlApi(),
+  },
 }
 
 export type ApiClientModule = typeof module

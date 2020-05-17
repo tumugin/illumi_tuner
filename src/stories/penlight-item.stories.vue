@@ -13,13 +13,13 @@ import { storiesOf } from '@storybook/vue'
 
 const PenlightItemStories = {
   components: {
-    PenlightItem
+    PenlightItem,
   },
   computed: {
     penlightColor() {
       return new PenlightColor(this.colorCode as string, this.colorName as string, false)
-    }
-  }
+    },
+  },
 } as Vue.Component
 export default PenlightItemStories
 
@@ -31,17 +31,17 @@ storiesOf('Penlight', module).add(
       props: {
         colorCode: {
           type: String,
-          default: color('colorCode', '#3A75BB')
+          default: color('colorCode', '#3A75BB'),
         },
         colorName: {
           type: String,
-          default: text('colorName', 'ほげほげの色')
+          default: text('colorName', 'ほげほげの色'),
         },
         idols: {
           type: Array,
-          default: () => MockIdols
-        }
-      }
+          default: () => MockIdols,
+        },
+      },
     } as ComponentOptions<Vue>)
 )
 </script>

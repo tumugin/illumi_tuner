@@ -23,9 +23,9 @@ export default function createApp() {
   Vue.use(VueAnalytics, {
     id: 'UA-139621116-1',
     debug: {
-      sendHitTask: process.env.NODE_ENV === 'production'
+      sendHitTask: process.env.NODE_ENV === 'production',
     },
-    router: router
+    router: router,
   })
   const app = new Vue({
     router,
@@ -33,7 +33,7 @@ export default function createApp() {
     components: { App },
     render(h) {
       return h(App)
-    }
+    },
   })
   return { app, router, store }
 }

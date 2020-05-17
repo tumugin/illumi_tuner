@@ -30,30 +30,30 @@ interface PenlightColorWithIdolList {
 export default Vue.extend({
   name: 'PenlightListView',
   components: {
-    PenlightItem
+    PenlightItem,
   },
   data() {
     return {
-      penlight: new MixPenla()
+      penlight: new MixPenla(),
     }
   },
   computed: {
     suggestedPenlightColor2() {
-      const checkedItem = IllumiTunerVuexModule(this.$store).imasCharacters.filter(item => item.checked)
+      const checkedItem = IllumiTunerVuexModule(this.$store).imasCharacters.filter((item) => item.checked)
       const searchResult = (this.$data.penlight as AbstractPenlight).searchColor(checkedItem, false)
-      const distinctColors = [...new Set(searchResult.map(item => item.penlightColor))]
+      const distinctColors = [...new Set(searchResult.map((item) => item.penlightColor))]
       return distinctColors
-        .map(penlightColor => {
+        .map((penlightColor) => {
           return {
             color: penlightColor,
-            idols: searchResult.filter(idol => idol.penlightColor === penlightColor).map(idol => idol.nameAndColor),
+            idols: searchResult.filter((idol) => idol.penlightColor === penlightColor).map((idol) => idol.nameAndColor),
             key: md5(penlightColor.colorName + penlightColor.colorHEX),
-            index: this.$data.penlight.availableColors.indexOf(penlightColor)
+            index: this.$data.penlight.availableColors.indexOf(penlightColor),
           } as PenlightColorWithIdolList
         })
         .sort((a, b) => a.index - b.index)
-    }
-  }
+    },
+  },
 })
 </script>
 

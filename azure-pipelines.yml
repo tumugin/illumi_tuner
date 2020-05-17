@@ -16,7 +16,12 @@ steps:
     displayName: 'yarn install'
   - script: |
       yarn run lint
+      yarn run prettier:check
     displayName: 'Lint'
+  - script: |
+      yarn run lint
+      yarn run prettier:check
+    displayName: 'Type check'
   - script: |
       sudo apt install -y fonts-takao
     displayName: 'システムにフォントをインストール'

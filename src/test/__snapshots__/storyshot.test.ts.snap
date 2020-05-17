@@ -97,6 +97,8 @@ exports[`Storyshots UI LiveSelectView 1`] = `
       role="menu"
       tabindex="-1"
     >
+      <!---->
+       
       <li
         role="presentation"
       >
@@ -266,6 +268,8 @@ exports[`Storyshots UI LiveSelectView[PC][HasAnimation] 1`] = `
       role="menu"
       tabindex="-1"
     >
+      <!---->
+       
       <li
         role="presentation"
       >

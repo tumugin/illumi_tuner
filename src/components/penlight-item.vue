@@ -17,13 +17,13 @@ export default Vue.extend({
   props: {
     penlightColor: {
       type: Object,
-      required: true
+      required: true,
     },
     idols: {
       type: Array,
-      required: true
-    }
-  }
+      required: true,
+    },
+  },
 })
 </script>
 

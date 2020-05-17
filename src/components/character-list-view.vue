@@ -39,22 +39,22 @@ export default Vue.extend({
   name: 'CharacterListView',
   data() {
     return {
-      filterText: ''
+      filterText: '',
     }
   },
   components: {
-    CharacterItem
+    CharacterItem,
   },
   computed: {
     characters() {
       return IllumiTunerVuexModule(this.$store)
         .imasCharacters.sort((a, b) => a.nameKana.localeCompare(b.nameKana))
         .sort((a, b) => a.title.localeCompare(b.title))
-        .filter(item => item.name.includes(this.$data.filterText) || item.nameKana.includes(this.$data.filterText))
-        .filter(item => IllumiTunerVuexModule(this.$store).filterOffice.includes(item.title))
+        .filter((item) => item.name.includes(this.$data.filterText) || item.nameKana.includes(this.$data.filterText))
+        .filter((item) => IllumiTunerVuexModule(this.$store).filterOffice.includes(item.title))
     },
     idolOfficeList() {
-      return [...new Set(IllumiTunerVuexModule(this.$store).imasCharacters.map(item => item.title))]
+      return [...new Set(IllumiTunerVuexModule(this.$store).imasCharacters.map((item) => item.title))]
     },
     filterOffice: {
       get() {
@@ -62,8 +62,8 @@ export default Vue.extend({
       },
       set(value: string[]) {
         IllumiTunerVuexModule(this.$store).setFilterOffice(value)
-      }
-    }
+      },
+    },
   },
   methods: {
     characterItemUpdateCheckedState(item: INameAndColor, state: boolean) {
@@ -77,15 +77,15 @@ export default Vue.extend({
     },
     selectAllButtonClicked() {
       IllumiTunerVuexModule(this.$store).updateImasCharacters(
-        this.characters.map(item => this.makeUpdatedCharacterByState(item, true))
+        this.characters.map((item) => this.makeUpdatedCharacterByState(item, true))
       )
     },
     unselectAllButtonClicked() {
       IllumiTunerVuexModule(this.$store).updateImasCharacters(
-        this.characters.map(item => this.makeUpdatedCharacterByState(item, false))
+        this.characters.map((item) => this.makeUpdatedCharacterByState(item, false))
       )
-    }
-  }
+    },
+  },
 })
 </script>
 

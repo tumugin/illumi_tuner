@@ -27,12 +27,12 @@ export default defineComponent({
   props: {
     isVisible: {
       type: Boolean,
-      required: true
+      required: true,
     },
     isLoadFailed: {
-      type: Boolean
-    }
-  }
+      type: Boolean,
+    },
+  },
 })
 </script>
 

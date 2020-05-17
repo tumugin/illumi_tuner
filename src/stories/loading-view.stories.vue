@@ -10,8 +10,8 @@ import LoadingView from '../components/loading-view.vue'
 
 const LoadingViewStories = {
   components: {
-    LoadingView
-  }
+    LoadingView,
+  },
 } as Vue.Component
 export default LoadingViewStories
 
@@ -21,13 +21,13 @@ storiesOf('UI', module).add('LoadingView', () => {
     props: {
       isVisible: {
         type: Boolean,
-        default: boolean('isVisible', false)
+        default: boolean('isVisible', false),
       },
       isLoadFailed: {
         type: Boolean,
-        default: boolean('isLoadFailed', false)
-      }
-    }
+        default: boolean('isLoadFailed', false),
+      },
+    },
   } as ComponentOptions<Vue>
 })
 </script>
