@@ -1,6 +1,6 @@
 declare module '@storybook/addon-storyshots-puppeteer' {
+  import { StoryshotsOptions } from '@storybook/addon-storyshots/dist/api/StoryshotsOptions'
   import Pupetter from 'puppeteer'
-  import { Test } from '@storybook/addon-storyshots'
 
   interface IMatchOptions {
     failureThreshold: number
@@ -29,5 +29,5 @@ declare module '@storybook/addon-storyshots-puppeteer' {
     beforeScreenshot: (page: Pupetter.Page, context: IBeforeScreenshotContext, url: string) => Promise<void>
   }
 
-  function imageSnapshot(options: IOptions): Test
+  function imageSnapshot(options: IOptions): StoryshotsOptions['test']
 }

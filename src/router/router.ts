@@ -9,19 +9,19 @@ export function createRouter() {
       {
         path: '/',
         name: 'Main',
-        component: async () => await import('../components/main-view.vue')
+        component: async () => await import('../components/main-view.vue'),
       },
       {
         path: '/about',
         name: 'About',
-        component: async () => await import('../components/about-page.vue')
+        component: async () => await import('../components/about-page.vue'),
       },
       {
         path: '/terms',
         name: 'Terms',
-        component: async () => await import('../components/terms-page.vue')
-      }
+        component: async () => await import('../components/terms-page.vue'),
+      },
     ],
-    mode: 'history'
+    mode: 'history',
   })
 }

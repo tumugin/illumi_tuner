@@ -29,7 +29,7 @@ export default class MixPenla extends AbstractPenlight {
     new PenlightColor('#8600EB', '#21バイオレット', true),
     new PenlightColor('#CF03FF', '#22パープル', false),
     new PenlightColor('#E967F4', '#23ラベンダーパープル', false),
-    new PenlightColor('#F1F2FD', '#24ホワイト', true)
+    new PenlightColor('#F1F2FD', '#24ホワイト', true),
   ]
 
   isColorAdjustable = false

@@ -21,7 +21,7 @@ const serverTitleMixin = {
     if (vue.$ssrContext && title) {
       vue.$ssrContext.title = title
     }
-  }
+  },
 }
 
 const clientTitleMixin = {
@@ -31,7 +31,7 @@ const clientTitleMixin = {
     if (title) {
       document.title = title
     }
-  }
+  },
 }
 
 const titleMixin = process.env.VUE_ENV === 'server' ? serverTitleMixin : clientTitleMixin

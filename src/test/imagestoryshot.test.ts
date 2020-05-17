@@ -6,19 +6,19 @@ import Pupetter from 'puppeteer'
 const getMatchOptions = () => {
   return {
     failureThreshold: 0.01,
-    failureThresholdType: 'percent'
+    failureThresholdType: 'percent',
   }
 }
 
 const beforeScreenshot = (page: Pupetter.Page, context: IBeforeScreenshotContext) => {
   if (context.context.story.match(/HasAnimation/)) {
-    return new Promise<void>(resolve =>
+    return new Promise<void>((resolve) =>
       setTimeout(() => {
         resolve()
       }, 1000)
     )
   } else {
-    return new Promise<void>(resolve => resolve())
+    return new Promise<void>((resolve) => resolve())
   }
 }
 
@@ -28,7 +28,7 @@ initStoryshots({
   test: imageSnapshot({
     storybookUrl: 'file://' + path.resolve('./storyshot-public/'),
     getMatchOptions,
-    beforeScreenshot
+    beforeScreenshot,
   }),
-  framework: 'vue'
+  framework: 'vue',
 })

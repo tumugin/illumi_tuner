@@ -11,8 +11,8 @@ import MockLives from '../test/mock-lives'
 
 const LiveSelectViewStories = {
   components: {
-    LiveSelectView
-  }
+    LiveSelectView,
+  },
 } as Vue.Component
 export default LiveSelectViewStories
 const story = storiesOf('UI', module)
@@ -24,13 +24,13 @@ story.add(
       props: {
         isMobile: {
           type: Boolean,
-          default: boolean('isMobile', false)
+          default: boolean('isMobile', false),
         },
         liveList: {
           type: Array,
-          default: () => object('liveList', MockLives)
-        }
-      }
+          default: () => object('liveList', MockLives),
+        },
+      },
     } as ComponentOptions<Vue>)
 )
 story.add(
@@ -41,16 +41,16 @@ story.add(
       props: {
         isMobile: {
           type: Boolean,
-          default: boolean('isMobile', false)
+          default: boolean('isMobile', false),
         },
         liveList: {
           type: Array,
-          default: () => object('liveList', MockLives)
-        }
+          default: () => object('liveList', MockLives),
+        },
       },
       mounted() {
         Vue.nextTick(() => this.$refs.button.$el.querySelector('button').click())
-      }
+      },
     } as ComponentOptions<Vue>)
 )
 story.add(
@@ -61,16 +61,16 @@ story.add(
       props: {
         isMobile: {
           type: Boolean,
-          default: boolean('isMobile', true)
+          default: boolean('isMobile', true),
         },
         liveList: {
           type: Array,
-          default: () => object('liveList', MockLives)
-        }
+          default: () => object('liveList', MockLives),
+        },
       },
       mounted() {
         Vue.nextTick(() => this.$refs.button.$el.querySelector('button').click())
-      }
+      },
     } as ComponentOptions<Vue>)
 )
 </script>

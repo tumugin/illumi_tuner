@@ -13,21 +13,27 @@ export class IllumiTunerVuexModuleClass extends VuexModule {
 
   filterOffice = Array<string>(0)
 
+  loaded = {
+    imasCharacters: false,
+    imasLiveList: false,
+  }
+
   @Mutation
   public setImasCharacters(param: INameAndColor[]) {
     this.imasCharacters = param
+    this.loaded.imasCharacters = true
   }
 
   @Mutation
   public updateImasCharacter(param: INameAndColor) {
-    const index = this.imasCharacters.findIndex(item => item.key === param.key)
+    const index = this.imasCharacters.findIndex((item) => item.key === param.key)
     this.imasCharacters.splice(index, 1, param)
   }
 
   @Mutation
   public updateImasCharacters(param: INameAndColor[]) {
-    param.forEach(character => {
-      const index = this.imasCharacters.findIndex(item => item.key === character.key)
+    param.forEach((character) => {
+      const index = this.imasCharacters.findIndex((item) => item.key === character.key)
       this.imasCharacters.splice(index, 1, character)
     })
   }
@@ -40,6 +46,7 @@ export class IllumiTunerVuexModuleClass extends VuexModule {
   @Mutation
   public setImasLiveList(param: ILive[]) {
     this.imasLiveList = param
+    this.loaded.imasLiveList = true
   }
 
   @Action
@@ -49,7 +56,7 @@ export class IllumiTunerVuexModuleClass extends VuexModule {
     this.setImasCharacters(result)
     // キャラクターリストを更新すると事務所も一旦リセットする必要がある
     // 今のデフォルトは全て選択された状態
-    this.setFilterOffice([...new Set(this.imasCharacters.map(item => item.title))])
+    this.setFilterOffice([...new Set(this.imasCharacters.map((item) => item.title))])
   }
 
   @Action

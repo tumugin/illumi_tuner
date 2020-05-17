@@ -25,31 +25,31 @@ export default Vue.extend({
   computed: {
     isLongName() {
       return (this.characterName as string).length > 5
-    }
+    },
   },
   props: {
     characterName: {
       type: String,
-      required: true
+      required: true,
     },
     characterColor: {
       type: String,
-      required: true
+      required: true,
     },
     characterTitle: {
       type: String,
-      default: null
+      default: null,
     },
     checked: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   methods: {
     onParentBoxClicked() {
       this.$emit('onCheckStateChanged', !this.$props.checked)
-    }
-  }
+    },
+  },
 })
 </script>
 

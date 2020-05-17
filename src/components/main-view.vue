@@ -35,14 +35,14 @@ export default Vue.extend({
       isPenlightVisible: false,
       penlightColorAlert: LocalStorageUtils.getLocalStorageData('AlertMesgColorMightBeWrong', true, 'boolean'),
       isLoading: false,
-      isLoadFailed: false
+      isLoadFailed: false,
     }
   },
   components: {
     CharacterListView,
     PenlightListView,
     LiveSelectView,
-    LoadingView
+    LoadingView,
   },
   async serverPrefetch() {
     await IllumiTunerVuexModule(this.$store).fetchImasCharacters()
@@ -51,8 +51,8 @@ export default Vue.extend({
   async created() {
     try {
       if (
-        IllumiTunerVuexModule(this.$store).imasCharacters.length === 0 ||
-        IllumiTunerVuexModule(this.$store).imasLiveList.length === 0
+        !IllumiTunerVuexModule(this.$store).loaded.imasCharacters ||
+        !IllumiTunerVuexModule(this.$store).loaded.imasLiveList
       ) {
         this.isLoading = true
         await IllumiTunerVuexModule(this.$store).fetchImasCharacters()
@@ -65,11 +65,11 @@ export default Vue.extend({
   },
   computed: {
     isAnyIdolSelected() {
-      return IllumiTunerVuexModule(this.$store).imasCharacters.filter(item => item.checked).length > 0
+      return IllumiTunerVuexModule(this.$store).imasCharacters.filter((item) => item.checked).length > 0
     },
     liveList() {
       return IllumiTunerVuexModule(this.$store).imasLiveList
-    }
+    },
   },
   methods: {
     onPenlightVisible(isVisible: boolean) {
@@ -79,28 +79,28 @@ export default Vue.extend({
       this.$scrollTo('#penlightListView', 1000)
     },
     liveSelected(live: ILive) {
-      IllumiTunerVuexModule(this.$store).imasCharacters.forEach(item => {
+      IllumiTunerVuexModule(this.$store).imasCharacters.forEach((item) => {
         const updatedItem = Object.assign({}, item)
         updatedItem.checked = false
         IllumiTunerVuexModule(this.$store).updateImasCharacter(updatedItem)
       })
-      const selectedIdol = IllumiTunerVuexModule(this.$store).imasCharacters.filter(item =>
+      const selectedIdol = IllumiTunerVuexModule(this.$store).imasCharacters.filter((item) =>
         live.liveActor.includes(item.actor)
       )
-      selectedIdol.forEach(item => {
+      selectedIdol.forEach((item) => {
         const updatedItem = Object.assign({}, item)
         updatedItem.checked = true
         IllumiTunerVuexModule(this.$store).updateImasCharacter(updatedItem)
       })
       this.moveToPenlightView()
-    }
+    },
   },
   watch: {
     penlightColorAlert(value: boolean) {
       LocalStorageUtils.setLocalStorageData('AlertMesgColorMightBeWrong', value)
-    }
+    },
   },
-  title: 'IllumiTuner β'
+  title: 'IllumiTuner β',
 })
 </script>
 

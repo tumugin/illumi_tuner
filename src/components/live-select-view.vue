@@ -2,6 +2,7 @@
   <div>
     <!--デスクトップ用公演選択画面-->
     <b-dropdown text="公演から選択する" v-if="!isMobile">
+      <no-live v-if="isNoLive" class="no-live-view" />
       <template v-for="(live, index) in liveList">
         <b-dropdown-item :key="index" @click="selectLive(live)">
           <b-badge variant="primary">
@@ -22,6 +23,7 @@
     </b-button>
     <!--モバイル用公演選択モーダル-->
     <b-modal :visible="showMobileModal" title="公演を選択してください" hide-footer @hidden="closeModal">
+      <no-live v-if="isNoLive" />
       <template v-for="(live, index) in liveList">
         <div :key="index" @click="selectLive(live)">
           <b-badge variant="primary">
@@ -44,23 +46,32 @@
 import Vue from 'vue'
 import { formatDate } from '../utils/date-utils'
 import ILive from '../models/i-live'
+import NoLive from './no-live.vue'
 
 export default Vue.extend({
   name: 'LiveSelectView',
   data() {
     return {
-      showMobileModal: false
+      showMobileModal: false,
     }
+  },
+  components: {
+    NoLive,
   },
   props: {
     liveList: {
       type: Array,
-      required: true
+      required: true,
     },
     isMobile: {
       type: Boolean,
-      default: () => (typeof window !== 'undefined' ? window.innerWidth < 700 : false) // computedで動的に検知できないのでpropsを使う
-    }
+      default: () => (typeof window !== 'undefined' ? window.innerWidth < 700 : false), // computedで動的に検知できないのでpropsを使う
+    },
+  },
+  computed: {
+    isNoLive() {
+      return this.liveList.length === 0
+    },
   },
   methods: {
     formatDate: formatDate,
@@ -75,9 +86,13 @@ export default Vue.extend({
     },
     closeModal() {
       this.showMobileModal = false
-    }
-  }
+    },
+  },
 })
 </script>
 
-<style scoped></style>
+<style scoped lang="scss">
+.no-live-view {
+  width: 500px;
+}
+</style>
