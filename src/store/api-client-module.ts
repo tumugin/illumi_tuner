@@ -5,8 +5,7 @@ import ImasparqlApi from '../webapi/imasparql-api'
 const module: Module<Record<string, never>, RootState> = {
   namespaced: true,
   getters: {
-    imasparqlApi: () =>
-      IS_PRODUCTION ? new ImasparqlApi('https://illumituner.firebaseapp.com/api/imasparql') : new ImasparqlApi(),
+    imasparqlApi: () => new ImasparqlApi(),
   },
 }
 
