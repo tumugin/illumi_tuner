@@ -7,16 +7,11 @@ module.exports = async ({ config }: { config: webpack.Configuration }) => {
     ...(config.resolve!.modules || []),
     path.resolve(__dirname, '../'),
     path.resolve(__dirname, '../src'),
-    path.resolve(__dirname, '../node_modules')
+    path.resolve(__dirname, '../node_modules'),
   ]
   config.resolve!.extensions!.push('.ts')
-  config.plugins!.push(
-    new webpack.DefinePlugin({
-      IS_STORYSHOT: JSON.stringify(process.env.IS_STORYSHOT)
-    })
-  )
   return {
     ...config,
-    module: { ...config.module, rules: custom({}, { mode: 'development' }).module!.rules }
+    module: { ...config.module, rules: custom({}, { mode: 'development' }).module!.rules },
   }
 }

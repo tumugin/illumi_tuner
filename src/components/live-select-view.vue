@@ -3,24 +3,24 @@
     <!--デスクトップ用公演選択画面-->
     <b-dropdown text="公演から選択する" v-if="!isMobile">
       <no-live v-if="isNoLive" class="no-live-view" />
-      <template v-for="(live, index) in liveList">
-        <b-dropdown-item :key="index" @click="selectLive(live)">
-          <b-badge variant="primary">
-            {{ formatDate(live.liveDate, 'YYYY/MM/DD') }}
-          </b-badge>
-          <b-badge variant="dark">
-            {{ live.liveLocation }}
-          </b-badge>
-          <div>
-            {{ live.liveName }}
-          </div>
-        </b-dropdown-item>
-      </template>
+      <div class="live-list-desktop">
+        <template v-for="(live, index) in liveList">
+          <b-dropdown-item :key="index" @click="selectLive(live)">
+            <b-badge variant="primary">
+              {{ formatDate(live.liveDate, 'YYYY/MM/DD') }}
+            </b-badge>
+            <b-badge variant="dark">
+              {{ live.liveLocation }}
+            </b-badge>
+            <div>
+              {{ live.liveName }}
+            </div>
+          </b-dropdown-item>
+        </template>
+      </div>
     </b-dropdown>
     <!--モバイル用公演選択画面-->
-    <b-button @click="openMobileModal" class="dropdown-toggle" v-else>
-      公演から選択する
-    </b-button>
+    <b-button @click="openMobileModal" class="dropdown-toggle" v-else> 公演から選択する </b-button>
     <!--モバイル用公演選択モーダル-->
     <b-modal :visible="showMobileModal" title="公演を選択してください" hide-footer @hidden="closeModal">
       <no-live v-if="isNoLive" />
@@ -94,5 +94,12 @@ export default Vue.extend({
 <style scoped lang="scss">
 .no-live-view {
   width: 500px;
+}
+
+.live-list-desktop {
+  max-width: 50vw;
+  max-height: calc(100vh - 300px);
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 </style>

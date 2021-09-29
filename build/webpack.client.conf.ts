@@ -19,17 +19,17 @@ export default function config(
     },
     plugins: [
       ...(base.plugins || []),
-      (new WebpackBar({
+      new WebpackBar({
         color: '#7adad6',
         profile: true,
         name: 'client',
-      }) as unknown) as webpack.Plugin,
+      }),
       new HtmlWebpackPlugin({
         filename: 'index.html',
         template: path.resolve('public/index.html'),
         inject: true,
       }),
-      (new CopyWebpackPlugin({
+      new CopyWebpackPlugin({
         patterns: [
           {
             from: path.resolve('static/img'),
@@ -42,7 +42,7 @@ export default function config(
             toType: 'dir',
           },
         ],
-      }) as unknown) as webpack.Plugin,
+      }),
       new VueSSRClientPlugin(),
     ],
   }

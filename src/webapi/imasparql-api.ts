@@ -92,7 +92,7 @@ export default class ImasparqlApi {
 
   getShortTitle(title: string) {
     switch (title) {
-      case '283Pro':
+      case 'ShinyColors':
         return 'シャニ'
       case 'MillionStars':
         return 'ミリ'

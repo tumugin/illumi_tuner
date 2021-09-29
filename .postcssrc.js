@@ -1,11 +1,3 @@
-// https://github.com/michael-ciniawsky/postcss-load-config
-
 module.exports = {
-  sourceMap: true,
-  plugins: {
-    'postcss-import': {},
-    'postcss-url': {},
-    autoprefixer: {},
-    cssnano: { preset: 'default', autoprefixer: false }
-  }
+  plugins: [require('postcss-import'), require('postcss-url'), require('autoprefixer'), require('cssnano')],
 }

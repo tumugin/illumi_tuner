@@ -2,6 +2,7 @@ import * as webpack from 'webpack'
 import * as path from 'path'
 import { VueLoaderPlugin } from 'vue-loader'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import { WebpackPluginInstance } from 'webpack'
 
 export default function config(
   env: { [key: string]: string | undefined },
@@ -32,7 +33,6 @@ export default function config(
           },
         },
       },
-      namedModules: true,
       noEmitOnErrors: true,
     },
     resolve: {
@@ -136,8 +136,13 @@ export default function config(
       ],
     },
     plugins: [
-      new VueLoaderPlugin(),
-      (new MiniCssExtractPlugin({ filename: 'static/common.[chunkhash].css' }) as unknown) as webpack.Plugin,
+      new VueLoaderPlugin() as unknown as WebpackPluginInstance,
+      new MiniCssExtractPlugin({ filename: 'static/common.[chunkhash].css' }),
+      new webpack.DefinePlugin({
+        IS_STORYSHOT: process.env.IS_STORYSHOT ?? false,
+        IS_PRODUCTION: isProduction,
+        IS_SERVER: options?.isSSR ?? false,
+      }),
     ],
   }
   return config

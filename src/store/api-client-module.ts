@@ -6,9 +6,7 @@ const module: Module<{}, RootState> = {
   namespaced: true,
   getters: {
     imasparqlApi: () =>
-      process.env.NODE_ENV === 'production'
-        ? new ImasparqlApi('https://illumituner.firebaseapp.com/api/imasparql')
-        : new ImasparqlApi(),
+      IS_PRODUCTION ? new ImasparqlApi('https://illumituner.firebaseapp.com/api/imasparql') : new ImasparqlApi(),
   },
 }
 
