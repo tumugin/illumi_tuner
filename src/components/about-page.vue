@@ -6,13 +6,9 @@
     </h1>
     <p>ペンライトの色を楽に設定できるようにしたものなのです。イルミルミルミルミって感じにね?</p>
     <h2>使い方</h2>
-    <b-alert show>
-      現在はMIXPenlaにのみ対応しております。近日中にKING BLADEへの対応を行う予定です。
-    </b-alert>
+    <b-alert show> 現在はMIXPenlaにのみ対応しております。近日中にKING BLADEへの対応を行う予定です。 </b-alert>
     <p>
-      <router-link to="/">
-        トップページ
-      </router-link>
+      <router-link to="/"> トップページ </router-link>
       でアイドルを選択するだけ！以上！
     </p>
     <p>あとは表示されたペンライトの色に従って手持ちのペンライトに色を設定するだけです。</p>

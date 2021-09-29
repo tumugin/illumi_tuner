@@ -11,7 +11,7 @@ export function formatDate(baseDate: Date | string, format: string) {
   format = format.replace(/ss/g, ('0' + date.getSeconds()).slice(-2))
   if (format.match(/S/g)) {
     const milliSeconds = ('00' + date.getMilliseconds()).slice(-3)
-    const length = format.match(/S/g)!.length
+    const length = format.match(/S/g)?.length ?? 0
     for (let i = 0; i < length; i++) {
       format = format.replace(/S/, milliSeconds.substring(i, i + 1))
     }

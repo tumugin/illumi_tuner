@@ -66,7 +66,7 @@ export default class ImasparqlApi {
         colorHEX: `#${item.color.value}`,
         name: item.name.value,
         nameKana: item.namekana.value,
-        title: this.getShortTitle(item.title.value),
+        title: item.title.value,
         actor: item.actor.value,
         key: index.toString(),
         checked: false,
@@ -88,20 +88,5 @@ export default class ImasparqlApi {
         liveLocation: item.liveLocation.value,
       } as ILive
     })
-  }
-
-  getShortTitle(title: string) {
-    switch (title) {
-      case 'ShinyColors':
-        return 'シャニ'
-      case 'MillionStars':
-        return 'ミリ'
-      case 'CinderellaGirls':
-        return 'デレ'
-      case '315ProIdols':
-        return 'SideM'
-      default:
-        return title
-    }
   }
 }
