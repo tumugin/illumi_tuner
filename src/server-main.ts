@@ -9,7 +9,7 @@ export default async function context(context: { url: string; rendered?: () => v
   context.rendered = () => {
     context.state = store.state
   }
-  await new Promise((resolve, reject) => {
+  await new Promise<void>((resolve, reject) => {
     router.onReady(() => {
       resolve()
     }, reject)

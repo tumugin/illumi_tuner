@@ -1,5 +1,5 @@
 declare module '@storybook/addon-storyshots-puppeteer' {
-  import { StoryshotsOptions } from '@storybook/addon-storyshots/dist/api/StoryshotsOptions'
+  import { StoryshotsOptions } from '@storybook/addon-storyshots/dist/ts3.9/api/StoryshotsOptions'
   import Pupetter from 'puppeteer'
 
   interface IMatchOptions {
