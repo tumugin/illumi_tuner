@@ -1,8 +1,6 @@
 <template>
   <div class="parent">
-    <div class="caption">
-      公演が何もありません...🥺
-    </div>
+    <div class="caption">公演が何もありません...🥺</div>
   </div>
 </template>
 

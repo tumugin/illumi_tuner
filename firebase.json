@@ -4,16 +4,9 @@
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       {
-        "source": "/api/imasparql",
-        "function": "imasparqlCacheServer"
-      },
-      {
         "source": "**",
-        "function": "vueSSRServer"
+        "destination": "/index.html"
       }
-    ],
-    "predeploy": ["rm -f prod/index.html"]
-  },
-  "functions": {},
-  "firestore": {}
+    ]
+  }
 }

@@ -25,7 +25,7 @@ export default class LocalStorageUtils {
       case 'string':
         return storageValue || defaultValue
       case 'boolean':
-        return booleanDefaultWhenNull(JSON.parse(storageValue!), defaultValue as boolean)
+        return booleanDefaultWhenNull(JSON.parse(storageValue ?? 'null'), defaultValue as boolean)
       case 'number':
         return Number(storageValue) || defaultValue
     }

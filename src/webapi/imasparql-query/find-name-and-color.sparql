@@ -11,7 +11,7 @@ SELECT ?name ?namekana ?color ?title ?actor
 WHERE {
   ?x rdfs:label ?name.
   ?x imas:Color ?color.
-  ?x imas:Title ?title.
+  ?x imas:Brand ?title.
   ?x imas:cv ?actor.
   OPTIONAL { ?x imas:alternateNameKana ?namekana }.
   OPTIONAL { ?x imas:nameKana ?namekana }.

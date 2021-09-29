@@ -6,9 +6,7 @@
       <b-alert dismissible class="alertStyle" variant="danger" v-model="penlightColorAlert">
         以下のペンライト色の表示は自動的に色差を計算した結果を元に表示しています。実際の色と異なる場合があるかもしれないのでご注意ください。
       </b-alert>
-      <b-alert :show="!isAnyIdolSelected">
-        まだどのアイドルも選択されてません！誰か一人でも選択してみましょう
-      </b-alert>
+      <b-alert :show="!isAnyIdolSelected"> まだどのアイドルも選択されてません！誰か一人でも選択してみましょう </b-alert>
     </div>
     <penlight-list-view :style="{ marginTop: '20px' }" v-observe-visibility="onPenlightVisible" id="penlightListView" />
     <div class="jumpToDown" :class="{ visible: !isPenlightVisible && isAnyIdolSelected }" @click="moveToPenlightView">

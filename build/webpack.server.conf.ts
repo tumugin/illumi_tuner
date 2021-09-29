@@ -3,7 +3,6 @@ import baseConfig from './webpack.base.conf'
 import * as path from 'path'
 import WebpackBar from 'webpackbar'
 import VueSSRServerPlugin from 'vue-server-renderer/server-plugin'
-import nodeExternals from 'webpack-node-externals'
 
 export default function config(
   env: { [key: string]: string | undefined },
@@ -19,19 +18,16 @@ export default function config(
       path: path.resolve(isProduction ? 'prod-server/' : 'dist-server/'),
       libraryTarget: 'commonjs2',
     },
-    optimization: undefined,
-    externals: isProduction
-      ? undefined // firebase functions側のpackage.jsonを二重管理したくないので依存関係は全部突っ込む
-      : nodeExternals({
-          whitelist: /\.css$/,
-        }),
+    optimization: {
+      splitChunks: false,
+    },
     plugins: [
       ...(base.plugins || []),
-      (new WebpackBar({
+      new WebpackBar({
         color: '#f7a1ba',
         profile: true,
         name: 'server',
-      }) as unknown) as webpack.Plugin,
+      }),
       new VueSSRServerPlugin(),
     ],
   }

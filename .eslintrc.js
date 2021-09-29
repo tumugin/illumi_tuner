@@ -1,25 +1,23 @@
-// https://eslint.org/docs/user-guide/configuring
-
 module.exports = {
   root: true,
   parser: 'vue-eslint-parser',
   // Settings for TypeScript linting
   parserOptions: {
-    parser: '@typescript-eslint/parser'
+    parser: '@typescript-eslint/parser',
   },
   env: {
     browser: true,
-    jest: true
+    jest: true,
   },
   extends: [
     'plugin:@typescript-eslint/recommended',
     'plugin:vue/base',
     'plugin:vue/strongly-recommended',
+    'plugin:prettier-vue/recommended',
     'prettier',
-    'prettier/vue'
   ],
   // required to lint *.vue files
-  plugins: ['@typescript-eslint', 'vue'],
+  plugins: ['@typescript-eslint'],
   // add your custom rules here
   rules: {
     'vue/max-attributes-per-line': 'off',
@@ -34,6 +32,8 @@ module.exports = {
     '@typescript-eslint/ban-ts-ignore': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/no-unused-vars': ['error', { vars: 'all', args: 'after-used', ignoreRestSiblings: false }],
-    '@typescript-eslint/member-delimiter-style': 'off'
-  }
+    '@typescript-eslint/member-delimiter-style': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/ban-ts-comment': 'off',
+  },
 }

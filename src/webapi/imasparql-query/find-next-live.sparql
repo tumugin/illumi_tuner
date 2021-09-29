@@ -14,5 +14,4 @@ WHERE {
        schema:name ?n;
        schema:location ?loc;
        schema:actor ?a
-  filter(?sD>="@@DATE@@"^^<http://www.w3.org/2001/XMLSchema#date>)
-}group by ?s order by ?liveDate
+}group by ?s order by DESC(?liveDate)
