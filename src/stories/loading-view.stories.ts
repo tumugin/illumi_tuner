@@ -1,9 +1,14 @@
-import { boolean } from '@storybook/addon-knobs'
+import { boolean, withKnobs } from '@storybook/addon-knobs'
 import LoadingView from '../components/loading-view.vue'
 
 export default {
   title: 'UI/LoadingView',
+  decorators: [withKnobs],
   component: LoadingView,
+}
+
+export const Basic = () => ({
+  components: { LoadingView },
   props: {
     isVisible: {
       type: Boolean,
@@ -14,4 +19,5 @@ export default {
       default: boolean('isLoadFailed', false),
     },
   },
-}
+  template: '<LoadingView v-bind="$props"/>',
+})

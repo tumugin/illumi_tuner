@@ -3,8 +3,9 @@ import { boolean, color, text, withKnobs } from '@storybook/addon-knobs'
 import MockIdols from '../test/mock-idols'
 
 export default {
-  title: 'Components/CharacterItem',
+  title: 'UI/CharacterItem',
   decorators: [withKnobs],
+  component: CharacterItem,
 }
 
 export const Basic = () => ({
