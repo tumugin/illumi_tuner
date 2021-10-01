@@ -2,8 +2,8 @@ import path from 'path'
 import webpack from 'webpack'
 
 export default {
-  stories: ['../**/*.stories.vue'],
-  addons: [],
+  stories: ['../src/**/*.stories.@(js|mdx|ts)'],
+  addons: ['@storybook/addon-knobs'],
   core: {
     builder: 'webpack5',
   },
