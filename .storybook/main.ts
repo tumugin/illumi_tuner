@@ -15,6 +15,13 @@ export default {
       test: /\.scss$/,
       use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
     })
+    baseConfig.plugins?.push(
+      new webpack.DefinePlugin({
+        IS_STORYSHOT: process.env.IS_STORYSHOT ?? false,
+        IS_PRODUCTION: false,
+        IS_SERVER: false,
+      })
+    )
     return baseConfig
   },
 }
