@@ -1,6 +1,6 @@
-import initStoryshots from '@storybook/addon-storyshots'
+import initStoryshots, { multiSnapshotWithOptions } from '@storybook/addon-storyshots'
 
 initStoryshots({
-  configPath: '.storybook/config-jest.ts',
   framework: 'vue',
+  test: multiSnapshotWithOptions({}),
 })

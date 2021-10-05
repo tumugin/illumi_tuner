@@ -6,7 +6,7 @@
     "dev": "webpack-dev-server --mode=development --config ./build/webpack.client.conf.ts",
     "builddev": "webpack --mode=development",
     "watch": "webpack --mode=development --watch",
-    "prod": "webpack --mode=production && yarn run copyfunctionfiles",
+    "prod": "webpack --mode=production",
     "ssr:dev": "NODE_ENV=development ts-node ./ssr-server.ts",
     "ssr:prod": "NODE_ENV=production ts-node ./ssr-server.ts",
     "lint": "eslint --ext .ts,.js,.vue src",
@@ -22,7 +22,6 @@
     "clean:prod": "rm -rf prod prod-server",
     "clean": "yarn run clean:dev && yarn run clean:prod",
     "deploy": "yarn run clean:prod && yarn run prod && firebase deploy",
-    "copyfunctionfiles": "mkdir -p functions/dist/ && cp prod/vue-ssr-client-manifest.json functions/dist/ && cp prod-server/vue-ssr-server-bundle.json functions/dist/ && cp public/index.ssr.template.html functions/dist/",
     "build-storybook": "build-storybook"
   },
   "dependencies": {
@@ -104,6 +103,7 @@
     "firebase-tools": "^9.19.0",
     "friendly-errors-webpack-plugin": "^1.7.0",
     "html-webpack-plugin": "^5.3.2",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^27.2.4",
     "jest-vue-preprocessor": "^1.7.1",
     "mini-css-extract-plugin": "^2.3.0",

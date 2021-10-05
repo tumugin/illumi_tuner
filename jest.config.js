@@ -7,5 +7,15 @@ module.exports = {
     '.*\\.(vue)$': 'vue-jest',
     '^.+\\.js$': 'babel-jest',
   },
+  moduleNameMapper: {
+    '\\.(css|less)$': 'identity-obj-proxy',
+  },
   transformIgnorePatterns: ['/node_modules/(?!(@storybook/.*\\.vue$))'],
+  testEnvironment: 'jsdom',
+  globals: {
+    IS_STORYSHOT: true,
+    IS_PRODUCTION: false,
+    IS_SERVER: false,
+  },
+  verbose: true,
 }

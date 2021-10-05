@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots UI/CharacterItem Basic 1`] = `
+<div
+  class="characterBox"
+  style="background-color: rgb(234, 91, 118);"
+>
+  <div
+    class="textContainer"
+  >
+    <div
+      class="titleView whiteBox"
+    >
+      
+      STAR ELEMENTS
+    
+    </div>
+     
+    <div
+      class="whiteBox characterNameView"
+    >
+      
+      天羽光駆
+    
+    </div>
+  </div>
+</div>
+`;
