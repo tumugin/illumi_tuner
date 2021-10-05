@@ -1,7 +1,8 @@
 import path from 'path'
 import webpack from 'webpack'
+import { StorybookConfig } from '@storybook/core-common'
 
-export default {
+const config: StorybookConfig = {
   stories: ['../src/**/*.stories.@(js|mdx|ts)'],
   addons: ['@storybook/addon-knobs'],
   core: {
@@ -25,3 +26,7 @@ export default {
     return baseConfig
   },
 }
+
+// export default ではなく module.exportsを使用する必要がある(Jestのstoryshotが正常に動作しない)
+// https://github.com/storybookjs/storybook/issues/10876#issuecomment-932991476
+module.exports = config
