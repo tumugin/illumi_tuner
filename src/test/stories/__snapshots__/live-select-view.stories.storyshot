@@ -1,32 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots UI/CharacterItem Basic 1`] = `
-<div
-  class="characterBox"
-  style="background-color: rgb(234, 91, 118);"
->
-  <div
-    class="textContainer"
-  >
-    <div
-      class="titleView whiteBox"
-    >
-      
-      STAR ELEMENTS
-    
-    </div>
-     
-    <div
-      class="whiteBox characterNameView"
-    >
-      
-      天羽光駆
-    
-    </div>
-  </div>
-</div>
-`;
-
 exports[`Storyshots UI/LiveSelectView Basic 1`] = `
 <div>
   <div
@@ -184,58 +157,5 @@ exports[`Storyshots UI/LiveSelectView Basic 1`] = `
   </div>
    
   <!---->
-</div>
-`;
-
-exports[`Storyshots UI/LoadingView Basic 1`] = `<!---->`;
-
-exports[`Storyshots UI/PenlightItem Basic 1`] = `
-<div
-  class="container"
-  style="background-color: rgb(58, 117, 187);"
->
-  <span
-    class="title"
-  >
-    ほげほげの色
-  </span>
-   
-  <div
-    class="idolListContainer"
-  >
-    <span
-      class="idol"
-    >
-      <div
-        class="colorIndicator"
-        style="background-color: rgb(234, 91, 118);"
-      />
-      
-      天羽光駆
-    
-    </span>
-    <span
-      class="idol"
-    >
-      <div
-        class="colorIndicator"
-        style="background-color: rgb(245, 173, 59);"
-      />
-      
-      神崎水桜
-    
-    </span>
-    <span
-      class="idol"
-    >
-      <div
-        class="colorIndicator"
-        style="background-color: rgb(146, 207, 187);"
-      />
-      
-      草薙星蘭
-    
-    </span>
-  </div>
 </div>
 `;

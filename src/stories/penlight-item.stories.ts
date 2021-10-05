@@ -17,7 +17,7 @@ export const Basic = () => ({
       default: () => MockIdols,
     },
     penlightColor: {
-      default: new PenlightColor(color('colorCode', '#3A75BB'), text('colorName', 'ほげほげの色'), false),
+      default: () => new PenlightColor(color('colorCode', '#3A75BB'), text('colorName', 'ほげほげの色'), false),
     },
   },
   template: '<PenlightItem v-bind="$props"/>',
